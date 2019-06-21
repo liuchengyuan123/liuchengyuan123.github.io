@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Funny Function]]></title>
+    <url>%2F2019%2F06%2F21%2FFunny-Function%2F</url>
+    <content type="text"><![CDATA[题目链接题意F_{1,1}=F_{1,2}=1F_{1,i}=F_{1,i-1}+2F_{1,i-2}, i \geq 3F_{i,j}= \sum_{k=j}^{j+n-1} F_{i-1,k} (i \geq 2, j \geq 1)输入$n$和$m$，计算F_{m,1}.对$1000000007$取模。 思路首先很容易可以用特征根计算出F_{1,i}的通项公式。 F_{1,i}= \frac{1}{3} {2}^{n} - \frac{1}{3} {(-1)}^{n}然后无脑计算F_{i,j},容易发现其实他也是等比数列。 F_{i,j} = \sum_{k=j}^{j+n-1} F_{i-1,k}F_{2,j}= \sum_{k=j}^{j+n-1} \frac{1}{3} {2}^{k-1} - \sum_{k=j}^{j+n-1} \frac{1}{3} {(-1)}^{k-1}= (\frac{1}{3} {2}^{n}) {2}^{j} - \frac{1}{3} {(1-(-1))}^{n} {(-1)}^{j}1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const ll mod = 1e9 + 7;ll Pow(ll a, ll b)&#123; ll ans = 1; while (b) &#123; if (b &amp; 1) ans = ans * a % mod; a = a * a % mod; b &gt;&gt;= 1; &#125; return ans;&#125;template&lt;class T&gt;void read(T&amp; ret)&#123; ret = 0; char c; while ((c = getchar()) &gt; '9' || c &lt; '0'); while (c &gt;= '0' &amp;&amp; c &lt;= '9') &#123; ret = ret * 10 + c - '0'; c = getchar(); &#125;&#125;int main()&#123; int T; read(T); while (T--) &#123; ll n, m; read(n); read(m); ll ans = 0; ll inv3 = Pow(3, mod - 2); ans = Pow(2, n % (mod - 1)) - 1; ans = (ans + mod) % mod; ans = Pow(ans, m - 1) % mod * inv3 % mod; ans = ans * 2 % mod; if (n % 2 == 1) &#123; ans = (ans + inv3 + mod) % mod; &#125; printf("%lld\n", ans); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2017杭电多校赛</category>
+        <category>第二场</category>
+      </categories>
+      <tags>
+        <tag>Math</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Maximum Sequence]]></title>
+    <url>%2F2019%2F06%2F21%2FMaximum-Sequence%2F</url>
+    <content type="text"><![CDATA[题目链接队友直接过了，打扰了]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Is Derek lying?]]></title>
     <url>%2F2019%2F06%2F21%2FIs-Derek-lying%2F</url>
     <content type="text"><![CDATA[题目链接题意有$n$到题，有两个人，每个人都做了选择，并且分别得分为$x$, $y$，现在问这个分数是否是真实的。 思路这题解法肯定是去从二者答案相同数量和不同数量去考虑，设相同答案数量为$cnt$，如果分数真实，需要满足以下条件：分数的差异来自于答案的差异，所以分数只差一定小于等于不同答案数量，即$abs(x-y) \leq n-cnt.$两个人分数之和最多是两个人相同的全对，所以$x+y \leq n + cnt$ 12345678910111213141516171819202122232425262728293031323334353637383940414243#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const int N = 80005;char s1[N], s2[N];int main()&#123; int n; int x, y; int T; scanf("%d", &amp;T); while (T--) &#123; scanf("%d%d%d", &amp;n, &amp;x, &amp;y); scanf("%s%s", s1, s2); int cnt = 0; for (int i = 0; i &lt; n; i++) if (s1[i] == s2[i]) cnt++; if (x + y - cnt &gt; n) &#123; puts("Lying"); continue; &#125; cnt = n - cnt; if (abs(x - y) &gt; cnt) puts("Lying"); else puts("Not lying"); &#125; return 0;&#125;]]></content>
