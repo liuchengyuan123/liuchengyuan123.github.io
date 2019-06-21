@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Regular polygon]]></title>
+    <url>%2F2019%2F06%2F21%2FRegular-polygon%2F</url>
+    <content type="text"><![CDATA[题目链接题意二维平面上有$n$个点，问你这些点能组成多少个正多边形。 思路观察一下就可以发现，除了正四边形整数点不可能构成其他多边形，所以我们只需要找有多少个正四边形。注意这个题的四边形其实可以是斜着的，所以我们不能只枚举左下角。需要枚举至少两个点。我的方法是枚举其中两个点，这两个点会构成一个向量$(dx,dy)$，有一个可能的正方形是这样的:$(0,0),(dx,dy),(-dy,dx),(dx-dy,dx+dy).$我们去看是否这四个点都存在，如果存在记录答案，最后答案除以4，因为每个正方形的4条边都被计算了一次。12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const int N = 205;int mov[3][2]=&#123;&#123;0,1&#125;,&#123;1,0&#125;,&#123;1,1&#125;&#125;;bool has[210][210];vector&lt;pair&lt;int, int&gt; &gt; v;int main()&#123; int n; while (scanf("%d", &amp;n) != EOF) &#123; for (int i = 0; i &lt;= 209; i++) for (int j = 0; j &lt;= 209; j++) has[i][j] = 0; v.clear(); for (int i = 1; i &lt;= n; i++) &#123; int x, y; scanf("%d%d", &amp;x, &amp;y); has[x + 100][y + 100] = true; v.push_back(make_pair(x, y)); &#125; ll cnt = 0; int sz=v.size(); for (int i=0;i&lt;sz;i++) &#123; int x=v[i].first,y=v[i].second; for(int j=0;j&lt;sz;j++)&#123; int xx=v[j].first,yy=v[j].second; if(j==i) continue; int dx=xx-x,dy=yy-y; int flag=1; int dxx=x-dy,dyy=y+dx; if(dxx&lt;-100 || dxx&gt;100 || dyy&lt;-100 || dyy&gt;100||!has[dxx+100][dyy+100])&#123; flag=0; &#125; dxx=x-dy+dx,dyy=y+dx+dy; if(dxx&lt;-100 || dxx&gt;100 || dyy&lt;-100 || dyy&gt;100||!has[dxx+100][dyy+100])&#123; flag=0; &#125; cnt+=flag; &#125; &#125; printf("%lld\n",cnt / 4); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2017杭电多校赛</category>
+        <category>第二场</category>
+      </categories>
+      <tags>
+        <tag>geometry</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[TrickGCD]]></title>
     <url>%2F2019%2F06%2F21%2FTrickGCD%2F</url>
     <content type="text"><![CDATA[题目链接题意输入$a$数组，询问有多少个$b$数组使得： 1 \leq b_{i} \leq a_{i}gcd(b_{l},b_{l+1},b_{l+2}...b_{r}) \geq 2, 1 \leq l \leq r \leq n.思路首先容易想到这题要求整个$b$数列的最大公约数大于1，简记其$gcd$为$gcd(b)$。不妨设$F(d)$表示$d|gcd(b)$的方案数，$f(d)$表示$gcd(b)=d$的方案数。 F(n)= \sum_{n|d}f(d)f(n) = \sum_{n|d} \mu(\frac{d}{n}) F(d)F(d)= \prod_{i=1}^{n} \left \lfloor \frac{a_{i}}{d} \right \rfloor123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const int N = 1e5 + 5;int prime[10000];int tot;bool vis[N];ll miu[N];void pre(int n)&#123; tot = 0; miu[1] = 1; for (int i = 2; i &lt;= n; i++) &#123; if (!vis[i]) prime[++tot] = i, miu[i] = -1; for (int j = 1; j &lt;= tot &amp;&amp; i * prime[j] &lt;= n; j++) &#123; vis[i * prime[j]] = 1; if (i % prime[j] == 0) &#123; miu[i * prime[j]] = 0; break; &#125; miu[i * prime[j]] = -miu[i]; &#125; &#125;&#125;ll cnt[N];int a[N];const ll mod = 1e9 + 7;ll f[N];ll Pow(ll a, ll b)&#123; ll ans = 1; while (b) &#123; if (b &amp; 1) ans = ans * a % mod; a = a * a % mod; b &gt;&gt;= 1; &#125; return ans;&#125;int main()&#123; int n; pre(100000); int T; scanf("%d", &amp;T); for (int ks = 1; ks &lt;= T; ks++) &#123; int n; scanf("%d", &amp;n); for (int i = 0; i &lt;= 100000; i++) cnt[i] = 0; int mnv = 0x3f3f3f3f, mxv = 0; for (int i = 1; i &lt;= n; i++) &#123; scanf("%d", &amp;a[i]); mnv = min(mnv, a[i]); mxv = max(mxv, a[i]); cnt[a[i]]++; &#125; if (mnv &lt;= 1) &#123; printf("Case #%d: %lld\n", ks, 0ll); continue; &#125; for (int i = 1; i &lt;= mxv; i++) cnt[i] = cnt[i] + cnt[i - 1]; ll ans = 0; int j; for (int i = 0; i &lt;= mxv; i++) f[i] = 0ll; for (int i = 2; i &lt;= mnv; i++) &#123; f[i] = 1ll; for (int l = i; l &lt;= mxv; l += i) &#123; //f[i] = f[i] * (cnt[min(l + i - 1, mxv)] - cnt[l - 1] + mod) % mod * (l / i) % mod; f[i] = f[i] * Pow(1ll * l / i, cnt[min(l + i - 1, mxv)] - cnt[l - 1]) % mod; &#125; //dbg(i, f[i]); /* for (int j = i; j &lt;= mxv; j++) &#123; f[i] = f[i] * Pow(j / i, cnt[j]) % mod; &#125; */ &#125; for (int i = 2; i &lt;= mnv; i++) &#123; for (int d = i; d &lt;= mxv; d += i) ans = (ans + f[d] * miu[d / i] % mod + mod) % mod; &#125; printf("Case #%d: %lld\n", ks, ans); &#125; return 0;&#125;]]></content>
@@ -33,6 +47,12 @@
     <title><![CDATA[Maximum Sequence]]></title>
     <url>%2F2019%2F06%2F21%2FMaximum-Sequence%2F</url>
     <content type="text"><![CDATA[题目链接队友直接过了，打扰了]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2017杭电多校赛</category>
+        <category>第二场</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[Is Derek lying?]]></title>

@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="geometry,">
 
 
 
@@ -86,17 +86,18 @@
 
 
 
-<meta name="description" content="题目链接题意 已知一个$n$的全排列$a$，和一个$m$的全排列$b$，现在问你有多少种不同的映射$f$使得满足以下条件： f(i)=b_{f(a_{i})}, 0 \leq i &amp;lt; n-1 答案对$1000000007$取模。 思路 假设对于我们现在已有的一个$f$映射，存在这样的关系： f(i)=b_{f(a_{i})}f(a_{i})=b_{f(a_{a_{i}})} ...f(i)=b_{">
+<meta name="description" content="题目链接题意二维平面上有$n$个点，问你这些点能组成多少个正多边形。 思路观察一下就可以发现，除了正四边形整数点不可能构成其他多边形，所以我们只需要找有多少个正四边形。注意这个题的四边形其实可以是斜着的，所以我们不能只枚举左下角。需要枚举至少两个点。我的方法是枚举其中两个点，这两个点会构成一个向量$(dx,dy)$，有一个可能的正方形是这样的:$(0,0),(dx,dy),(-dy,dx),(dx">
+<meta name="keywords" content="geometry">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Function">
-<meta property="og:url" content="http://yoursite.com/2019/06/21/Function/index.html">
+<meta property="og:title" content="Regular polygon">
+<meta property="og:url" content="http://yoursite.com/2019/06/21/Regular-polygon/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目链接题意 已知一个$n$的全排列$a$，和一个$m$的全排列$b$，现在问你有多少种不同的映射$f$使得满足以下条件： f(i)=b_{f(a_{i})}, 0 \leq i &amp;lt; n-1 答案对$1000000007$取模。 思路 假设对于我们现在已有的一个$f$映射，存在这样的关系： f(i)=b_{f(a_{i})}f(a_{i})=b_{f(a_{a_{i}})} ...f(i)=b_{">
+<meta property="og:description" content="题目链接题意二维平面上有$n$个点，问你这些点能组成多少个正多边形。 思路观察一下就可以发现，除了正四边形整数点不可能构成其他多边形，所以我们只需要找有多少个正四边形。注意这个题的四边形其实可以是斜着的，所以我们不能只枚举左下角。需要枚举至少两个点。我的方法是枚举其中两个点，这两个点会构成一个向量$(dx,dy)$，有一个可能的正方形是这样的:$(0,0),(dx,dy),(-dy,dx),(dx">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-21T08:08:02.369Z">
+<meta property="og:updated_time" content="2019-06-21T12:57:07.551Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Function">
-<meta name="twitter:description" content="题目链接题意 已知一个$n$的全排列$a$，和一个$m$的全排列$b$，现在问你有多少种不同的映射$f$使得满足以下条件： f(i)=b_{f(a_{i})}, 0 \leq i &amp;lt; n-1 答案对$1000000007$取模。 思路 假设对于我们现在已有的一个$f$映射，存在这样的关系： f(i)=b_{f(a_{i})}f(a_{i})=b_{f(a_{a_{i}})} ...f(i)=b_{">
+<meta name="twitter:title" content="Regular polygon">
+<meta name="twitter:description" content="题目链接题意二维平面上有$n$个点，问你这些点能组成多少个正多边形。 思路观察一下就可以发现，除了正四边形整数点不可能构成其他多边形，所以我们只需要找有多少个正四边形。注意这个题的四边形其实可以是斜着的，所以我们不能只枚举左下角。需要枚举至少两个点。我的方法是枚举其中两个点，这两个点会构成一个向量$(dx,dy)$，有一个可能的正方形是这样的:$(0,0),(dx,dy),(-dy,dx),(dx">
 
 
 
@@ -126,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/21/Function/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/21/Regular-polygon/">
 
 
 
 
 
-  <title>Function | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Regular polygon | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -291,7 +292,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/21/Function/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/21/Regular-polygon/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -308,7 +309,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Function</h1>
+          <h1 class="post-title" itemprop="name headline">Regular polygon</h1>
         
 
         <div class="post-meta">
@@ -320,7 +321,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-21T13:19:21+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-21T20:48:08+08:00">
                 2019-06-21
               </time>
             
@@ -376,8 +377,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/acm/做题记录/2017杭电多校赛/第一场/" itemprop="url" rel="index">
-                    <span itemprop="name">第一场</span>
+                  <a href="/categories/acm/做题记录/2017杭电多校赛/第二场/" itemprop="url" rel="index">
+                    <span itemprop="name">第二场</span>
                   </a>
                 </span>
 
@@ -413,12 +414,8 @@
       
 
       
-        <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6038" target="_blank" rel="noopener">题目链接</a></h3><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p> 已知一个$n$的全排列$a$，和一个$m$的全排列$b$，现在问你有多少种不同的映射$f$使得满足以下条件：</p>
-<script type="math/tex; mode=display">f(i)=b_{f(a_{i})}, 0 \leq i < n-1</script><p> 答案对$1000000007$取模。</p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p> 假设对于我们现在已有的一个$f$映射，存在这样的关系：</p>
-<script type="math/tex; mode=display">f(i)=b_{f(a_{i})}</script><script type="math/tex; mode=display">f(a_{i})=b_{f(a_{a_{i}})} ...</script><script type="math/tex; mode=display">f(i)=b_{b_{b_{...b_{t}}}}.</script><p>则我们可以得到一个与$i$有关的闭合环，设$0$到$n-1$中有$w$个这样的环，则这些环之间是不会相互影响的，我们可以分别算出每个环有多少种合法的映射。</p>
-<p> 对于一个有$x$个数字的环，我们有多少种合法的映射呢？观察以下可以发现，只要确定其中一个位置映射的数字，就可以确定整个环中所有数字的映射，为了使环绕回$i$位置时与原来我们假设的数字不冲突。可以先在$b$数列中求出每个位置循环大小。</p>
-<script type="math/tex; mode=display">设为sz_{b}(i), a中环大小sz_{a}(i)，则a中包含位置i的环合法映射数量为</script><script type="math/tex; mode=display">\sum_{j=0}^{j < m} [sz_{b}(j)|sz_{a}(i)]</script><p> 实际上我们只需要统计数量，所以不需要把每个位置是多少记录下来，只需要处理$a$时记录对应的$sz_{b}(j)$的数量即可。</p>
+        <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6055" target="_blank" rel="noopener">题目链接</a></h3><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>二维平面上有$n$个点，问你这些点能组成多少个正多边形。</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>观察一下就可以发现，除了正四边形整数点不可能构成其他多边形，所以我们只需要找有多少个正四边形。<br>注意这个题的四边形其实可以是斜着的，所以我们不能只枚举左下角。需要枚举至少两个点。<br>我的方法是枚举其中两个点，这两个点会构成一个向量$(dx,dy)$，有一个可能的正方形是这样的:$(0,0),(dx,dy),(-dy,dx),(dx-dy,dx+dy).$<br>我们去看是否这四个点都存在，如果存在记录答案，最后答案除以4，因为每个正方形的4条边都被计算了一次。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> dbg(x...) do&#123;cout <span class="meta-string">&lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">err</span><span class="params">()</span></span>&#123;<span class="built_in">cout</span> &lt;&lt; <span class="string">"\033[39;0m"</span> &lt;&lt; <span class="built_in">endl</span>;&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>...&gt; <span class="class"><span class="keyword">class</span> <span class="title">T</span>, <span class="title">typename</span> <span class="title">t</span>, <span class="title">typename</span>... <span class="title">A</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">err</span>(<span class="title">T</span>&lt;t&gt; <span class="title">a</span>, <span class="title">A</span>... <span class="title">x</span>)&#123;</span><span class="keyword">for</span> (<span class="keyword">auto</span> v: a) <span class="built_in">cout</span> &lt;&lt; v &lt;&lt; <span class="string">' '</span>; err(x...);&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... A&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">err</span><span class="params">(T a, A... x)</span></span>&#123;<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="string">' '</span>; err(x...);&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> dbg(...)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 1ll &lt;&lt; 50</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">205</span>;</span><br><span class="line"><span class="keyword">int</span> mov[<span class="number">3</span>][<span class="number">2</span>]=&#123;&#123;<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">1</span>,<span class="number">1</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">bool</span> has[<span class="number">210</span>][<span class="number">210</span>];</span><br><span class="line"><span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; &gt; v;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n) != EOF)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">209</span>; i++)</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= <span class="number">209</span>; j++)</span><br><span class="line">				has[i][j] = <span class="number">0</span>;</span><br><span class="line">		v.clear();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> x, y;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;x, &amp;y);</span><br><span class="line">			has[x + <span class="number">100</span>][y + <span class="number">100</span>] = <span class="literal">true</span>;</span><br><span class="line">			v.push_back(make_pair(x, y));</span><br><span class="line">		&#125;</span><br><span class="line">		ll cnt = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> sz=v.size();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;sz;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> x=v[i].first,y=v[i].second;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;sz;j++)&#123;</span><br><span class="line">				<span class="keyword">int</span> xx=v[j].first,yy=v[j].second;</span><br><span class="line">				<span class="keyword">if</span>(j==i) <span class="keyword">continue</span>;</span><br><span class="line">				<span class="keyword">int</span> dx=xx-x,dy=yy-y;</span><br><span class="line">				<span class="keyword">int</span> flag=<span class="number">1</span>;</span><br><span class="line">				<span class="keyword">int</span> dxx=x-dy,dyy=y+dx;</span><br><span class="line"></span><br><span class="line">				<span class="keyword">if</span>(dxx&lt;<span class="number">-100</span> || dxx&gt;<span class="number">100</span> || dyy&lt;<span class="number">-100</span> || dyy&gt;<span class="number">100</span>||!has[dxx+<span class="number">100</span>][dyy+<span class="number">100</span>])&#123;</span><br><span class="line">					flag=<span class="number">0</span>;</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				dxx=x-dy+dx,dyy=y+dx+dy;</span><br><span class="line">				<span class="keyword">if</span>(dxx&lt;<span class="number">-100</span> || dxx&gt;<span class="number">100</span> || dyy&lt;<span class="number">-100</span> || dyy&gt;<span class="number">100</span>||!has[dxx+<span class="number">100</span>][dyy+<span class="number">100</span>])&#123;</span><br><span class="line">					flag=<span class="number">0</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				cnt+=flag;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,cnt / <span class="number">4</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -434,6 +431,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/geometry/" rel="tag"># geometry</a>
+          
+        </div>
+      
 
       
       
@@ -443,8 +446,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/20/Division-Game/" rel="next" title="Division Game">
-                <i class="fa fa-chevron-left"></i> Division Game
+              <a href="/2019/06/21/TrickGCD/" rel="next" title="TrickGCD">
+                <i class="fa fa-chevron-left"></i> TrickGCD
               </a>
             
           </div>
@@ -452,10 +455,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/21/Hints-of-sd0061/" rel="prev" title="Hints of sd0061">
-                Hints of sd0061 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
