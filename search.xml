@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[If the starlight never fade]]></title>
+    <url>%2F2019%2F06%2F21%2Fstarlight%2F</url>
+    <content type="text"><![CDATA[题目链接题意定义$f(i)$表示方程${(x+y)}^{i} \equiv {x}^{i} (mod p), 1 \leq x \leq p-1, 1 \leq y \leq m $ 解的数量, $p$为素数。要求计算\sum_{i=1}^{p-1}if(i)。 思路令g为p的原根,x \equiv {g}^{a} (mod p), y \equiv {g}^{b} (mod p)，那么有 { ({g}^{a}+{g}^{b}) }^{i} \equiv {g}^{ai} (mod p){(1+{g}^{b-a}) }^{i} \equiv 1 (mod p)注意到1+{g}^{b-a} > 1 可以令1+{g}^{b-a} \equiv {g}^{k} (mod p)，则有 {g}^{ki} \equiv 1 (mod p).ki \equiv 0 (mod p-1).k= \frac{s \times (p-1)}{i}k= \frac{t \times (p-1)}{gcd(i, p-1)}因为k不能取0，所以k有gcd(i,p-1)-1种取值，逆推上去，f(i)=m (gcd(i, p-1)-1). \sum_{i=1}^{p-1}if(i) = \sum_{i=1}^{p-1}i m (gcd(i,p-1)-1)= m \sum_{i=1}^{p-1}igcd(i,p-1) - m \frac{(p-1)p}{2}S_{1} = m \sum_{d=1}^{p-1}{d}^{2} \sum_{e=1}^{ \frac{p-1}{d}}e[gcd(e, \frac{p-1}{d}) == 1]= m \sum_{d=1}^{p-1}{d}^{2} \frac{( \frac{(p-1)}{d} \varphi(\prac{(p-1)}{d})}{2}.]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2017杭电多校赛</category>
+        <category>第二场</category>
+      </categories>
+      <tags>
+        <tag>Math</tag>
+        <tag>原根</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Regular polygon]]></title>
     <url>%2F2019%2F06%2F21%2FRegular-polygon%2F</url>
     <content type="text"><![CDATA[题目链接题意二维平面上有$n$个点，问你这些点能组成多少个正多边形。 思路观察一下就可以发现，除了正四边形整数点不可能构成其他多边形，所以我们只需要找有多少个正四边形。注意这个题的四边形其实可以是斜着的，所以我们不能只枚举左下角。需要枚举至少两个点。我的方法是枚举其中两个点，这两个点会构成一个向量$(dx,dy)$，有一个可能的正方形是这样的:$(0,0),(dx,dy),(-dy,dx),(dx-dy,dx+dy).$我们去看是否这四个点都存在，如果存在记录答案，最后答案除以4，因为每个正方形的4条边都被计算了一次。12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const int N = 205;int mov[3][2]=&#123;&#123;0,1&#125;,&#123;1,0&#125;,&#123;1,1&#125;&#125;;bool has[210][210];vector&lt;pair&lt;int, int&gt; &gt; v;int main()&#123; int n; while (scanf("%d", &amp;n) != EOF) &#123; for (int i = 0; i &lt;= 209; i++) for (int j = 0; j &lt;= 209; j++) has[i][j] = 0; v.clear(); for (int i = 1; i &lt;= n; i++) &#123; int x, y; scanf("%d%d", &amp;x, &amp;y); has[x + 100][y + 100] = true; v.push_back(make_pair(x, y)); &#125; ll cnt = 0; int sz=v.size(); for (int i=0;i&lt;sz;i++) &#123; int x=v[i].first,y=v[i].second; for(int j=0;j&lt;sz;j++)&#123; int xx=v[j].first,yy=v[j].second; if(j==i) continue; int dx=xx-x,dy=yy-y; int flag=1; int dxx=x-dy,dyy=y+dx; if(dxx&lt;-100 || dxx&gt;100 || dyy&lt;-100 || dyy&gt;100||!has[dxx+100][dyy+100])&#123; flag=0; &#125; dxx=x-dy+dx,dyy=y+dx+dy; if(dxx&lt;-100 || dxx&gt;100 || dyy&lt;-100 || dyy&gt;100||!has[dxx+100][dyy+100])&#123; flag=0; &#125; cnt+=flag; &#125; &#125; printf("%lld\n",cnt / 4); &#125; return 0;&#125;]]></content>
