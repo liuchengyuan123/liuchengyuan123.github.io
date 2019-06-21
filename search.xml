@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Function]]></title>
+    <url>%2F2019%2F06%2F21%2FFunction%2F</url>
+    <content type="text"><![CDATA[题目链接题意 已知一个$n$的全排列$a$，和一个$m$的全排列$b$，现在问你有多少种不同的映射$f$使得满足以下条件： f(i)=b_{f(a_{i})}, 0 \leq i < n-1 答案对$1000000007$取模。 思路 假设对于我们现在已有的一个$f$映射，存在这样的关系： f(i)=b_{f(a_{i})}f(a_{i})=b_{f(a_{a_{i}})} ...f(a_{i})=b_{f(a_{...a_{i}})}.则我们可以得到一个与$i$有关的闭合环，设$0$到$n-1$中有$w$个这样的环，则这些环之间是不会相互影响的，我们可以分别算出每个环有多少种合法的映射。 对于一个有$x$个数字的环，我们有多少种合法的映射呢？观察以下可以发现，只要确定其中一个位置映射的数字，就可以确定整个环中所有数字的映射，为了使环绕回$i$位置时与原来我们假设的数字不冲突。 可以先在$b$数列中求出每个位置循环大小，设为$sz{b}(i)$, $a$中环大小$sz{a}(i)$，则$a$中包含位置$i$的环合法映射数量为 \sum_{j=0}^{j < m} [sz_{b}(j)|sz_{a}(i)] 实际上我们只需要统计数量，所以不需要把每个位置是多少记录下来，只需要处理$a$时记录对应的$sz_{b}(j)$$的数量即可。]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2017杭电多校赛</category>
+        <category>第一场</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Division Game]]></title>
     <url>%2F2019%2F06%2F20%2FDivision-Game%2F</url>
     <content type="text"><![CDATA[题目链接题意 用唯一表示法表示出n，输入m，k，表示有k堆石子，每堆有n个，现在拿石子。规则如下： 每次只能在下一堆中拿石子 每次拿走后剩余石子数量d，拿走前n，则必须有$d|n$ 拿到某一堆只剩一颗石子时游戏结束 询问在每一堆石子结束的方案数。 思路 设拿到第$i$堆，拿了$x$次结束的方案数为$f(x)$，则拿到第$i$堆，拿了$x-1$次没结束的方案数也为$f(i)$。 ans(i, x)= \prod_{j=1}^{j < i} {f(x+1)} \times \prod_{j=i+1}^{j \leq k} {f(x)}={f(x+1)}^{i-1} \times {f(x)}^{k-i+1}考虑$x$范围 记$ w= \sum e_{i} $ 当$i = 1$，$x \leq w$；当$i &gt; 1$，$x &lt; w$。 容斥计算$f(x)$ 考虑每个素因子，相当于将$e_{i}$个小球放入$x$个盒子中，不允许空。$g(x)$ 表示$x$盒子，允许空放盒子方案数。 g(x) = \prod_{i=1}^{m} {C_{e_{i}+x-1}^{x-1}} = \sum_{y=0}^{x} {(-1)}^{x-y} g(y) \frac{x!}{y!(x-y)!} 对这个式子NTT即可。]]></content>
