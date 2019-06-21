@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Math,NTT,">
 
 
 
@@ -86,13 +86,22 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/categories/acm/做题记录/2017杭电多校赛/第一场/index.html">
+<meta name="description" content="题目链接题意 用唯一表示法表示出n，输入m，k，表示有k堆石子，每堆有n个，现在拿石子。规则如下： 每次只能在下一堆中拿石子 每次拿走后剩余石子数量d，拿走前n，则必须有$d|n$ 拿到某一堆只剩一颗石子时游戏结束  询问在每一堆石子结束的方案数。 思路 设拿到第$i$堆，拿了$x$次结束的方案数为$f(x)$，则拿到第$i$堆，拿了$x-1$次没结束的方案数也为$f(i)$。 ans(i, x)">
+<meta name="keywords" content="Math,NTT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Division Game">
+<meta property="og:url" content="http://yoursite.com/2019/06/20/Division-Game/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="题目链接题意 用唯一表示法表示出n，输入m，k，表示有k堆石子，每堆有n个，现在拿石子。规则如下： 每次只能在下一堆中拿石子 每次拿走后剩余石子数量d，拿走前n，则必须有$d|n$ 拿到某一堆只剩一颗石子时游戏结束  询问在每一堆石子结束的方案数。 思路 设拿到第$i$堆，拿了$x$次结束的方案数为$f(x)$，则拿到第$i$堆，拿了$x-1$次没结束的方案数也为$f(i)$。 ans(i, x)">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://latex.codecogs.com/gif.latex?$$&space;f(x)&space;=&space;g(x)&space;-&space;C_{x}^{1}g(x-1)&space;+&space;C_{x}^{2}g{(x-2)}&space;$$...">
+<meta property="og:image" content="https://latex.codecogs.com/gif.latex?$$&space;f(x)&space;=&space;\sum_{y=0}^{x}&space;{(-1)}^{x-y}&space;g(y)&space;C_{x}^{y}&space;$$">
+<meta property="og:image" content="https://latex.codecogs.com/gif.latex?$$&space;=&space;\sum_{y=0}^{x}&space;{(-1)}^{x-y}&space;g(y)&space;\frac{x!}{y!(x-y)!}&space;$$">
+<meta property="og:updated_time" content="2019-06-21T05:08:03.260Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Division Game">
+<meta name="twitter:description" content="题目链接题意 用唯一表示法表示出n，输入m，k，表示有k堆石子，每堆有n个，现在拿石子。规则如下： 每次只能在下一堆中拿石子 每次拿走后剩余石子数量d，拿走前n，则必须有$d|n$ 拿到某一堆只剩一颗石子时游戏结束  询问在每一堆石子结束的方案数。 思路 设拿到第$i$堆，拿了$x$次结束的方案数为$f(x)$，则拿到第$i$堆，拿了$x-1$次没结束的方案数也为$f(i)$。 ans(i, x)">
+<meta name="twitter:image" content="https://latex.codecogs.com/gif.latex?$$&space;f(x)&space;=&space;g(x)&space;-&space;C_{x}^{1}g(x-1)&space;+&space;C_{x}^{2}g{(x-2)}&space;$$...">
 
 
 
@@ -122,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/acm/做题记录/2017杭电多校赛/第一场/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/20/Division-Game/">
 
 
 
 
 
-  <title>Category: 第一场 | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Division Game | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -147,7 +156,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -273,131 +282,216 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>第一场<small>Category</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/20/Division-Game/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/menhera.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/06/20/Division-Game/" itemprop="url">
-              
-                <span itemprop="name">Division Game</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Division Game</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-20T22:41:45+08:00" content="2019-06-20">
-          06-20
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-20T22:41:45+08:00">
+                2019-06-20
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/acm/" itemprop="url" rel="index">
+                    <span itemprop="name">acm</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/acm/做题记录/" itemprop="url" rel="index">
+                    <span itemprop="name">做题记录</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/acm/做题记录/2017杭电多校赛/" itemprop="url" rel="index">
+                    <span itemprop="name">2017杭电多校赛</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/acm/做题记录/2017杭电多校赛/第一场/" itemprop="url" rel="index">
+                    <span itemprop="name">第一场</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/06/20/Colorful-Tree/" itemprop="url">
-              
-                <span itemprop="name">Colorful Tree</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-20T10:29:39+08:00" content="2019-06-20">
-          06-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/06/19/Balala-Power/" itemprop="url">
-              
-                <span itemprop="name">Balala Power!</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-19T22:44:25+08:00" content="2019-06-19">
-          06-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/06/19/Add-More-Zero/" itemprop="url">
-              
-                <span itemprop="name">Add More Zero</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-19T21:06:42+08:00" content="2019-06-19">
-          06-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6036" target="_blank" rel="noopener">题目链接</a></h2><h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p> 用唯一表示法表示出n，输入m，k，表示有k堆石子，每堆有n个，现在拿石子。规则如下：<br> <em>每次只能在下一堆中拿石子</em><br> <em>每次拿走后剩余石子数量d，拿走前n，则必须有$d|n$</em><br> <em>拿到某一堆只剩一颗石子时游戏结束</em></p>
+<p> 询问在每一堆石子结束的方案数。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p> 设拿到第$i$堆，拿了$x$次结束的方案数为$f(x)$，则拿到第$i$堆，拿了$x-1$次没结束的方案数也为$f(i)$。</p>
+<script type="math/tex; mode=display">ans(i, x)= \prod_{j=1}^{j < i} {f(x+1)} \times \prod_{j=i+1}^{j \leq k} {f(x)}</script><script type="math/tex; mode=display">={f(x+1)}^{i-1} \times {f(x)}^{k-i+1}</script><h3 id="考虑-x-范围"><a href="#考虑-x-范围" class="headerlink" title="考虑$x$范围"></a>考虑$x$范围</h3><p> 记$ w= \sum e_{i} $<br> 当$i = 1$，$x \leq w$；当$i &gt; 1$，$x &lt; w$。</p>
+<h3 id="容斥计算-f-x"><a href="#容斥计算-f-x" class="headerlink" title="容斥计算$f(x)$"></a>容斥计算$f(x)$</h3><p> 考虑每个素因子，相当于将$e_{i}$个小球放入$x$个盒子中，不允许空。$g(x)$ 表示$x$盒子，允许空放盒子方案数。</p>
+<script type="math/tex; mode=display">g(x) = \prod_{i=1}^{m} {C_{e_{i}+x-1}^{x-1}}</script><p><a href="https://www.codecogs.com/eqnedit.php?latex=$$&space;f(x)&space;=&space;g(x)&space;-&space;C_{x}^{1}g(x-1)&space;&plus;&space;C_{x}^{2}g{(x-2)}&space;$$..." target="_blank"><img src="https://latex.codecogs.com/gif.latex?$$&space;f(x)&space;=&space;g(x)&space;-&space;C_{x}^{1}g(x-1)&space;&plus;&space;C_{x}^{2}g{(x-2)}&space;$$..."></a></p>
+<p><a href="https://www.codecogs.com/eqnedit.php?latex=$$&space;f(x)&space;=&space;\sum_{y=0}^{x}&space;{(-1)}^{x-y}&space;g(y)&space;C_{x}^{y}&space;$$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$$&space;f(x)&space;=&space;\sum_{y=0}^{x}&space;{(-1)}^{x-y}&space;g(y)&space;C_{x}^{y}&space;$$"></a></p>
+<p><a href="https://www.codecogs.com/eqnedit.php?latex=$$&space;=&space;\sum_{y=0}^{x}&space;{(-1)}^{x-y}&space;g(y)&space;\frac{x!}{y!(x-y)!}&space;$$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$$&space;=&space;\sum_{y=0}^{x}&space;{(-1)}^{x-y}&space;g(y)&space;\frac{x!}{y!(x-y)!}&space;$$"></a></p>
+<p> 对这个式子NTT即可。</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Math/" rel="tag"># Math</a>
+          
+            <a href="/tags/NTT/" rel="tag"># NTT</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/20/Colorful-Tree/" rel="next" title="Colorful Tree">
+                <i class="fa fa-chevron-left"></i> Colorful Tree
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/21/test/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -405,6 +499,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -425,8 +523,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -530,6 +637,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目链接"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#考虑-x-范围"><span class="nav-number">3.1.</span> <span class="nav-text">考虑$x$范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容斥计算-f-x"><span class="nav-number">3.2.</span> <span class="nav-text">容斥计算$f(x)$</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -679,6 +802,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
