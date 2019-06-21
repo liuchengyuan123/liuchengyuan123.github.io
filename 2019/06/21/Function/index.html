@@ -86,17 +86,17 @@
 
 
 
-<meta name="description" content="题目链接题意 已知一个$n$的全排列$a$，和一个$m$的全排列$b$，现在问你有多少种不同的映射$f$使得满足以下条件： f(i)=b_{f(a_{i})}, 0 \leq i &amp;lt; n-1 答案对$1000000007$取模。 思路 假设对于我们现在已有的一个$f$映射，存在这样的关系： f(i)=b_{f(a_{i})}f(a_{i})=b_{f(a_{a_{i}})} ...f(a_{i})">
+<meta name="description" content="题目链接题意 已知一个$n$的全排列$a$，和一个$m$的全排列$b$，现在问你有多少种不同的映射$f$使得满足以下条件： f(i)=b_{f(a_{i})}, 0 \leq i &amp;lt; n-1 答案对$1000000007$取模。 思路 假设对于我们现在已有的一个$f$映射，存在这样的关系： f(i)=b_{f(a_{i})}f(a_{i})=b_{f(a_{a_{i}})} ...f(i)=b_{">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Function">
 <meta property="og:url" content="http://yoursite.com/2019/06/21/Function/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目链接题意 已知一个$n$的全排列$a$，和一个$m$的全排列$b$，现在问你有多少种不同的映射$f$使得满足以下条件： f(i)=b_{f(a_{i})}, 0 \leq i &amp;lt; n-1 答案对$1000000007$取模。 思路 假设对于我们现在已有的一个$f$映射，存在这样的关系： f(i)=b_{f(a_{i})}f(a_{i})=b_{f(a_{a_{i}})} ...f(a_{i})">
+<meta property="og:description" content="题目链接题意 已知一个$n$的全排列$a$，和一个$m$的全排列$b$，现在问你有多少种不同的映射$f$使得满足以下条件： f(i)=b_{f(a_{i})}, 0 \leq i &amp;lt; n-1 答案对$1000000007$取模。 思路 假设对于我们现在已有的一个$f$映射，存在这样的关系： f(i)=b_{f(a_{i})}f(a_{i})=b_{f(a_{a_{i}})} ...f(i)=b_{">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-21T06:05:53.253Z">
+<meta property="og:updated_time" content="2019-06-21T06:08:53.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Function">
-<meta name="twitter:description" content="题目链接题意 已知一个$n$的全排列$a$，和一个$m$的全排列$b$，现在问你有多少种不同的映射$f$使得满足以下条件： f(i)=b_{f(a_{i})}, 0 \leq i &amp;lt; n-1 答案对$1000000007$取模。 思路 假设对于我们现在已有的一个$f$映射，存在这样的关系： f(i)=b_{f(a_{i})}f(a_{i})=b_{f(a_{a_{i}})} ...f(a_{i})">
+<meta name="twitter:description" content="题目链接题意 已知一个$n$的全排列$a$，和一个$m$的全排列$b$，现在问你有多少种不同的映射$f$使得满足以下条件： f(i)=b_{f(a_{i})}, 0 \leq i &amp;lt; n-1 答案对$1000000007$取模。 思路 假设对于我们现在已有的一个$f$映射，存在这样的关系： f(i)=b_{f(a_{i})}f(a_{i})=b_{f(a_{a_{i}})} ...f(i)=b_{">
 
 
 
@@ -416,7 +416,7 @@
         <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6038" target="_blank" rel="noopener">题目链接</a></h3><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p> 已知一个$n$的全排列$a$，和一个$m$的全排列$b$，现在问你有多少种不同的映射$f$使得满足以下条件：</p>
 <script type="math/tex; mode=display">f(i)=b_{f(a_{i})}, 0 \leq i < n-1</script><p> 答案对$1000000007$取模。</p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p> 假设对于我们现在已有的一个$f$映射，存在这样的关系：</p>
-<script type="math/tex; mode=display">f(i)=b_{f(a_{i})}</script><script type="math/tex; mode=display">f(a_{i})=b_{f(a_{a_{i}})} ...</script><script type="math/tex; mode=display">f(a_{i})=b_{f(a_{...a_{i}})}.</script><p>则我们可以得到一个与$i$有关的闭合环，设$0$到$n-1$中有$w$个这样的环，则这些环之间是不会相互影响的，我们可以分别算出每个环有多少种合法的映射。</p>
+<script type="math/tex; mode=display">f(i)=b_{f(a_{i})}</script><script type="math/tex; mode=display">f(a_{i})=b_{f(a_{a_{i}})} ...</script><script type="math/tex; mode=display">f(i)=b_{b_{b_{...b_{i}}}}.</script><p>则我们可以得到一个与$i$有关的闭合环，设$0$到$n-1$中有$w$个这样的环，则这些环之间是不会相互影响的，我们可以分别算出每个环有多少种合法的映射。</p>
 <p> 对于一个有$x$个数字的环，我们有多少种合法的映射呢？观察以下可以发现，只要确定其中一个位置映射的数字，就可以确定整个环中所有数字的映射，为了使环绕回$i$位置时与原来我们假设的数字不冲突。<br> 可以先在$b$数列中求出每个位置循环大小，设为$sz<em>{b}(i)$, $a$中环大小$sz</em>{a}(i)$，则$a$中包含位置$i$的环合法映射数量为</p>
 <script type="math/tex; mode=display">\sum_{j=0}^{j < m} [sz_{b}(j)|sz_{a}(i)]</script><p> 实际上我们只需要统计数量，所以不需要把每个位置是多少记录下来，只需要处理$a$时记录对应的$sz_{b}(j)$$的数量即可。</p>
 
