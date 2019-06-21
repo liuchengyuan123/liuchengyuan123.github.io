@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="nth element,">
 
 
 
@@ -86,13 +86,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/Math/index.html">
+<meta name="description" content="题目链接题意 用给的随机函数可以得到数列$a$，$m$次查询，问第$b_{i}$小的数字。 思路 这道题要线性第$k$小，肯定是不能排序的。 一个思路是手写快排，然后将所有询问一起二分掉，比较卡的做法。  其实这是个套路题 使用STL &amp;lt; algorithm &amp;gt;中的 1nth_element(A, A + k, A + n)  可以在线性时间找到第k大，此题还需要一点小trick，可以">
+<meta name="keywords" content="nth element">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hints of sd0061">
+<meta property="og:url" content="http://yoursite.com/2019/06/21/Hints-of-sd0061/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="题目链接题意 用给的随机函数可以得到数列$a$，$m$次查询，问第$b_{i}$小的数字。 思路 这道题要线性第$k$小，肯定是不能排序的。 一个思路是手写快排，然后将所有询问一起二分掉，比较卡的做法。  其实这是个套路题 使用STL &amp;lt; algorithm &amp;gt;中的 1nth_element(A, A + k, A + n)  可以在线性时间找到第k大，此题还需要一点小trick，可以">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-21T10:22:36.808Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Hints of sd0061">
+<meta name="twitter:description" content="题目链接题意 用给的随机函数可以得到数列$a$，$m$次查询，问第$b_{i}$小的数字。 思路 这道题要线性第$k$小，肯定是不能排序的。 一个思路是手写快排，然后将所有询问一起二分掉，比较卡的做法。  其实这是个套路题 使用STL &amp;lt; algorithm &amp;gt;中的 1nth_element(A, A + k, A + n)  可以在线性时间找到第k大，此题还需要一点小trick，可以">
 
 
 
@@ -122,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Math/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/21/Hints-of-sd0061/">
 
 
 
 
 
-  <title>Tag: Math | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Hints of sd0061 | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -147,7 +152,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -273,78 +278,205 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Math<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/21/Hints-of-sd0061/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/menhera.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/06/20/Division-Game/" itemprop="url">
-              
-                <span itemprop="name">Division Game</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Hints of sd0061</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-20T22:41:45+08:00" content="2019-06-20">
-          06-20
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-21T16:12:22+08:00">
+                2019-06-21
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/acm/" itemprop="url" rel="index">
+                    <span itemprop="name">acm</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/acm/做题记录/" itemprop="url" rel="index">
+                    <span itemprop="name">做题记录</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/acm/做题记录/2017杭电多校赛/" itemprop="url" rel="index">
+                    <span itemprop="name">2017杭电多校赛</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/acm/做题记录/2017杭电多校赛/第一场/" itemprop="url" rel="index">
+                    <span itemprop="name">第一场</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/06/19/Add-More-Zero/" itemprop="url">
-              
-                <span itemprop="name">Add More Zero</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-19T21:06:42+08:00" content="2019-06-19">
-          06-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6040" target="_blank" rel="noopener">题目链接</a></h3><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p> 用给的随机函数可以得到数列$a$，$m$次查询，问第<em>$b_{i}$小的数字。</em></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p> 这道题要线性第$k$小，肯定是不能排序的。<br> 一个思路是手写快排，然后将所有询问一起二分掉，比较卡的做法。</p>
+<p> <strong>其实这是个套路题</strong><br> 使用STL &lt; algorithm &gt;中的<br> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nth_element(A, A + k, A + n)</span><br></pre></td></tr></table></figure></p>
+<p> 可以在线性时间找到第k大，此题还需要一点小trick，可以先将询问排序，然后每次将排序范围缩小，可以减小枚举量。</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nth-element/" rel="tag"># nth element</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/21/Function/" rel="next" title="Function">
+                <i class="fa fa-chevron-left"></i> Function
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -352,6 +484,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -372,8 +508,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -477,6 +622,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目链接"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -626,6 +787,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

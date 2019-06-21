@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Hints of sd0061]]></title>
+    <url>%2F2019%2F06%2F21%2FHints-of-sd0061%2F</url>
+    <content type="text"><![CDATA[题目链接题意 用给的随机函数可以得到数列$a$，$m$次查询，问第$b_{i}$小的数字。 思路 这道题要线性第$k$小，肯定是不能排序的。 一个思路是手写快排，然后将所有询问一起二分掉，比较卡的做法。 其实这是个套路题 使用STL &lt; algorithm &gt;中的 1nth_element(A, A + k, A + n) 可以在线性时间找到第k大，此题还需要一点小trick，可以先将询问排序，然后每次将排序范围缩小，可以减小枚举量。]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2017杭电多校赛</category>
+        <category>第一场</category>
+      </categories>
+      <tags>
+        <tag>nth element</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Function]]></title>
     <url>%2F2019%2F06%2F21%2FFunction%2F</url>
     <content type="text"><![CDATA[题目链接题意 已知一个$n$的全排列$a$，和一个$m$的全排列$b$，现在问你有多少种不同的映射$f$使得满足以下条件： f(i)=b_{f(a_{i})}, 0 \leq i < n-1 答案对$1000000007$取模。 思路 假设对于我们现在已有的一个$f$映射，存在这样的关系： f(i)=b_{f(a_{i})}f(a_{i})=b_{f(a_{a_{i}})} ...f(i)=b_{b_{b_{...b_{t}}}}.则我们可以得到一个与$i$有关的闭合环，设$0$到$n-1$中有$w$个这样的环，则这些环之间是不会相互影响的，我们可以分别算出每个环有多少种合法的映射。 对于一个有$x$个数字的环，我们有多少种合法的映射呢？观察以下可以发现，只要确定其中一个位置映射的数字，就可以确定整个环中所有数字的映射，为了使环绕回$i$位置时与原来我们假设的数字不冲突。可以先在$b$数列中求出每个位置循环大小。 设为sz_{b}(i), a中环大小sz_{a}(i)，则a中包含位置i的环合法映射数量为\sum_{j=0}^{j < m} [sz_{b}(j)|sz_{a}(i)] 实际上我们只需要统计数量，所以不需要把每个位置是多少记录下来，只需要处理$a$时记录对应的$sz_{b}(j)$的数量即可。]]></content>
