@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Limited Permutation]]></title>
+    <url>%2F2019%2F06%2F21%2FLimited-Permutation%2F</url>
+    <content type="text"><![CDATA[题目链接题意有$n$个元素的全排列的合法性定义为：有$n$个区间，对于第$i$个区间[l_{i},r_{i}]有l_{i} \leq i \leq r_{i},对于任意1 \leq L \leq i \leq R \leq n.当且仅当l_{i} \leq L \leq i \leq R \leq r_{i}时,P[i]=min(P[L],P[L+1],...,P[R])。现在给出序列和相应的区间，问多少区间是否合法？ 思路 我们可以先确定的是，这些区间一定是要么包含关系，要么交集为空，而且我们还知道，排列中最小数字的位置左端点一定是$1$，右端点一定是$n$。 我们把$n$个区间进行排序，优先左端点升序，然后右端点降序。这样第一个区间的位置$i$一定放最小的数字，$i$将数列分成两段，我们把$2$到$n$中$i-1$个数放到左边，剩下放到右边，相当于解决一个子问题，答案更新: $ans = ans \times C{n-1}^{i-1}.$ 123456789ll dfs(int l, int r) &#123; if (l &gt; r) return 1; if (a[rear].l != l || a[rear].r != r) return 0; node now = a[rear++]; ll ret = C(now.r - now.l, now.id - now.l) * dfs(now.l, now.id - 1) % mod; ret = (ret * dfs(now.id + 1, now.r)) % mod; return ret;&#125;]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2017杭电多校赛</category>
+        <category>第一场</category>
+      </categories>
+      <tags>
+        <tag>partition</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hints of sd0061]]></title>
     <url>%2F2019%2F06%2F21%2FHints-of-sd0061%2F</url>
     <content type="text"><![CDATA[题目链接题意 用给的随机函数可以得到数列$a$，$m$次查询，问第$b_{i}$小的数字。 思路 这道题要线性第$k$小，肯定是不能排序的。 一个思路是手写快排，然后将所有询问一起二分掉，比较卡的做法。 其实这是个套路题 使用STL &lt; algorithm &gt;中的 1nth_element(A, A + k, A + n) 可以在线性时间找到第k大，此题还需要一点小trick，可以先将询问排序，然后每次将排序范围缩小，可以减小枚举量。]]></content>

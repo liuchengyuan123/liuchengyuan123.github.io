@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Math,">
+  <meta name="keywords" content="partition,">
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="题目链接题意  输入m，求最大k满足： 10^{k} \leq 2^{m}  其中$1 \leq m \leq 10^{5}$. 思路  因为当k与m均为整数时, 10^{k} \neq 2^{m}10^{k} \leq 2^{m}k \leq lg(2^{m}) = mlg(2)  直接计算答案">
-<meta name="keywords" content="Math">
+<meta name="description" content="题目链接题意有$n$个元素的全排列的合法性定义为：有$n$个区间，对于第$i$个区间[l_{i},r_{i}]有l_{i} \leq i \leq r_{i},对于任意1 \leq L \leq i \leq R \leq n.当且仅当l_{i} \leq L \leq i \leq R \leq r_{i}时,P[i]=min(P[L],P[L+1],...,P[R])。现在给出序列和相应的区间">
+<meta name="keywords" content="partition">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Add More Zero">
-<meta property="og:url" content="http://yoursite.com/2019/06/19/Add-More-Zero/index.html">
+<meta property="og:title" content="Limited Permutation">
+<meta property="og:url" content="http://yoursite.com/2019/06/21/Limited-Permutation/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目链接题意  输入m，求最大k满足： 10^{k} \leq 2^{m}  其中$1 \leq m \leq 10^{5}$. 思路  因为当k与m均为整数时, 10^{k} \neq 2^{m}10^{k} \leq 2^{m}k \leq lg(2^{m}) = mlg(2)  直接计算答案">
+<meta property="og:description" content="题目链接题意有$n$个元素的全排列的合法性定义为：有$n$个区间，对于第$i$个区间[l_{i},r_{i}]有l_{i} \leq i \leq r_{i},对于任意1 \leq L \leq i \leq R \leq n.当且仅当l_{i} \leq L \leq i \leq R \leq r_{i}时,P[i]=min(P[L],P[L+1],...,P[R])。现在给出序列和相应的区间">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-20T13:26:38.201Z">
+<meta property="og:updated_time" content="2019-06-21T11:08:40.972Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Add More Zero">
-<meta name="twitter:description" content="题目链接题意  输入m，求最大k满足： 10^{k} \leq 2^{m}  其中$1 \leq m \leq 10^{5}$. 思路  因为当k与m均为整数时, 10^{k} \neq 2^{m}10^{k} \leq 2^{m}k \leq lg(2^{m}) = mlg(2)  直接计算答案">
+<meta name="twitter:title" content="Limited Permutation">
+<meta name="twitter:description" content="题目链接题意有$n$个元素的全排列的合法性定义为：有$n$个区间，对于第$i$个区间[l_{i},r_{i}]有l_{i} \leq i \leq r_{i},对于任意1 \leq L \leq i \leq R \leq n.当且仅当l_{i} \leq L \leq i \leq R \leq r_{i}时,P[i]=min(P[L],P[L+1],...,P[R])。现在给出序列和相应的区间">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/19/Add-More-Zero/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/21/Limited-Permutation/">
 
 
 
 
 
-  <title>Add More Zero | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Limited Permutation | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -292,7 +292,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/19/Add-More-Zero/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/21/Limited-Permutation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -309,7 +309,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Add More Zero</h1>
+          <h1 class="post-title" itemprop="name headline">Limited Permutation</h1>
         
 
         <div class="post-meta">
@@ -321,8 +321,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-19T21:06:42+08:00">
-                2019-06-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-21T18:26:39+08:00">
+                2019-06-21
               </time>
             
 
@@ -414,10 +414,9 @@
       
 
       
-        <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6033" target="_blank" rel="noopener">题目链接</a></h3><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>  输入m，求最大k满足：</p>
-<script type="math/tex; mode=display">10^{k} \leq 2^{m}</script><p>  其中$1 \leq m \leq 10^{5}$.</p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>  因为当k与m均为整数时,</p>
-<script type="math/tex; mode=display">10^{k} \neq 2^{m}</script><script type="math/tex; mode=display">10^{k} \leq 2^{m}</script><script type="math/tex; mode=display">k \leq lg(2^{m}) = mlg(2)</script><p>  直接计算答案</p>
+        <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6044" target="_blank" rel="noopener">题目链接</a></h3><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>有$n$个元素的全排列的合法性定义为：有$n$个区间，对于第$i$个区间<script type="math/tex">[l_{i},r_{i}]</script>有<script type="math/tex">l_{i} \leq i \leq r_{i}</script>,对于任意<script type="math/tex">1 \leq L \leq i \leq R \leq n</script>.<br>当且仅当<script type="math/tex">l_{i} \leq L \leq i \leq R \leq r_{i}</script>时,<script type="math/tex">P[i]=min(P[L],P[L+1],...,P[R])</script>。现在给出序列和相应的区间，问多少区间是否合法？</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p> 我们可以先确定的是，这些区间一定是要么包含关系，要么交集为空，而且我们还知道，排列中最小数字的位置左端点一定是$1$，右端点一定是$n$。<br> 我们把$n$个区间进行排序，优先左端点升序，然后右端点降序。这样第一个区间的位置$i$一定放最小的数字，$i$将数列分成两段，我们把$2$到$n$中$i-1$个数放到左边，剩下放到右边，相当于解决一个子问题，答案更新: $ans = ans \times C<em>{n-1}^{i-1}.</em>$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l &gt; r) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (a[rear].l != l || a[rear].r != r)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    node now = a[rear++];</span><br><span class="line">    ll ret = C(now.r - now.l, now.id - now.l) * dfs(now.l, now.id - <span class="number">1</span>) % mod;</span><br><span class="line">    ret = (ret * dfs(now.id + <span class="number">1</span>, now.r)) % mod;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -435,7 +434,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Math/" rel="tag"># Math</a>
+            <a href="/tags/partition/" rel="tag"># partition</a>
           
         </div>
       
@@ -448,8 +447,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/19/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/06/21/Hints-of-sd0061/" rel="next" title="Hints of sd0061">
+                <i class="fa fa-chevron-left"></i> Hints of sd0061
               </a>
             
           </div>
@@ -457,10 +456,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/19/Balala-Power/" rel="prev" title="Balala Power!">
-                Balala Power! <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
