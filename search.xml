@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Is Derek lying?]]></title>
+    <url>%2F2019%2F06%2F21%2FIs-Derek-lying%2F</url>
+    <content type="text"><![CDATA[题目链接题意有$n$到题，有两个人，每个人都做了选择，并且分别得分为$x$, $y$，现在问这个分数是否是真实的。 思路这题解法肯定是去从二者答案相同数量和不同数量去考虑，设相同答案数量为$cnt$，如果分数真实，需要满足以下条件： 分数的差异来自于答案的差异，所以分数只差一定小于等于不同答案数量，即$abs(x-y) \leq n-cnt.$两个人分数之和最多是两个人相同的全对，所以$x+y leq\ n + cnt$12345678910111213141516171819202122232425262728293031323334353637383940414243#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const int N = 80005;char s1[N], s2[N];int main()&#123; int n; int x, y; int T; scanf("%d", &amp;T); while (T--) &#123; scanf("%d%d%d", &amp;n, &amp;x, &amp;y); scanf("%s%s", s1, s2); int cnt = 0; for (int i = 0; i &lt; n; i++) if (s1[i] == s2[i]) cnt++; if (x + y - cnt &gt; n) &#123; puts("Lying"); continue; &#125; cnt = n - cnt; if (abs(x - y) &gt; cnt) puts("Lying"); else puts("Not lying"); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2017杭电多校赛</category>
+        <category>第二场</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Limited Permutation]]></title>
     <url>%2F2019%2F06%2F21%2FLimited-Permutation%2F</url>
     <content type="text"><![CDATA[题目链接题意有$n$个元素的全排列的合法性定义为：有$n$个区间，对于第$i$个区间[l_{i},r_{i}]有l_{i} \leq i \leq r_{i},对于任意1 \leq L \leq i \leq R \leq n.当且仅当l_{i} \leq L \leq i \leq R \leq r_{i}时,P[i]=min(P[L],P[L+1],...,P[R])。现在给出序列和相应的区间，问多少区间是否合法？ 思路 我们可以先确定的是，这些区间一定是要么包含关系，要么交集为空，而且我们还知道，排列中最小数字的位置左端点一定是$1$，右端点一定是$n$。 我们把$n$个区间进行排序，优先左端点升序，然后右端点降序。这样第一个区间的位置$i$一定放最小的数字，$i$将数列分成两段，我们把$2$到$n$中$i-1$个数放到左边，剩下放到右边，相当于解决一个子问题，答案更新: ans = ans \times C_{n-1}^{i-1}. 123456789ll dfs(int l, int r) &#123; if (l &gt; r) return 1; if (a[rear].l != l || a[rear].r != r) return 0; node now = a[rear++]; ll ret = C(now.r - now.l, now.id - now.l) * dfs(now.l, now.id - 1) % mod; ret = (ret * dfs(now.id + 1, now.r)) % mod; return ret;&#125;]]></content>
