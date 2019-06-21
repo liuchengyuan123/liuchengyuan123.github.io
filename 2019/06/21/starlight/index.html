@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="题目链接题意定义$f(i)$表示方程${(x+y)}^{i} \equiv {x}^{i} (mod p), 1 \leq x \leq p-1, 1 \leq y \leq m $ 解的数量, $p$为素数。要求计算\sum_{i=1}^{p-1}if(i)。 思路令g为p的原根,x \equiv {g}^{a} (mod p), y \equiv {g}^{b} (mod p)，那么有 { (">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-21T14:24:34.073Z">
+<meta property="og:updated_time" content="2019-06-21T14:26:26.951Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="If the starlight never fade">
 <meta name="twitter:description" content="题目链接题意定义$f(i)$表示方程${(x+y)}^{i} \equiv {x}^{i} (mod p), 1 \leq x \leq p-1, 1 \leq y \leq m $ 解的数量, $p$为素数。要求计算\sum_{i=1}^{p-1}if(i)。 思路令g为p的原根,x \equiv {g}^{a} (mod p), y \equiv {g}^{b} (mod p)，那么有 { (">
@@ -419,7 +419,7 @@
 <script type="math/tex; mode=display">{ ({g}^{a}+{g}^{b}) }^{i} \equiv {g}^{ai} (mod p)</script><script type="math/tex; mode=display">{(1+{g}^{b-a}) }^{i} \equiv 1 (mod p)</script><p>注意到<script type="math/tex">1+{g}^{b-a} > 1</script></p>
 <p>可以令<script type="math/tex">1+{g}^{b-a} \equiv {g}^{k} (mod p)</script>，则有</p>
 <script type="math/tex; mode=display">{g}^{ki} \equiv 1 (mod p).</script><script type="math/tex; mode=display">ki \equiv 0 (mod p-1).</script><script type="math/tex; mode=display">k= \frac{s \times (p-1)}{i}</script><script type="math/tex; mode=display">k= \frac{t \times (p-1)}{gcd(i, p-1)}</script><p>因为<script type="math/tex">k</script>不能取0，所以<script type="math/tex">k</script>有<script type="math/tex">gcd(i,p-1)-1</script>种取值，逆推上去，<script type="math/tex">f(i)=m (gcd(i, p-1)-1).</script></p>
-<script type="math/tex; mode=display">\sum_{i=1}^{p-1}if(i) = \sum_{i=1}^{p-1}i m (gcd(i,p-1)-1)</script><script type="math/tex; mode=display">= m \sum_{i=1}^{p-1}igcd(i,p-1) - m \frac{(p-1)p}{2}</script><script type="math/tex; mode=display">S_{1} = m \sum_{d=1}^{p-1}{d}^{2} \sum_{e=1}^{ \frac{p-1}{d}}e[gcd(e, \frac{p-1}{d}) == 1]</script><script type="math/tex; mode=display">= m \sum_{d=1}^{p-1}{d}^{2} \frac{( \frac{(p-1)}{d} \varphi(\prac{(p-1)}{d})}{2}.</script>
+<script type="math/tex; mode=display">\sum_{i=1}^{p-1}if(i) = \sum_{i=1}^{p-1}i m (gcd(i,p-1)-1)</script><script type="math/tex; mode=display">= m \sum_{i=1}^{p-1}igcd(i,p-1) - m \frac{(p-1)p}{2}</script><script type="math/tex; mode=display">S_{1} = m \sum_{d=1}^{p-1}{d}^{2} \sum_{e=1}^{ \frac{p-1}{d}}e[gcd(e, \frac{p-1}{d}) == 1]</script><script type="math/tex; mode=display">= m \sum_{d=1}^{p-1}{d}^{2} \frac{ \frac{(p-1)}{d} \varphi(\frac{(p-1)}{d}}{2}.</script>
       
     </div>
     
