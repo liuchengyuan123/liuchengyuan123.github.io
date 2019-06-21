@@ -97,7 +97,7 @@
 <meta property="og:image" content="https://latex.codecogs.com/gif.latex?$$&space;f(x)&space;=&space;g(x)&space;-&space;C_{x}^{1}g(x-1)&space;+&space;C_{x}^{2}g{(x-2)}&space;$$...">
 <meta property="og:image" content="https://latex.codecogs.com/gif.latex?$$&space;f(x)&space;=&space;\sum_{y=0}^{x}&space;{(-1)}^{x-y}&space;g(y)&space;C_{x}^{y}&space;$$">
 <meta property="og:image" content="https://latex.codecogs.com/gif.latex?$$&space;=&space;\sum_{y=0}^{x}&space;{(-1)}^{x-y}&space;g(y)&space;\frac{x!}{y!(x-y)!}&space;$$">
-<meta property="og:updated_time" content="2019-06-21T05:08:03.260Z">
+<meta property="og:updated_time" content="2019-06-21T05:12:09.031Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Division Game">
 <meta name="twitter:description" content="题目链接题意 用唯一表示法表示出n，输入m，k，表示有k堆石子，每堆有n个，现在拿石子。规则如下： 每次只能在下一堆中拿石子 每次拿走后剩余石子数量d，拿走前n，则必须有$d|n$ 拿到某一堆只剩一颗石子时游戏结束  询问在每一堆石子结束的方案数。 思路 设拿到第$i$堆，拿了$x$次结束的方案数为$f(x)$，则拿到第$i$堆，拿了$x-1$次没结束的方案数也为$f(i)$。 ans(i, x)">
@@ -426,7 +426,7 @@
 <script type="math/tex; mode=display">g(x) = \prod_{i=1}^{m} {C_{e_{i}+x-1}^{x-1}}</script><p><a href="https://www.codecogs.com/eqnedit.php?latex=$$&space;f(x)&space;=&space;g(x)&space;-&space;C_{x}^{1}g(x-1)&space;&plus;&space;C_{x}^{2}g{(x-2)}&space;$$..." target="_blank"><img src="https://latex.codecogs.com/gif.latex?$$&space;f(x)&space;=&space;g(x)&space;-&space;C_{x}^{1}g(x-1)&space;&plus;&space;C_{x}^{2}g{(x-2)}&space;$$..."></a></p>
 <p><a href="https://www.codecogs.com/eqnedit.php?latex=$$&space;f(x)&space;=&space;\sum_{y=0}^{x}&space;{(-1)}^{x-y}&space;g(y)&space;C_{x}^{y}&space;$$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$$&space;f(x)&space;=&space;\sum_{y=0}^{x}&space;{(-1)}^{x-y}&space;g(y)&space;C_{x}^{y}&space;$$"></a></p>
 <p><a href="https://www.codecogs.com/eqnedit.php?latex=$$&space;=&space;\sum_{y=0}^{x}&space;{(-1)}^{x-y}&space;g(y)&space;\frac{x!}{y!(x-y)!}&space;$$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$$&space;=&space;\sum_{y=0}^{x}&space;{(-1)}^{x-y}&space;g(y)&space;\frac{x!}{y!(x-y)!}&space;$$"></a></p>
-<p> 对这个式子NTT即可。</p>
+<script type="math/tex; mode=display">= \sum_{y=0}^{x} {(-1)}^{x-y} g(y) \frac{x!}{y!(x-y)!}</script><p> 对这个式子NTT即可。</p>
 
       
     </div>
@@ -468,10 +468,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/21/test/" rel="prev" title>
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -550,7 +546,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
-    <url>%2F2019%2F06%2F21%2Ftest%2F</url>
-    <content type="text"><![CDATA[= \sum_{y=0}^{x} {(-1)}^{x-y} g(y) \frac{x!}{y!(x-y)!}]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[Division Game]]></title>
     <url>%2F2019%2F06%2F20%2FDivision-Game%2F</url>
-    <content type="text"><![CDATA[题目链接题意 用唯一表示法表示出n，输入m，k，表示有k堆石子，每堆有n个，现在拿石子。规则如下： 每次只能在下一堆中拿石子 每次拿走后剩余石子数量d，拿走前n，则必须有$d|n$ 拿到某一堆只剩一颗石子时游戏结束 询问在每一堆石子结束的方案数。 思路 设拿到第$i$堆，拿了$x$次结束的方案数为$f(x)$，则拿到第$i$堆，拿了$x-1$次没结束的方案数也为$f(i)$。 ans(i, x)= \prod_{j=1}^{j < i} {f(x+1)} \times \prod_{j=i+1}^{j \leq k} {f(x)}={f(x+1)}^{i-1} \times {f(x)}^{k-i+1}考虑$x$范围 记$ w= \sum e_{i} $ 当$i = 1$，$x \leq w$；当$i &gt; 1$，$x &lt; w$。 容斥计算$f(x)$ 考虑每个素因子，相当于将$e_{i}$个小球放入$x$个盒子中，不允许空。$g(x)$ 表示$x$盒子，允许空放盒子方案数。 g(x) = \prod_{i=1}^{m} {C_{e_{i}+x-1}^{x-1}} 对这个式子NTT即可。]]></content>
+    <content type="text"><![CDATA[题目链接题意 用唯一表示法表示出n，输入m，k，表示有k堆石子，每堆有n个，现在拿石子。规则如下： 每次只能在下一堆中拿石子 每次拿走后剩余石子数量d，拿走前n，则必须有$d|n$ 拿到某一堆只剩一颗石子时游戏结束 询问在每一堆石子结束的方案数。 思路 设拿到第$i$堆，拿了$x$次结束的方案数为$f(x)$，则拿到第$i$堆，拿了$x-1$次没结束的方案数也为$f(i)$。 ans(i, x)= \prod_{j=1}^{j < i} {f(x+1)} \times \prod_{j=i+1}^{j \leq k} {f(x)}={f(x+1)}^{i-1} \times {f(x)}^{k-i+1}考虑$x$范围 记$ w= \sum e_{i} $ 当$i = 1$，$x \leq w$；当$i &gt; 1$，$x &lt; w$。 容斥计算$f(x)$ 考虑每个素因子，相当于将$e_{i}$个小球放入$x$个盒子中，不允许空。$g(x)$ 表示$x$盒子，允许空放盒子方案数。 g(x) = \prod_{i=1}^{m} {C_{e_{i}+x-1}^{x-1}} = \sum_{y=0}^{x} {(-1)}^{x-y} g(y) \frac{x!}{y!(x-y)!} 对这个式子NTT即可。]]></content>
       <categories>
         <category>acm</category>
         <category>做题记录</category>
