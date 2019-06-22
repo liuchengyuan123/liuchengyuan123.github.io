@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[RXD and math]]></title>
+    <url>%2F2019%2F06%2F22%2FRXD-and-math%2F</url>
+    <content type="text"><![CDATA[题目链接题意计算\sum_{i-1}^{ {n}^{k} } { \mu(i)}^{2} \left \lfloor \sqrt{ \frac{ {n}^{k} }{i} } \right \rfloor. 思路赛中是找规律的，规律是比较明显。 根据题解的说法，任意一个数字可以表示成x={a}^{2} \times b.其中$b$是不含二次因子的，| \mu(b)|=1. 这个式子相当于在枚举$b$，然后问能用$a$和$b$表示成${n}^{k}$以内多少个数字.对于每一个$b$，$a$有\left \lfloor \sqrt{ \frac{ {n}^{k} }{i} } \right \rfloor 种。所以相当于所有数字都被数了一遍，答案就是${n}^{k}.$]]></content>
+      <categories>
+        <category>acm</category>
+        <category>2017杭电多校赛</category>
+        <category>第三场</category>
+      </categories>
+      <tags>
+        <tag>Math</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[RXD's date]]></title>
     <url>%2F2019%2F06%2F22%2FRXD-s-date%2F</url>
     <content type="text"><![CDATA[题目链接题意找出小于等于35的数字数量即可队友把我咕了好伤心… 12345678910111213141516#include&lt;bits/stdc++.h&gt;using namespace std;int main()&#123; int n; scanf("%d", &amp;n); int cnt = 0; for (int i = 1; i &lt;= n; i++) &#123; int x; scanf("%d", &amp;x); cnt += (x &lt;= 35); &#125; printf("%d\n", cnt); return 0;&#125;]]></content>
