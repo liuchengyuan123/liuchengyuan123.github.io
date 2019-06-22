@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Kanade's convolution]]></title>
+    <url>%2F2019%2F06%2F22%2FKanade-s-convolution%2F</url>
+    <content type="text"><![CDATA[题目链接题意已知$A$和$B$数列，且 C_{k} = \sum_{i and j = k} A_{i xor j} \times B_{i or j}.计算 \sum_{i=0}^{ {2}^{m} - 1} C_{i} \times {1526}^{i} mod 998244353. 思路设$i$ $or$ $j = x$,$i$ $xor$ $j = y$.那么$i$ $and$ $j = x$ $xor$ $y$.且要求$x$ $and$ $y = y$. C_{k} = \sum_{x} \sum_{y} [x and y == y] \times [x xor y == k] \times B_{x} \times A_{y} \times {2}^{bit(y)}.C_{k} = \sum_{x xor y = k} [x and y == y] \times B_{x} \times A_{y} \times {2}^{bit(y)}.C_{k} = \sum_{x xor y = k} [bit(x) - bit(y) == bit(k)] \times B_{x} \times A_{y} \times {2}^{bit(y)}.考虑新的函数$F(A, k){i}$表示$[bit(i)==k] \times A{i}$，$F(B, k)_{i}$同理。 则有FWT[F(C, h)] = \sum_{i=k}^{m} FWT[F(A, i-h)] * FWT[F(B, i) )]. C_{k} = F(C, bit(k))_{k}.]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2017杭电多校赛</category>
+        <category>第三场</category>
+      </categories>
+      <tags>
+        <tag>Math</tag>
+        <tag>FWT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[RXD and math]]></title>
     <url>%2F2019%2F06%2F22%2FRXD-and-math%2F</url>
     <content type="text"><![CDATA[题目链接题意计算\sum_{i-1}^{ {n}^{k} } { \mu(i)}^{2} \left \lfloor \sqrt{ \frac{ {n}^{k} }{i} } \right \rfloor. 思路赛中是找规律的，规律是比较明显。 根据题解的说法，任意一个数字可以表示成x={a}^{2} \times b.其中$b$是不含二次因子的，| \mu(b)|=1. 这个式子相当于在枚举$b$，然后问能用$a$和$b$表示成${n}^{k}$以内多少个数字.对于每一个$b$，$a$有\left \lfloor \sqrt{ \frac{ {n}^{k} }{i} } \right \rfloor 种。所以相当于所有数字都被数了一遍，答案就是${n}^{k}.$]]></content>
