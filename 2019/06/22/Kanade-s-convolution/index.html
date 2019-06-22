@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="题目链接题意已知$A$和$B$数列，且 C_{k} = \sum_{i and j = k} A_{i xor j} \times B_{i or j}.计算 \sum_{i=0}^{ {2}^{m} - 1} C_{i} \times {1526}^{i} mod 998244353. 思路设$i$ $or$ $j = x$,$i$ $xor$ $j = y$.那么$i$ $and$ $j =">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-22T15:03:52.429Z">
+<meta property="og:updated_time" content="2019-06-22T15:08:18.121Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kanade&#39;s convolution">
 <meta name="twitter:description" content="题目链接题意已知$A$和$B$数列，且 C_{k} = \sum_{i and j = k} A_{i xor j} \times B_{i or j}.计算 \sum_{i=0}^{ {2}^{m} - 1} C_{i} \times {1526}^{i} mod 998244353. 思路设$i$ $or$ $j = x$,$i$ $xor$ $j = y$.那么$i$ $and$ $j =">
@@ -417,7 +417,7 @@
         <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6057" target="_blank" rel="noopener">题目链接</a></h2><h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>已知$A$和$B$数列，且</p>
 <script type="math/tex; mode=display">C_{k} = \sum_{i and j = k} A_{i xor j} \times B_{i or j}.</script><p>计算 <script type="math/tex">\sum_{i=0}^{ {2}^{m} - 1} C_{i} \times {1526}^{i}</script> <script type="math/tex">mod</script> <script type="math/tex">998244353.</script></p>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>设$i$ $or$ $j = x$,$i$ $xor$ $j = y$.那么$i$ $and$ $j = x$ $xor$ $y$.且要求$x$ $and$ $y = y$.</p>
-<script type="math/tex; mode=display">C_{k} = \sum_{x} \sum_{y} [x and y == y] \times [x xor y == k] \times B_{x} \times A_{y} \times {2}^{bit(y)}.</script><script type="math/tex; mode=display">C_{k} = \sum_{x xor y = k} [x and y == y] \times B_{x} \times A_{y} \times {2}^{bit(y)}.</script><script type="math/tex; mode=display">C_{k} = \sum_{x xor y = k} [bit(x) - bit(y) == bit(k)] \times B_{x} \times A_{y} \times {2}^{bit(y)}.</script><p>考虑新的函数$F(A, k)<em>{i}$表示$[bit(i)==k] \times A</em>{i}$，$F(B, k)_{i}$同理。</p>
+<script type="math/tex; mode=display">C_{k} = \sum_{x} \sum_{y} [x and y == y] \times [x xor y == k] \times B_{x} \times A_{y} \times {2}^{bit(y)}.</script><script type="math/tex; mode=display">C_{k} = \sum_{x xor y = k} [x and y == y] \times B_{x} \times A_{y} \times {2}^{bit(y)}.</script><script type="math/tex; mode=display">C_{k} = \sum_{x xor y = k} [bit(x) - bit(y) == bit(k)] \times B_{x} \times A_{y} \times {2}^{bit(y)}.</script><p>考虑新的函数<script type="math/tex">F(A, k)_{i}</script>表示<script type="math/tex">[bit(i)==k] \times A_{i}</script>，<script type="math/tex">F(B, k)_{i}</script>同理。</p>
 <p>则有<script type="math/tex">FWT[F(C, h)] = \sum_{i=k}^{m} FWT[F(A, i-h)] * FWT[F(B, i) )].</script></p>
 <script type="math/tex; mode=display">C_{k} = F(C, bit(k))_{k}.</script>
       
@@ -549,7 +549,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
