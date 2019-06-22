@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="nth element,">
+  <meta name="keywords" content="data structure,">
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="题目链接题意 用给的随机函数可以得到数列$a$，$m$次查询，问第$b_{i}$小的数字。 思路 这道题要线性第$k$小，肯定是不能排序的。 一个思路是手写快排，然后将所有询问一起二分掉，比较卡的做法。  其实这是个套路题 使用STL &amp;lt; algorithm &amp;gt;中的 1nth_element(A, A + k, A + n)  可以在线性时间找到第k大，此题还需要一点小trick，可以">
-<meta name="keywords" content="nth element">
+<meta name="description" content="码量预警我们常常使用可持久化线段树来二分求得区间第k大，但是主席树只能应对没有修改的情况，一旦有修改，修改量对于主席树来说将是灾难性的打击。所以我们不能直接修改后面每一棵线段树。处理区间问题我们最常用的套路之一不就是树状数组么，所以我们在这里用树状数组优化出一个log，虽说还是复杂度有点爆炸，但是已经够用了。 树状数组每个点代表一个权值线段树，这棵权值线段树我们也不需要全部建出来，只需要log个点">
+<meta name="keywords" content="data structure">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hints of sd0061">
-<meta property="og:url" content="http://yoursite.com/2019/06/21/Hints-of-sd0061/index.html">
+<meta property="og:title" content="树状数组套权值线段数">
+<meta property="og:url" content="http://yoursite.com/2019/06/22/树套数/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目链接题意 用给的随机函数可以得到数列$a$，$m$次查询，问第$b_{i}$小的数字。 思路 这道题要线性第$k$小，肯定是不能排序的。 一个思路是手写快排，然后将所有询问一起二分掉，比较卡的做法。  其实这是个套路题 使用STL &amp;lt; algorithm &amp;gt;中的 1nth_element(A, A + k, A + n)  可以在线性时间找到第k大，此题还需要一点小trick，可以">
+<meta property="og:description" content="码量预警我们常常使用可持久化线段树来二分求得区间第k大，但是主席树只能应对没有修改的情况，一旦有修改，修改量对于主席树来说将是灾难性的打击。所以我们不能直接修改后面每一棵线段树。处理区间问题我们最常用的套路之一不就是树状数组么，所以我们在这里用树状数组优化出一个log，虽说还是复杂度有点爆炸，但是已经够用了。 树状数组每个点代表一个权值线段树，这棵权值线段树我们也不需要全部建出来，只需要log个点">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-21T10:22:36.808Z">
+<meta property="og:updated_time" content="2019-06-22T13:02:21.758Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hints of sd0061">
-<meta name="twitter:description" content="题目链接题意 用给的随机函数可以得到数列$a$，$m$次查询，问第$b_{i}$小的数字。 思路 这道题要线性第$k$小，肯定是不能排序的。 一个思路是手写快排，然后将所有询问一起二分掉，比较卡的做法。  其实这是个套路题 使用STL &amp;lt; algorithm &amp;gt;中的 1nth_element(A, A + k, A + n)  可以在线性时间找到第k大，此题还需要一点小trick，可以">
+<meta name="twitter:title" content="树状数组套权值线段数">
+<meta name="twitter:description" content="码量预警我们常常使用可持久化线段树来二分求得区间第k大，但是主席树只能应对没有修改的情况，一旦有修改，修改量对于主席树来说将是灾难性的打击。所以我们不能直接修改后面每一棵线段树。处理区间问题我们最常用的套路之一不就是树状数组么，所以我们在这里用树状数组优化出一个log，虽说还是复杂度有点爆炸，但是已经够用了。 树状数组每个点代表一个权值线段树，这棵权值线段树我们也不需要全部建出来，只需要log个点">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/21/Hints-of-sd0061/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/22/树套数/">
 
 
 
 
 
-  <title>Hints of sd0061 | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>树状数组套权值线段数 | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -292,7 +292,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/21/Hints-of-sd0061/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/22/树套数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -309,7 +309,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hints of sd0061</h1>
+          <h1 class="post-title" itemprop="name headline">树状数组套权值线段数</h1>
         
 
         <div class="post-meta">
@@ -321,8 +321,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-21T16:12:22+08:00">
-                2019-06-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-22T20:46:01+08:00">
+                2019-06-22
               </time>
             
 
@@ -355,30 +355,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/acm/做题记录/" itemprop="url" rel="index">
-                    <span itemprop="name">做题记录</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/acm/做题记录/2017杭电多校赛/" itemprop="url" rel="index">
-                    <span itemprop="name">2017杭电多校赛</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/acm/做题记录/2017杭电多校赛/第一场/" itemprop="url" rel="index">
-                    <span itemprop="name">第一场</span>
+                  <a href="/categories/acm/data-structure/" itemprop="url" rel="index">
+                    <span itemprop="name">data structure</span>
                   </a>
                 </span>
 
@@ -414,10 +392,8 @@
       
 
       
-        <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6040" target="_blank" rel="noopener">题目链接</a></h3><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p> 用给的随机函数可以得到数列$a$，$m$次查询，问第<em>$b_{i}$小的数字。</em></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p> 这道题要线性第$k$小，肯定是不能排序的。<br> 一个思路是手写快排，然后将所有询问一起二分掉，比较卡的做法。</p>
-<p> <strong>其实这是个套路题</strong><br> 使用STL &lt; algorithm &gt;中的<br> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nth_element(A, A + k, A + n)</span><br></pre></td></tr></table></figure></p>
-<p> 可以在线性时间找到第k大，此题还需要一点小trick，可以先将询问排序，然后每次将排序范围缩小，可以减小枚举量。</p>
+        <h2 id="码量预警"><a href="#码量预警" class="headerlink" title="码量预警"></a>码量预警</h2><p>我们常常使用可持久化线段树来二分求得区间第k大，但是主席树只能应对没有修改的情况，一旦有修改，修改量对于主席树来说将是灾难性的打击。所以我们不能直接修改后面每一棵线段树。<br>处理区间问题我们最常用的套路之一不就是树状数组么，所以我们在这里用树状数组优化出一个log，虽说还是复杂度有点爆炸，但是已经够用了。</p>
+<h3 id="树状数组每个点代表一个权值线段树，这棵权值线段树我们也不需要全部建出来，只需要log个点。"><a href="#树状数组每个点代表一个权值线段树，这棵权值线段树我们也不需要全部建出来，只需要log个点。" class="headerlink" title="树状数组每个点代表一个权值线段树，这棵权值线段树我们也不需要全部建出来，只需要log个点。"></a>树状数组每个点代表一个权值线段树，这棵权值线段树我们也不需要全部建出来，只需要log个点。</h3><h3 id="虽然叫作带修主席树，但他和主席树本质是不一样的，它的思想更像是原本的若干棵权值线段树，每棵树并非承接上一个，而是独立一棵，没有儿子共享的问题。"><a href="#虽然叫作带修主席树，但他和主席树本质是不一样的，它的思想更像是原本的若干棵权值线段树，每棵树并非承接上一个，而是独立一棵，没有儿子共享的问题。" class="headerlink" title="虽然叫作带修主席树，但他和主席树本质是不一样的，它的思想更像是原本的若干棵权值线段树，每棵树并非承接上一个，而是独立一棵，没有儿子共享的问题。"></a>虽然叫作带修主席树，但他和主席树本质是不一样的，它的思想更像是原本的若干棵权值线段树，每棵树并非承接上一个，而是独立一棵，没有儿子共享的问题。</h3><h3 id="趁着今天大概还明白它是什么东西，赶紧记录一下。"><a href="#趁着今天大概还明白它是什么东西，赶紧记录一下。" class="headerlink" title="趁着今天大概还明白它是什么东西，赶紧记录一下。"></a>趁着今天大概还明白它是什么东西，赶紧记录一下。</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">5e4</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">1e4</span> * <span class="number">2</span> + N;</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">query</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x, y, k, type, id;</span><br><span class="line">&#125;q[M];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[N], sum[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &amp; (-x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> val)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (x &lt;= n)</span><br><span class="line">    &#123;</span><br><span class="line">        sum[x] += val;</span><br><span class="line">        x += lowbit(x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (x)</span><br><span class="line">    &#123;</span><br><span class="line">        ans += sum[x];</span><br><span class="line">        x -= lowbit(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> maxnum, tot = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">char</span> op[<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line">query q1[M], q2[M];</span><br><span class="line"><span class="keyword">int</span> ans[M];</span><br><span class="line"><span class="keyword">bool</span> is[M];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(sum, <span class="number">0</span>, <span class="keyword">sizeof</span>(sum));</span><br><span class="line">    <span class="built_in">memset</span>(ans, <span class="number">0</span>, <span class="keyword">sizeof</span>(ans));</span><br><span class="line">    <span class="built_in">memset</span>(is, <span class="number">0</span>, <span class="keyword">sizeof</span>(is));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> head, <span class="keyword">int</span> tail, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head &gt; tail)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    printf("l , r , %d %d\n", l, r);</span></span><br><span class="line"><span class="comment">    for (int i = head; i &lt;= tail; i++)</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        printf("query %d %d %d %d %d\n", q[i].x, q[i].y, q[i].k, q[i].type, q[i].id);</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">    <span class="keyword">if</span> (l == r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = head; i &lt;= tail; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(q[i].type == <span class="number">2</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                is[q[i].id] = <span class="number">1</span>;</span><br><span class="line">                ans[q[i].id] = l;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> f = <span class="number">0</span>, s = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = head; i &lt;= tail; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (q[i].type == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (q[i].y &lt;= mid)</span><br><span class="line">            &#123;</span><br><span class="line">                update(q[i].x, q[i].k);</span><br><span class="line">                q1[++f] = q[i];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                q2[++s] = q[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (q[i].type == <span class="number">2</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> ss = get(q[i].y) - get(q[i].x - <span class="number">1</span>);</span><br><span class="line">            <span class="comment">// printf("ss   &amp;&amp; %d %d\n", get(q[i].y), get(q[i].x - 1));</span></span><br><span class="line">            <span class="keyword">if</span> (ss &gt;= q[i].k)</span><br><span class="line">            &#123;</span><br><span class="line">                q1[++f] = q[i];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                q[i].k -= ss;</span><br><span class="line">                q2[++s] = q[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= f; i++)</span><br><span class="line">        <span class="keyword">if</span> (q1[i].type == <span class="number">1</span>)</span><br><span class="line">            update(q1[i].x, -q1[i].k);</span><br><span class="line">    <span class="keyword">int</span> qpos = head;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= f; i++, qpos++)</span><br><span class="line">        q[qpos] = q1[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= s; i++, qpos++)</span><br><span class="line">        q[qpos] = q2[i];</span><br><span class="line">    solve(head, head + f - <span class="number">1</span>, l, mid);</span><br><span class="line">    solve(head + f, tail, mid + <span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">    freopen(<span class="string">"in.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">"out1.txt"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</span><br><span class="line">    <span class="keyword">while</span> (T--)</span><br><span class="line">    &#123;</span><br><span class="line">        init();</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">        maxnum = <span class="number">0</span>;</span><br><span class="line">        tot = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</span><br><span class="line">            maxnum = max(maxnum, a[i]);</span><br><span class="line">            q[++tot].x = i;</span><br><span class="line">            q[tot].y = a[i];</span><br><span class="line">            q[tot].k = <span class="number">1</span>;</span><br><span class="line">            q[tot].type = <span class="number">1</span>;</span><br><span class="line">            q[tot].id = tot;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%s"</span>, op);</span><br><span class="line">            <span class="keyword">int</span> x, y;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;x, &amp;y);</span><br><span class="line">            <span class="keyword">if</span> (op[<span class="number">0</span>] == <span class="string">'Q'</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                q[++tot].type = <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">int</span> k;</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;k);</span><br><span class="line">                q[tot].x = x, q[tot].y = y;</span><br><span class="line">                q[tot].k = k;</span><br><span class="line">                q[tot].id = tot;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                q[++tot].type = <span class="number">1</span>;</span><br><span class="line">                q[tot].x = x;</span><br><span class="line">                q[tot].y = a[x];</span><br><span class="line">                q[tot].k = <span class="number">-1</span>;</span><br><span class="line">                q[tot].id = tot;</span><br><span class="line"></span><br><span class="line">                q[++tot].type = <span class="number">1</span>;</span><br><span class="line">                q[tot].x = x;</span><br><span class="line">                q[tot].y = y;</span><br><span class="line">                q[tot].id = tot;</span><br><span class="line">                q[tot].k = <span class="number">1</span>;</span><br><span class="line">                maxnum = max(maxnum, y);</span><br><span class="line">                a[x] = y;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        solve(<span class="number">1</span>, tot, <span class="number">0</span>, maxnum);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tot; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (is[i])</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -435,7 +411,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/nth-element/" rel="tag"># nth element</a>
+            <a href="/tags/data-structure/" rel="tag"># data structure</a>
           
         </div>
       
@@ -448,8 +424,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/21/Function/" rel="next" title="Function">
-                <i class="fa fa-chevron-left"></i> Function
+              <a href="/2019/06/22/String-and-String/" rel="next" title="String and String">
+                <i class="fa fa-chevron-left"></i> String and String
               </a>
             
           </div>
@@ -457,10 +433,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/21/Limited-Permutation/" rel="prev" title="Limited Permutation">
-                Limited Permutation <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -636,7 +608,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目链接"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#码量预警"><span class="nav-number">1.</span> <span class="nav-text">码量预警</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#树状数组每个点代表一个权值线段树，这棵权值线段树我们也不需要全部建出来，只需要log个点。"><span class="nav-number">1.1.</span> <span class="nav-text">树状数组每个点代表一个权值线段树，这棵权值线段树我们也不需要全部建出来，只需要log个点。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虽然叫作带修主席树，但他和主席树本质是不一样的，它的思想更像是原本的若干棵权值线段树，每棵树并非承接上一个，而是独立一棵，没有儿子共享的问题。"><span class="nav-number">1.2.</span> <span class="nav-text">虽然叫作带修主席树，但他和主席树本质是不一样的，它的思想更像是原本的若干棵权值线段树，每棵树并非承接上一个，而是独立一棵，没有儿子共享的问题。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#趁着今天大概还明白它是什么东西，赶紧记录一下。"><span class="nav-number">1.3.</span> <span class="nav-text">趁着今天大概还明白它是什么东西，赶紧记录一下。</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1169,26 +1141,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
