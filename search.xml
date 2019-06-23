@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[RXD and functions]]></title>
+    <url>%2F2019%2F06%2F23%2FRXD-and-functions%2F</url>
+    <content type="text"><![CDATA[题目链接题意已知f(x)= \sum_{i=0}^{n} c_{i} {x}^{i}.定义变换$Tr(f,a)$，使得g(x)=Tr(f,a)=f(x-a).已知g_{0}=f，且有g_{i}=Tr(g_{i-1}, a_{i}),g_{m} = \sum_{i=0}^{n} b_{i} {x}^{i}，输入m。求b_{i}对998244353取模。 思路推式子时间到。 f(x) = \sum_{i=0}^{n} c_{i} {x}^{i}Tr(f, a)=f(x-a)g_{0}=f, g_{i}=Tr(g_{i-1}, a_{i}).g_{1}= \sum_{i=0}^{n} c_{i}{(x-a_{1})}^{i}.g_{2}= \sum_{i=0}^{n} c_{i} {(x - a_{1} - a_{2})}^{i}....g_{m} = \sum_{i=0}^{n} c_{i} {(x-a_{1}-a_{2}-a_{3}...)}^{i}.S = \sum_{i=1}^{m} a_{i}.g_{m} = \sum_{i=0}^{n} c_{i} {(x-S)}^{i}.=b_{i}{x}^{i}.b_{i} = \sum_{j=i}^{n}c_{j} C_{j}^{i} {(-S)}^{j-i}.= \sum_{j=i}^{n} c_{j} \times \frac{j!}{(j-i)!i!} {(-S)}^{j-i}.= \frac{1}{i!} \sum_{j=i}^{n} c_{j} \frac{j!}{(j-i)!} {(-S)}^{j-i}.= \frac{1}{i!} \sum_{j=0}^{n-i} c_{i+j} (i+j)! \frac{ {(-S)}^{j} }{j!}.= \frac{1}{i!} \sum_{j=0}^{n-i} c_{i+j} (i+j)! \frac{ {(-S)}^{n-(n-j)} }{(n-(n-j))!}.= \frac{1}{i!} \times (A*B)_{n+i}.其中A_{i} = c_{i} \times i!,B_{i} = \frac{ {(-S)}^{n-i} }{(n-i)!}.]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2017杭电多校赛</category>
+        <category>第三场</category>
+      </categories>
+      <tags>
+        <tag>Math</tag>
+        <tag>NTT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[RXD and dividing]]></title>
     <url>%2F2019%2F06%2F23%2FRXD-and-dividing%2F</url>
     <content type="text"><![CDATA[题目链接题意有一棵n个点的树，每条边有边权，现在要求将$2,3,4…n$划分成$k$部分，定义$f(S)$为$S$集合的最小斯坦纳树的边权和。求res=\sum_{i=1}^{k}f({1} \bigcup S_{i})最大。 思路首先解释一下什么是斯坦纳树。 斯坦纳树斯坦纳树允许在给定的集合外多加一些点，使得总开销最小。最小生成树是一种特殊的斯坦纳树。 贪心按照贡献计算，每个几何最后都要和1号点也就是根结点连通，所以如果选择他或他的子结点作为一个集合的一部分，那么它上面这条边能产生w_{i}的贡献，他最大贡献即是w_{i} \times min(size(u), k)，只要$dfs$一下就可以了。]]></content>
