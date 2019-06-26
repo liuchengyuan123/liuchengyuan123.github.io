@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Time To Get Up]]></title>
+    <url>%2F2019%2F06%2F26%2FTime-To-Get-Up%2F</url>
+    <content type="text"><![CDATA[题目链接题意用一个7*21的二维矩阵表示一个时间，要求输出时间。 思路可以记录每条边是否出现，对于这样若干条边的集合记录数字是多少。12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50char s[10][30];const int up = 1 &lt;&lt; 8;int hack[up];int check(int t)&#123; int ans = 0; if (s[0][t + 1] == 'X') ans |= (1 &lt;&lt; 1); if (s[1][t + 3] == 'X') ans |= (1 &lt;&lt; 0); if (s[1][t] == 'X') ans |= (1 &lt;&lt; 2); if (s[3][t + 1] == 'X') ans |= (1 &lt;&lt; 3); if (s[4][t] == 'X') ans |= (1 &lt;&lt; 6); if (s[6][t + 1] == 'X') ans |= (1 &lt;&lt; 5); if (s[4][t + 3] == 'X') ans |= (1 &lt;&lt; 4); return hack[ans];&#125;int main()&#123; int T; scanf("%d", &amp;T); hack[119] = 0; hack[17] = 1; hack[107] = 2; hack[59] = 3; hack[29] = 4; hack[62] = 5; hack[126] = 6; hack[19] = 7; hack[127] = 8; hack[63] = 9; while (T--) &#123; for (int i = 0; i &lt; 7; i++) scanf("%s", s[i]); printf("%d%d:%d%d\n", check(0), check(5), check(12), check(17)); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2017杭电多校赛</category>
+        <category>第四场</category>
+      </categories>
+      <tags>
+        <tag>模拟题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Questionnaire]]></title>
     <url>%2F2019%2F06%2F26%2FQuestionnaire%2F</url>
     <content type="text"><![CDATA[题目链接题意让你找到合适的m,k，使得n个数字对m取模结果为k的数量为cnt，且cnt不少于n-cnt。 思路我们可以看其中奇数数量和偶数数量，那么就可以让m为2，然后比较一下就可以得到答案了。1234567891011121314151617181920212223242526272829303132333435363738#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const int N = 1e5 + 5;int a[N];int main()&#123; int T; scanf("%d", &amp;T); while (T--)&#123; int n; scanf("%d", &amp;n); int cnt= 0; for (int i = 1; i &lt;= n; i++) &#123; int x; scanf("%d", &amp;x); if (x &amp; 1) cnt++; &#125; if (cnt &gt;= n - cnt) printf("2 1\n"); else printf("2 0\n"); &#125; return 0;&#125;]]></content>
