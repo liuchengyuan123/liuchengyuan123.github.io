@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Questionnaire]]></title>
+    <url>%2F2019%2F06%2F26%2FQuestionnaire%2F</url>
+    <content type="text"><![CDATA[题目链接题意让你找到合适的m,k，使得n个数字对m取模结果为k的数量为cnt，且cnt不少于n-cnt。 思路我们可以看其中奇数数量和偶数数量，那么就可以让m为2，然后比较一下就可以得到答案了。1234567891011121314151617181920212223242526272829303132333435363738#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const int N = 1e5 + 5;int a[N];int main()&#123; int T; scanf("%d", &amp;T); while (T--)&#123; int n; scanf("%d", &amp;n); int cnt= 0; for (int i = 1; i &lt;= n; i++) &#123; int x; scanf("%d", &amp;x); if (x &amp; 1) cnt++; &#125; if (cnt &gt;= n - cnt) printf("2 1\n"); else printf("2 0\n"); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2017杭电多校赛</category>
+        <category>第四场</category>
+      </categories>
+      <tags>
+        <tag>签到题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Lazy Running]]></title>
     <url>%2F2019%2F06%2F26%2FLazy-Running%2F</url>
     <content type="text"><![CDATA[题目链接同余最短路12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788#include &lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;typedef pair&lt;int, ll&gt; P;const ll MAX = 1e18;struct POINT&#123; int dis; int id;&#125; a[10][5];ll d[5][60050];void djs(int st, ll m)&#123; priority_queue&lt;P, vector&lt;P&gt;, greater&lt;P&gt; &gt; q; q.push(P(2, 0)); while (!q.empty()) &#123; P now = q.top(); q.pop(); ll dis1 = now.second; int u = now.first; if(dis1&gt;d[u][dis1%m]) continue; for (int i = 0; i &lt; 2; i++) &#123; ll dis2 = a[u][i].dis + d[u][dis1 % m]; if (dis2 &lt; d[a[u][i].id][dis2 % m]) &#123; d[a[u][i].id][dis2 % m] = dis2; q.push(P(a[u][i].id, dis2)); &#125; &#125; &#125;&#125;template&lt;class T&gt;void read(T&amp; ret)&#123; ret = 0; char c; while ((c = getchar()) &gt; '9' || c &lt; '0'); while (c &lt;= '9' &amp;&amp; c &gt;= '0') &#123; ret = ret * 10 + c - '0'; c = getchar(); &#125;&#125;int main()&#123; int T; read(T); while (T--) &#123; ll k; ll ans = MAX; int d1, d2, d3, d4; read(k), read(d1), read(d2), read(d3), read(d4); a[1][0].dis = d1, a[1][0].id = 2; a[1][1].dis = d4, a[1][1].id = 4; a[2][0].dis = d2, a[2][0].id = 3; a[2][1].dis = d1, a[2][1].id = 1; a[3][0].dis = d3, a[3][0].id = 4; a[3][1].dis = d2, a[3][1].id = 2; a[4][0].dis = d4, a[4][0].id = 1; a[4][1].dis = d3, a[4][1].id = 3; ll m = min(d1, d2) * 2; for (int i = 0; i &lt; 5; i++) for (int j = 0; j &lt;= m; j++) d[i][j] = MAX; d[2][0] = 0; djs(2, m); for (int i = 0; i &lt; m; i++) &#123; if (d[2][i] &lt; k) &#123; ll yu = k - d[2][i], cx; if (yu % m) cx = (yu / m) + 1; else cx = yu / m; ans = min(ans, d[2][i] + cx * m); &#125; else ans = min(ans, d[2][i]); &#125; printf("%lld\n", ans); &#125;&#125;]]></content>
