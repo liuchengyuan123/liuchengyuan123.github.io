@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Rikka with Rock-paper-scissors]]></title>
+    <url>%2F2019%2F06%2F27%2FRikka-with-Rock-paper-scissors%2F</url>
+    <content type="text"><![CDATA[题目链接题意有两个人进行$n$局石头剪刀布游戏，设其中一个人赢了$a$局，另一个人赢了$b$局，$n-a-b$局平局。则分数为$gcd(a,b)$。问分数的期望。 思路ans={3}^{n} \sum_{a=0}^{n} \sum_{b=0}^{n-a} C_{n}^{a} C_{n-a}^{b} gcd(a, b).={3}^{n} \sum_{d=1}^{n} \sum_{a=0}^{n} \sum_{b=0}^{n-a} C_{n}^{a} C_{n-a}^{b} d[gcd(a,b)==d].={3}^{n} \sum_{d=1}^{n} d f(d).f(d) = \sum_{a=0}^{n} \sum_{b=0}^{n-a} C_{n}^{a} C_{n-a}^{b} [gcd(a,b) == d].F(d) = \sum_{a=0}^{n} \sum_{b=0}^{n-a} C_{n}^{a} C_{n-a}^{b} [d | gcd(a, b)].F(d) = \sum_{d | k} f(k).f(d) = \sum_{d | k} \mu( \frac{k}{d}) F(k).F(d) = \sum_{a=0}^{n} \sum_{b=0}^{n-a} C_{n}^{a} C_{n-a}^{b} [d | gcd(a,b)] [gcd(a, b) != 0].= \sum_{a=0}^{ \frac{n}{d} } \sum_{b=0}^{ \frac{n}{d} - a} C_{n}^{ad} C_{n-ad}^{bd} -1.= \sum_{a=0}^{ \frac{n}{d} } \sum_{b=0}^{ \frac{n}{d} - a} \frac{n!}{(ad)!(bd)!(n-ad-bd)!} -1.= \sum_{a=0}^{ \frac{n}{d} } \sum_{b=0}^{a} \frac{n!}{(ad - bd)!(bd)!(n-ad)!} - 1.= n! \sum_{a=0}^{ \frac{n}{d} } \frac{1}{(n - ad)! } \sum_{b=0}^{a} \frac{1}{(bd)!(ad-bd)!} - 1.= n! \sum_{a=0}^{ \frac{n}{d} } \frac{1}{(n - ad)! } (fac * fac)_{a} - 1.可以用FFT优化这个狄利克雷卷积。 ans = {3}^{n} \sum_{d=1}^{n} d f(d).= {3}^{n} \sum_{d=1}^{n} d \sum_{d | k} \mu( \frac{k}{d} ) F(k).= {3}^{n} \sum_{k=1}^{n} \sum_{d | k} d \mu( \frac{k}{d} ) F(k).= {3}^{n} \sum_{k=1}^{n} F(k) \phi(k).]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2017杭电多校赛</category>
+        <category>第五场</category>
+      </categories>
+      <tags>
+        <tag>Math</tag>
+        <tag>NTT</tag>
+        <tag>Inversion</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[shell脚本实现对拍]]></title>
     <url>%2F2019%2F06%2F27%2Fshell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0%E5%AF%B9%E6%8B%8D%2F</url>
     <content type="text"><![CDATA[每天我苦于各种找bug，总是不知道自己哪里写错了，总感觉对于所有数据应该都已经完美了。手动对拍所有数据。不停重复着三条命令：./t &gt; 1.in./a &lt; 1.in./b &lt; 1.in…… 今天我才知道，原来shell的命令脚本可以替代我完成这样枯燥的事情。我真的是愚蠢了！ 1234567891011while true; do ./t &gt; 1.in ./a &lt; 1.in &gt; a.out ./b &lt; 1.in &gt; b.out if diff a.out b.out; then printf "AC\n" else printf "WA\n" exit 0 fidone]]></content>
@@ -110,8 +126,8 @@
         <category>第三场</category>
       </categories>
       <tags>
-        <tag>Tree</tag>
         <tag>dp</tag>
+        <tag>Tree</tag>
         <tag>lca</tag>
         <tag>RMQ</tag>
       </tags>
