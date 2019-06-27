@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[可持久化treap]]></title>
+    <url>%2F2019%2F06%2F27%2F%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96treap%2F</url>
+    <content type="text"><![CDATA[场景我们需要修改，区间翻转，区间求值等（平衡树暗示），还要访问历史版本。前面我们用以前的平衡树就够了，但是要想访问历史版本，就要可持久化了。考虑各种转断腰的平衡树，我们对它们可持久化操作。回忆一下我们以前用的可持久化线段树，我们发现它有一个特点方便了我们的可持久化思想，也就是每个点只会去记录它的儿子信息，而不会考虑父亲信息。这样我们就可以在原来基础上进行一些重用和替换。但是我们用旋转的平衡树就很难解决这个问题。 无旋treaptreap = tree + heap，顾名思义，它是由一棵平衡树和一个堆构成的，每个点既有val，也有key，这棵树的中序遍历是递增的，而每个结点的key都小于（或都大于）它的儿子结点。 关键函数有两个，一个是split，一个是merge。]]></content>
+      <categories>
+        <category>acm</category>
+        <category>data structure</category>
+      </categories>
+      <tags>
+        <tag>data structure</tag>
+        <tag>可持久化treap</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Rikka with Sequence]]></title>
+    <url>%2F2019%2F06%2F27%2FRikka-with-Sequence%2F</url>
+    <content type="text"><![CDATA[题目链接题意支持序列三种操作：1.求(l,r)区间和。2.执行代码”for (int i=l;i&lt;=r;i++) A[i]=A[i-k];”3.将区间(l,r)，序列还原。 思路可持久化treap，在无旋treap的基础上发展而来，这道题算是我的第一次可持久treap吧。要注意的一个是操作二，有可能涉及到一个区间重复很多遍，我们可以用类似快速幂的操作将这个区间复制到一个目的长度。还有要及时回收多余的结点，暴力重建整棵树。]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2017杭电多校赛</category>
+        <category>第五场</category>
+      </categories>
+      <tags>
+        <tag>data structure</tag>
+        <tag>可持久化treap</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Rikka with Rock-paper-scissors]]></title>
     <url>%2F2019%2F06%2F27%2FRikka-with-Rock-paper-scissors%2F</url>
     <content type="text"><![CDATA[题目链接题意有两个人进行$n$局石头剪刀布游戏，设其中一个人赢了$a$局，另一个人赢了$b$局，$n-a-b$局平局。则分数为$gcd(a,b)$。问分数的期望。 思路ans={3}^{n} \sum_{a=0}^{n} \sum_{b=0}^{n-a} C_{n}^{a} C_{n-a}^{b} gcd(a, b).={3}^{n} \sum_{d=1}^{n} \sum_{a=0}^{n} \sum_{b=0}^{n-a} C_{n}^{a} C_{n-a}^{b} d[gcd(a,b)==d].={3}^{n} \sum_{d=1}^{n} d f(d).f(d) = \sum_{a=0}^{n} \sum_{b=0}^{n-a} C_{n}^{a} C_{n-a}^{b} [gcd(a,b) == d].F(d) = \sum_{a=0}^{n} \sum_{b=0}^{n-a} C_{n}^{a} C_{n-a}^{b} [d | gcd(a, b)].F(d) = \sum_{d | k} f(k).f(d) = \sum_{d | k} \mu( \frac{k}{d}) F(k).F(d) = \sum_{a=0}^{n} \sum_{b=0}^{n-a} C_{n}^{a} C_{n-a}^{b} [d | gcd(a,b)] [gcd(a, b) != 0].= \sum_{a=0}^{ \frac{n}{d} } \sum_{b=0}^{ \frac{n}{d} - a} C_{n}^{ad} C_{n-ad}^{bd} -1.= \sum_{a=0}^{ \frac{n}{d} } \sum_{b=0}^{ \frac{n}{d} - a} \frac{n!}{(ad)!(bd)!(n-ad-bd)!} -1.= \sum_{a=0}^{ \frac{n}{d} } \sum_{b=0}^{a} \frac{n!}{(ad - bd)!(bd)!(n-ad)!} - 1.= n! \sum_{a=0}^{ \frac{n}{d} } \frac{1}{(n - ad)! } \sum_{b=0}^{a} \frac{1}{(bd)!(ad-bd)!} - 1.= n! \sum_{a=0}^{ \frac{n}{d} } \frac{1}{(n - ad)! } (fac * fac)_{a} - 1.可以用FFT优化这个狄利克雷卷积。 ans = {3}^{n} \sum_{d=1}^{n} d f(d).= {3}^{n} \sum_{d=1}^{n} d \sum_{d | k} \mu( \frac{k}{d} ) F(k).= {3}^{n} \sum_{k=1}^{n} \sum_{d | k} d \mu( \frac{k}{d} ) F(k).= {3}^{n} \sum_{k=1}^{n} F(k) \phi(k).]]></content>
@@ -126,8 +154,8 @@
         <category>第三场</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>Tree</tag>
+        <tag>dp</tag>
         <tag>lca</tag>
         <tag>RMQ</tag>
       </tags>

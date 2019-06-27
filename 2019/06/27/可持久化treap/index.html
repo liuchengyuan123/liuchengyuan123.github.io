@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="data structure,可持久化treap,">
 
 
 
@@ -86,17 +86,18 @@
 
 
 
-<meta name="description" content="题目链接队友直接过了，打扰了">
+<meta name="description" content="场景我们需要修改，区间翻转，区间求值等（平衡树暗示），还要访问历史版本。前面我们用以前的平衡树就够了，但是要想访问历史版本，就要可持久化了。考虑各种转断腰的平衡树，我们对它们可持久化操作。回忆一下我们以前用的可持久化线段树，我们发现它有一个特点方便了我们的可持久化思想，也就是每个点只会去记录它的儿子信息，而不会考虑父亲信息。这样我们就可以在原来基础上进行一些重用和替换。但是我们用旋转的平衡树就很难">
+<meta name="keywords" content="data structure,可持久化treap">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Maximum Sequence">
-<meta property="og:url" content="http://yoursite.com/2019/06/21/Maximum-Sequence/index.html">
+<meta property="og:title" content="可持久化treap">
+<meta property="og:url" content="http://yoursite.com/2019/06/27/可持久化treap/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目链接队友直接过了，打扰了">
+<meta property="og:description" content="场景我们需要修改，区间翻转，区间求值等（平衡树暗示），还要访问历史版本。前面我们用以前的平衡树就够了，但是要想访问历史版本，就要可持久化了。考虑各种转断腰的平衡树，我们对它们可持久化操作。回忆一下我们以前用的可持久化线段树，我们发现它有一个特点方便了我们的可持久化思想，也就是每个点只会去记录它的儿子信息，而不会考虑父亲信息。这样我们就可以在原来基础上进行一些重用和替换。但是我们用旋转的平衡树就很难">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-21T12:47:28.697Z">
+<meta property="og:updated_time" content="2019-06-27T15:31:11.207Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Maximum Sequence">
-<meta name="twitter:description" content="题目链接队友直接过了，打扰了">
+<meta name="twitter:title" content="可持久化treap">
+<meta name="twitter:description" content="场景我们需要修改，区间翻转，区间求值等（平衡树暗示），还要访问历史版本。前面我们用以前的平衡树就够了，但是要想访问历史版本，就要可持久化了。考虑各种转断腰的平衡树，我们对它们可持久化操作。回忆一下我们以前用的可持久化线段树，我们发现它有一个特点方便了我们的可持久化思想，也就是每个点只会去记录它的儿子信息，而不会考虑父亲信息。这样我们就可以在原来基础上进行一些重用和替换。但是我们用旋转的平衡树就很难">
 
 
 
@@ -126,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/21/Maximum-Sequence/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/27/可持久化treap/">
 
 
 
 
 
-  <title>Maximum Sequence | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>可持久化treap | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -291,7 +292,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/21/Maximum-Sequence/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/27/可持久化treap/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -308,7 +309,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Maximum Sequence</h1>
+          <h1 class="post-title" itemprop="name headline">可持久化treap</h1>
         
 
         <div class="post-meta">
@@ -320,8 +321,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-21T19:41:26+08:00">
-                2019-06-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-27T23:20:53+08:00">
+                2019-06-27
               </time>
             
 
@@ -354,30 +355,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/acm/做题记录/" itemprop="url" rel="index">
-                    <span itemprop="name">做题记录</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/acm/做题记录/2017杭电多校赛/" itemprop="url" rel="index">
-                    <span itemprop="name">2017杭电多校赛</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/acm/做题记录/2017杭电多校赛/第二场/" itemprop="url" rel="index">
-                    <span itemprop="name">第二场</span>
+                  <a href="/categories/acm/data-structure/" itemprop="url" rel="index">
+                    <span itemprop="name">data structure</span>
                   </a>
                 </span>
 
@@ -413,7 +392,10 @@
       
 
       
-        <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6047" target="_blank" rel="noopener">题目链接</a></h3><h3 id="队友直接过了，打扰了"><a href="#队友直接过了，打扰了" class="headerlink" title="队友直接过了，打扰了"></a>队友直接过了，打扰了</h3>
+        <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>我们需要修改，区间翻转，区间求值等（平衡树暗示），还要访问历史版本。<br>前面我们用以前的平衡树就够了，但是要想访问历史版本，就要可持久化了。<br>考虑各种转断腰的平衡树，我们对它们可持久化操作。<br>回忆一下我们以前用的可持久化线段树，我们发现它有一个特点方便了我们的可持久化思想，也就是每个点只会去记录它的儿子信息，而不会考虑父亲信息。这样我们就可以在原来基础上进行一些重用和替换。但是我们用旋转的平衡树就很难解决这个问题。</p>
+<h2 id="无旋treap"><a href="#无旋treap" class="headerlink" title="无旋treap"></a>无旋treap</h2><p>treap = tree + heap，顾名思义，它是由一棵平衡树和一个堆构成的，每个点既有val，也有key，这棵树的中序遍历是递增的，而每个结点的key都小于（或都大于）它的儿子结点。</p>
+<p>关键函数有两个，一个是split，一个是merge。</p>
+
       
     </div>
     
@@ -428,6 +410,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/data-structure/" rel="tag"># data structure</a>
+          
+            <a href="/tags/可持久化treap/" rel="tag"># 可持久化treap</a>
+          
+        </div>
+      
 
       
       
@@ -437,8 +427,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/21/Is-Derek-lying/" rel="next" title="Is Derek lying?">
-                <i class="fa fa-chevron-left"></i> Is Derek lying?
+              <a href="/2019/06/27/Rikka-with-Sequence/" rel="next" title="Rikka with Sequence">
+                <i class="fa fa-chevron-left"></i> Rikka with Sequence
               </a>
             
           </div>
@@ -446,10 +436,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/21/Funny-Function/" rel="prev" title="Funny Function">
-                Funny Function <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -625,7 +611,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目链接"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#队友直接过了，打扰了"><span class="nav-number">2.</span> <span class="nav-text">队友直接过了，打扰了</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#场景"><span class="nav-number">1.</span> <span class="nav-text">场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无旋treap"><span class="nav-number">2.</span> <span class="nav-text">无旋treap</span></a></li></ol></div>
             
 
           </div>
