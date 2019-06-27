@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[shell脚本实现对拍]]></title>
+    <url>%2F2019%2F06%2F27%2Fshell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0%E5%AF%B9%E6%8B%8D%2F</url>
+    <content type="text"><![CDATA[每天我苦于各种找bug，总是不知道自己哪里写错了，总感觉对于所有数据应该都已经完美了。手动对拍所有数据。不停重复着三条命令：./t &gt; 1.in./a &lt; 1.in./b &lt; 1.in…… 今天我才知道，原来shell的命令脚本可以替代我完成这样枯燥的事情。我真的是愚蠢了！ 1234567891011while true; do ./t &gt; 1.in ./a &lt; 1.in &gt; a.out ./b &lt; 1.in &gt; b.out if diff a.out b.out; then printf "AC\n" else printf "WA\n" exit 0 fidone]]></content>
+      <categories>
+        <category>Ubuntu</category>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Classic Quotation]]></title>
     <url>%2F2019%2F06%2F26%2FClassic-Quotation%2F</url>
     <content type="text"><![CDATA[题目链接题意有串S和T，询问在S中挖去S.substr(i,j),(1 \leq i \leq L, R \leq j \leq n)后，T在其中出现的次数和。 思路题解讲的很清楚。 说的好像很好写的样子，但是除了上帝没人知道我下面的代码在干什么。挖个坑，回头把它改一改。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const int N = 1e5 + 5;char s[N], t[105];int Next[105];void kmp_pre()&#123; int tlen = strlen(t); int i, j; j = Next[0] = -1; i = 0; while (i &lt; tlen) &#123; while (j != -1 &amp;&amp; t[i] != t[j]) j = Next[j]; Next[++i] = ++j; &#125;&#125;ll pref[N], preg[N], suf[N][105], sum[N][105];ll l, r;int k, n, m;ll get()&#123; ll ans = (n - r) * preg[l];// dbg(n, l, r, ans); for (int i = 0; i &lt; m; i++) &#123;// dbg(i, sum[l][i], suf[r][i]); ans += sum[l][i] * suf[r][i]; &#125; return ans;&#125;void solve()&#123; kmp_pre(); int slen = strlen(s), tlen = strlen(t); int i = 0, j = 0; pref[0] = 0; preg[0] = 0; while (i &lt; slen) &#123; while (j != -1 &amp;&amp; s[i] != t[j]) j = Next[j]; j++, i++; preg[i] = preg[i - 1] + (j == tlen); if (j == tlen) j = Next[j]; pref[i] = j;// dbg(i, pref[i], preg[i]); &#125; for (int i = 0; i &lt;= slen; i++) for (int j = 0; j &lt;= tlen; j++) suf[i][j] = 0; for (int i = slen - 2; i &gt;= 0; i--) for (int j = tlen - 1; j &gt;= 0; j--) &#123; int cj = j; while (cj != -1 &amp;&amp; t[cj] != s[i + 1]) cj = Next[cj]; cj++; suf[i][j] = suf[i + 1][cj % tlen] + (cj == tlen);// dbg(i, j, suf[i][j]); &#125; for (int i = 1; i &lt; slen; i++) preg[i] += preg[i - 1]; for (int j = 0; j &lt; tlen; j++) for (int i = tlen - 2; i &gt;= 0; i--) suf[i][j] += suf[i + 1][j]; for (int i = 0; i &lt;= tlen; i++) for (int j = 0; j &lt;= slen; j++) sum[j][i] = 0; for (int i = 0; i &lt; slen; i++) sum[i + 1][pref[i]]++; for (int i = 0; i &lt; slen; i++) for (int j = 0; j &lt; tlen; j++) sum[i][j] += sum[i - 1][j]; while (k--) &#123; scanf("%lld%lld", &amp;l, &amp;r); l--, r--; printf("%lld\n", get()); &#125;&#125;int main()&#123; int T; scanf("%d", &amp;T); while (T--) &#123; scanf("%d%d%d", &amp;n, &amp;m, &amp;k); scanf("%s", s); scanf("%s", t); solve(); &#125; return 0;&#125;]]></content>

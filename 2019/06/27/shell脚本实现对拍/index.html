@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="shell,">
 
 
 
@@ -86,13 +86,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/Greedy/index.html">
+<meta name="description" content="每天我苦于各种找bug，总是不知道自己哪里写错了，总感觉对于所有数据应该都已经完美了。手动对拍所有数据。不停重复着三条命令：./t &amp;gt; 1.in./a &amp;lt; 1.in./b &amp;lt; 1.in…… 今天我才知道，原来shell的命令脚本可以替代我完成这样枯燥的事情。我真的是愚蠢了！ 1234567891011while true; do    ./t &amp;gt; 1.in    ./a &amp;">
+<meta name="keywords" content="shell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell脚本实现对拍">
+<meta property="og:url" content="http://yoursite.com/2019/06/27/shell脚本实现对拍/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="每天我苦于各种找bug，总是不知道自己哪里写错了，总感觉对于所有数据应该都已经完美了。手动对拍所有数据。不停重复着三条命令：./t &amp;gt; 1.in./a &amp;lt; 1.in./b &amp;lt; 1.in…… 今天我才知道，原来shell的命令脚本可以替代我完成这样枯燥的事情。我真的是愚蠢了！ 1234567891011while true; do    ./t &amp;gt; 1.in    ./a &amp;">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-27T02:27:18.508Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="shell脚本实现对拍">
+<meta name="twitter:description" content="每天我苦于各种找bug，总是不知道自己哪里写错了，总感觉对于所有数据应该都已经完美了。手动对拍所有数据。不停重复着三条命令：./t &amp;gt; 1.in./a &amp;lt; 1.in./b &amp;lt; 1.in…… 今天我才知道，原来shell的命令脚本可以替代我完成这样枯燥的事情。我真的是愚蠢了！ 1234567891011while true; do    ./t &amp;gt; 1.in    ./a &amp;">
 
 
 
@@ -122,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Greedy/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/27/shell脚本实现对拍/">
 
 
 
 
 
-  <title>Tag: Greedy | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>shell脚本实现对拍 | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -147,7 +152,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -273,52 +278,182 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Greedy<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/27/shell脚本实现对拍/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/menhera.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/06/19/Balala-Power/" itemprop="url">
-              
-                <span itemprop="name">Balala Power!</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">shell脚本实现对拍</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-19T22:44:25+08:00" content="2019-06-19">
-          06-19
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-27T10:21:25+08:00">
+                2019-06-27
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ubuntu/" itemprop="url" rel="index">
+                    <span itemprop="name">Ubuntu</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ubuntu/shell/" itemprop="url" rel="index">
+                    <span itemprop="name">shell</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>每天我苦于各种找bug，总是不知道自己哪里写错了，总感觉对于所有数据应该都已经完美了。<br>手动对拍所有数据。不停重复着三条命令：<br>./t &gt; 1.in<br>./a &lt; 1.in<br>./b &lt; 1.in<br>……</p>
+<h2 id="今天我才知道，原来shell的命令脚本可以替代我完成这样枯燥的事情。"><a href="#今天我才知道，原来shell的命令脚本可以替代我完成这样枯燥的事情。" class="headerlink" title="今天我才知道，原来shell的命令脚本可以替代我完成这样枯燥的事情。"></a>今天我才知道，原来shell的命令脚本可以替代我完成这样枯燥的事情。</h2><p>我真的是愚蠢了！</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="literal">true</span>; <span class="keyword">do</span></span><br><span class="line">    ./t &gt; 1.in</span><br><span class="line">    ./a &lt; 1.in &gt; a.out</span><br><span class="line">    ./b &lt; 1.in &gt; b.out</span><br><span class="line">    <span class="keyword">if</span> diff a.out b.out; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">"AC\n"</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">"WA\n"</span></span><br><span class="line">        <span class="built_in">exit</span> 0</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/shell/" rel="tag"># shell</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/26/Classic-Quotation/" rel="next" title="Classic Quotation">
+                <i class="fa fa-chevron-left"></i> Classic Quotation
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -326,6 +461,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -346,8 +485,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -451,6 +599,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#今天我才知道，原来shell的命令脚本可以替代我完成这样枯燥的事情。"><span class="nav-number">1.</span> <span class="nav-text">今天我才知道，原来shell的命令脚本可以替代我完成这样枯燥的事情。</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -600,6 +764,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -958,7 +1126,7 @@
         onPopupClose();
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -974,26 +1142,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
