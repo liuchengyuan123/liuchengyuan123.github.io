@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Rikka with Subset]]></title>
+    <url>%2F2019%2F06%2F28%2FRikka-with-Subset%2F</url>
+    <content type="text"><![CDATA[题目链接题意 有$A{1}$到$A{n}$的n个数字，和为$m$，于是我们得到了${2}^{m}$个子集，每个子集都有一个和，我们现在知道了和为$i$的子集数量为$B{i}$，计算$A{1}$到$A_{n}$. 思路 我们可以贪心的选，举个例子，比如我们知道最小的数字一定是第一个不为0的$A{i}$，而且它的数量是$A{i}$个，那么以它们为子集会产生的贡献我们可以用组合数计算出来，每次我们看到一个新的数字，如果它还有需要的贡献我们没有算，那么就会多出这么多个$i$，我们再对它计算贡献加到后面去。]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2017杭电多校赛</category>
+        <category>第五场</category>
+      </categories>
+      <tags>
+        <tag>greedy</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Rikka with Competition]]></title>
     <url>%2F2019%2F06%2F28%2FRikka-with-Competition%2F</url>
     <content type="text"><![CDATA[题目链接思路 只要所有人的差距都在k以内，所有人都会赢，否则，小的那些人一定不会赢，所以数一下差距为k以内的最大的几个人数量就可以了。]]></content>
@@ -168,8 +182,8 @@
         <category>第三场</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>Tree</tag>
+        <tag>dp</tag>
         <tag>lca</tag>
         <tag>RMQ</tag>
       </tags>
