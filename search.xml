@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Rikka with Competition]]></title>
+    <url>%2F2019%2F06%2F28%2FRikka-with-Competition%2F</url>
+    <content type="text"><![CDATA[题目链接思路 只要所有人的差距都在k以内，所有人都会赢，否则，小的那些人一定不会赢，所以数一下差距为k以内的最大的几个人数量就可以了。]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2017杭电多校赛</category>
+        <category>第五场</category>
+      </categories>
+      <tags>
+        <tag>签到题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[可持久化treap]]></title>
     <url>%2F2019%2F06%2F27%2F%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96treap%2F</url>
     <content type="text"><![CDATA[场景 我们需要修改，区间翻转，区间求值等（平衡树暗示），还要访问历史版本。 前面我们用以前的平衡树就够了，但是要想访问历史版本，就要可持久化了。 考虑各种转断腰的平衡树，我们对它们可持久化操作。 回忆一下我们以前用的可持久化线段树，我们发现它有一个特点方便了我们的可持久化思想，也就是每个点只会去记录它的儿子信息，而不会考虑父亲信息。这样我们就可以在原来基础上进行一些重用和替换。但是我们用旋转的平衡树就很难解决这个问题。 无旋treap treap = tree + heap，顾名思义，它是由一棵平衡树和一个堆构成的，每个点既有val，也有key，这棵树的中序遍历是递增的，而每个结点的key都小于（或都大于）它的儿子结点。 关键函数有两个，一个是split，一个是merge。 split 这个函数的作用主要是把一棵树按照权值或者大小分成左右两棵子树，我们只要按照原来的规则不破坏，形成的两棵子树在很大概率上都是比较平衡的。12345678910111213141516171819void split(int root, int&amp; x, int&amp; y, int val)&#123; if (!root) &#123; x = y = 0; return; &#125; if (treap[root].val &lt;= val) &#123; x = root; split(rs(root), rs(x), y, val); &#125; else &#123; y = root; split(ls(root), x, ls(y), val); &#125; pushup(root);&#125; merge merge的操作是把两棵树合并成一棵树，关键字小的在上，左右顺序在参数顺序中已经知道。12345678910111213141516171819void merge(int &amp;root, int x, int y)&#123; if (!x || !y) &#123; root = x + y; return; &#125; if (treap[x].key &lt; treap[y].key) &#123; root = x; merge(rs(root), rs(x), y); &#125; else &#123; root = y; merge(ls(root), x, ls(y)); &#125; pushup(root);&#125; others 其他的操作都是在这个基础上演变而来的，我不一一详谈，几个例子，比如我们要插入一个数，就要做两件事情。 1.找到这个数字应该在的位置。 2.插进去。 那么我们怎么做呢？我们可以将这棵树分成两棵子树，左树权值都比我们要插进去的数字小，右树都比他大。然后我们为这个新的数字新建一棵树（只有他一个根节点），现在我们只要把三棵树合并一下就好了。1234567891011void insert(int&amp; root, int val)&#123; int x = 0, y = 0, z = ++cur; treap[z].val = val; treap[z].size = 1; ls(z) = rs(z) = 0; treap[z].key = Rand(); split(root, x, y, val); merge(x, x, z); merge(root, x, y);&#125; 我们怎么删除一个数字呢，同样还是找到它的位置，然后分成三棵子树，两边的树合并一下就ok啦。123456789void del(int&amp; root, int val)&#123; int x = 0, y = 0, z = 0; split(root, x, y, val); split(x, x, z, val - 1); merge(z, ls(z), rs(z)); merge(x, x, z); merge(root, x, y);&#125; 可持久化 好了，我们现在已经有了一种能够不旋转就完成区间问题、区间翻转、前驱后继等问题的平衡树，我们的可持久化操作都要在它的基础上发展出来。我找了很久都没有找到一篇单独讲怎样把无旋treap可持久化的专门博客，后来发现之所以这样，是因为它和线段树持久化太像了，几乎一模一样，所以基本都认为你会了怎么不旋转，也就会了怎么持久化。 确实如此，treap持久化也是想线段树的套路一样，把左儿子和右儿子能复制的复制，实在复制不了的新建。 比如我们要split，我们看一下要分裂的区间是否是在当前子树的某一侧，如果是，之前去分裂那个子树，否则，说明是跨过根节点的，我们新建一个点u来代替当前的点（不改变当前点的左右儿子），要得到u的左右儿子我们再去分裂当前点的左右儿子。最后返回u。 这样每次操作会新产生log(n)个节点，很多次操作以后，我们就会产生一些“垃圾点”，因为他们不会再被找到而且还占用了内存，我们需要及时暴力重建整棵树，记录哪些点没有被使用，下次垃圾回收一下。 代码可以参考这样一道模板题。]]></content>
