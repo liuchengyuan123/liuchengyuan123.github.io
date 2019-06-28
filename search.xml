@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Rikka with Candies]]></title>
     <url>%2F2019%2F06%2F28%2FRikka-with-Candies%2F</url>
-    <content type="text"><![CDATA[题目链接题意 有$n$个人，每个人有A_{i}钱，有m种糖，每个糖B_{i}元，每个人会尽量多的买他喜欢的糖，现在问有多少$(i,j)$满足第$i$个人买第$j$种糖，最后剩$k$元。 思路 若有A_{i} % B_{j} = k，则(A_{i} - k) mod B_{j} = 0.，我们不妨设x=A_{i}-x，则x mod B_{j} = 0，我们找到$x$的因子作为B_{j}，且必须有B_{j} > k，此时x=A_{i}-k，对于这样一对A_{i},B_{j}就会对答案产生贡献。 我们可以把k从大到小枚举，记录所有比当前k大的数字的倍数作为$x$，那么所有存在的A_{i}会和对应的差$k$的B_{j}产生贡献。 用bitset优化上面的算法。（学习一下手写bitset）]]></content>
+    <content type="text"><![CDATA[题目链接题意 有$n$个人，每个人有A_{i}钱，有m种糖，每个糖B_{i}元，每个人会尽量多的买他喜欢的糖，现在问有多少$(i,j)$满足第$i$个人买第$j$种糖，最后剩$k$元。 思路 若有A_{i} % B_{j} = k，则(A_{i} - k) mod B_{j} = 0.，我们不妨设x=A_{i}-k，则x mod B_{j} = 0，我们找到$x$的因子作为B_{j}，且必须有B_{j} > k，此时x=A_{i}-k，对于这样一对A_{i},B_{j}就会对答案产生贡献。 我们可以把k从大到小枚举，记录所有比当前k大的数字的倍数作为$x$，那么所有存在的A_{i}会和对应的差$k$的B_{j}产生贡献。 用bitset优化上面的算法。（学习一下手写bitset） 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const int N = 5e4 + 5;bitset&lt;N&gt; ans, A, B;int ret[N];int main()&#123; int T; scanf("%d", &amp;T); while (T--) &#123; int n, m, q; scanf("%d%d%d", &amp;n, &amp;m, &amp;q); int maxa = 0, maxb = 0; A.reset(); B.reset(); ans.reset(); memset(ret, 0, sizeof(ret)); for (int i = 1; i &lt;= n; i++) &#123; int a; scanf("%d", &amp;a); maxa = max(maxa, a); A.set(a); &#125; for (int i = 1; i &lt;= m; i++) &#123; int b; scanf("%d", &amp;b); maxb = max(maxb, b); B.set(b); &#125; for (int k = maxb; k &gt;= 0; k--) &#123; ret[k] = ((A &gt;&gt; k) &amp; ans).count() &amp; 1; if (B[k]) for (int j = 0; j &lt;= maxa; j += k) ans[j].flip(); &#125; while (q--) &#123; int k; scanf("%d", &amp;k); printf("%d\n", ret[k]); &#125; &#125; return 0;&#125;]]></content>
       <categories>
         <category>acm</category>
         <category>做题记录</category>
@@ -109,8 +109,8 @@
         <category>第三场</category>
       </categories>
       <tags>
-        <tag>KMP</tag>
         <tag>dp</tag>
+        <tag>KMP</tag>
       </tags>
   </entry>
   <entry>
@@ -196,8 +196,8 @@
         <category>第三场</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>Tree</tag>
+        <tag>dp</tag>
         <tag>lca</tag>
         <tag>RMQ</tag>
       </tags>
