@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="题目链接题意  有$A{1}$到$A{n}$的n个数字，和为$m$，于是我们得到了${2}^{m}$个子集，每个子集都有一个和，我们现在知道了和为$i$的子集数量为$B{i}$，计算$A{1}$到$A_{n}$. 思路  我们可以贪心的选，举个例子，比如我们知道最小的数字一定是第一个不为0的$A{i}$，而且它的数量是$A{i}$个，那么以它们为子集会产生的贡献我们可以用组合数计算出来，每次我们看">
+<meta name="description" content="题目链接题意  有A_{1}到A_{n}的$n$个数字，和为m，于是我们得到了{2}^{m}个子集，每个子集都有一个和，我们现在知道了和为i的子集数量为B_{i}，计算A_{1}到A_{n}. 思路  我们可以贪心的选，举个例子，比如我们知道最小的数字一定是第一个不为$0$的A_{i}，而且它的数量是A_{i}个，那么以它们为子集会产生的贡献我们可以用组合数计算出来，每次我们看到一个新的数字，如果">
 <meta name="keywords" content="greedy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Rikka with Subset">
 <meta property="og:url" content="http://yoursite.com/2019/06/28/Rikka-with-Subset/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目链接题意  有$A{1}$到$A{n}$的n个数字，和为$m$，于是我们得到了${2}^{m}$个子集，每个子集都有一个和，我们现在知道了和为$i$的子集数量为$B{i}$，计算$A{1}$到$A_{n}$. 思路  我们可以贪心的选，举个例子，比如我们知道最小的数字一定是第一个不为0的$A{i}$，而且它的数量是$A{i}$个，那么以它们为子集会产生的贡献我们可以用组合数计算出来，每次我们看">
+<meta property="og:description" content="题目链接题意  有A_{1}到A_{n}的$n$个数字，和为m，于是我们得到了{2}^{m}个子集，每个子集都有一个和，我们现在知道了和为i的子集数量为B_{i}，计算A_{1}到A_{n}. 思路  我们可以贪心的选，举个例子，比如我们知道最小的数字一定是第一个不为$0$的A_{i}，而且它的数量是A_{i}个，那么以它们为子集会产生的贡献我们可以用组合数计算出来，每次我们看到一个新的数字，如果">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-28T03:32:17.457Z">
+<meta property="og:updated_time" content="2019-06-28T03:38:21.092Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Rikka with Subset">
-<meta name="twitter:description" content="题目链接题意  有$A{1}$到$A{n}$的n个数字，和为$m$，于是我们得到了${2}^{m}$个子集，每个子集都有一个和，我们现在知道了和为$i$的子集数量为$B{i}$，计算$A{1}$到$A_{n}$. 思路  我们可以贪心的选，举个例子，比如我们知道最小的数字一定是第一个不为0的$A{i}$，而且它的数量是$A{i}$个，那么以它们为子集会产生的贡献我们可以用组合数计算出来，每次我们看">
+<meta name="twitter:description" content="题目链接题意  有A_{1}到A_{n}的$n$个数字，和为m，于是我们得到了{2}^{m}个子集，每个子集都有一个和，我们现在知道了和为i的子集数量为B_{i}，计算A_{1}到A_{n}. 思路  我们可以贪心的选，举个例子，比如我们知道最小的数字一定是第一个不为$0$的A_{i}，而且它的数量是A_{i}个，那么以它们为子集会产生的贡献我们可以用组合数计算出来，每次我们看到一个新的数字，如果">
 
 
 
@@ -414,8 +414,8 @@
       
 
       
-        <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6092" target="_blank" rel="noopener">题目链接</a></h2><h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>  有$A<em>{1}$到$A</em>{n}$的n个数字，和为$m$，于是我们得到了${2}^{m}$个子集，每个子集都有一个和，我们现在知道了和为$i$的子集数量为$B<em>{i}$，计算$A</em>{1}$到$A_{n}$.</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>  我们可以贪心的选，举个例子，比如我们知道最小的数字一定是第一个不为0的$A<em>{i}$，而且它的数量是$A</em>{i}$个，那么以它们为子集会产生的贡献我们可以用组合数计算出来，每次我们看到一个新的数字，如果它还有需要的贡献我们没有算，那么就会多出这么多个$i$，我们再对它计算贡献加到后面去。</p>
+        <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6092" target="_blank" rel="noopener">题目链接</a></h2><h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>  有<script type="math/tex">A_{1}</script>到<script type="math/tex">A_{n}</script>的$n$个数字，和为<script type="math/tex">m</script>，于是我们得到了<script type="math/tex">{2}^{m}</script>个子集，每个子集都有一个和，我们现在知道了和为<script type="math/tex">i</script>的子集数量为<script type="math/tex">B_{i}</script>，计算<script type="math/tex">A_{1}</script>到<script type="math/tex">A_{n}</script>.</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>  我们可以贪心的选，举个例子，比如我们知道最小的数字一定是第一个不为$0$的<script type="math/tex">A_{i}</script>，而且它的数量是<script type="math/tex">A_{i}</script>个，那么以它们为子集会产生的贡献我们可以用组合数计算出来，每次我们看到一个新的数字，如果它还有需要的贡献我们没有算，那么就会多出这么多个<script type="math/tex">i</script>，我们再对它计算贡献加到后面去。</p>
 
       
     </div>
