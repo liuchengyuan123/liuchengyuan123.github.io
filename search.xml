@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Rikka with Candies]]></title>
+    <url>%2F2019%2F06%2F28%2FRikka-with-Candies%2F</url>
+    <content type="text"><![CDATA[题目链接题意 有$n$个人，每个人有A_{i}钱，有m种糖，每个糖B_{i}元，每个人会尽量多的买他喜欢的糖，现在问有多少$(i,j)$满足第$i$个人买第$j$种糖，最后剩$k$元。 思路 若有A_{i} % B_{j} = k，则(A_{i} - k) mod B_{j} = 0.，我们不妨设x=A_{i}-x，则x mod B_{j} = 0，我们找到$x$的因子作为B_{j}，且必须有B_{j} > k，此时x=A_{i}-k，对于这样一对A_{i},B_{j}就会对答案产生贡献。 我们可以把k从大到小枚举，记录所有比当前k大的数字的倍数作为$x$，那么所有存在的A_{i}会和对应的差$k$的B_{j}产生贡献。 用bitset优化上面的算法。（学习一下手写bitset）]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2017杭电多校赛</category>
+        <category>第五场</category>
+      </categories>
+      <tags>
+        <tag>bitset</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Rikka with Subset]]></title>
     <url>%2F2019%2F06%2F28%2FRikka-with-Subset%2F</url>
     <content type="text"><![CDATA[题目链接题意 有A_{1}到A_{n}的$n$个数字，和为m，于是我们得到了{2}^{m}个子集，每个子集都有一个和，我们现在知道了和为i的子集数量为B_{i}，计算A_{1}到A_{n}. 思路 我们可以贪心的选，举个例子，比如我们知道最小的数字一定是第一个不为$0$的A_{i}，而且它的数量是A_{i}个，那么以它们为子集会产生的贡献我们可以用组合数计算出来，每次我们看到一个新的数字，如果它还有需要的贡献我们没有算，那么就会多出这么多个i，我们再对它计算贡献加到后面去。]]></content>
