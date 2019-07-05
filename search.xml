@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Euler theorem]]></title>
     <url>%2F2019%2F07%2F05%2FEuler-theorem%2F</url>
-    <content type="text"><![CDATA[题目链接题意计算$a%b$的不同可能结果，已知$a$。 思路数字$a$的余数一定比$b$小，所以可能结果只有$a$大小一半的规模，且必有两个可能结果$0$和$a$，在$1$到$a-1$这$n-1$个数字中，只有$1$到\frac_{n-1}{2}可以作为余数。 Code1234567891011121314151617181920212223#include&lt;bits/stdc++.h&gt;using namespace std;#define ll long long#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50int main()&#123; int t; scanf("%d",&amp;t); while(t--)&#123; int n; scanf("%d",&amp;n); printf("%d\n",(n-1)/2+2); &#125;&#125;]]></content>
+    <content type="text"><![CDATA[题目链接题意计算$a%b$的不同可能结果，已知$a$。 思路数字$a$的余数一定比$b$小，所以可能结果只有$a$大小一半的规模，且必有两个可能结果$0$和$a$，在$1$到$a-1$这$n-1$个数字中，只有$1$到\frac{n-1}{2}可以作为余数。 Code1234567891011121314151617181920212223#include&lt;bits/stdc++.h&gt;using namespace std;#define ll long long#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50int main()&#123; int t; scanf("%d",&amp;t); while(t--)&#123; int n; scanf("%d",&amp;n); printf("%d\n",(n-1)/2+2); &#125;&#125;]]></content>
       <categories>
         <category>acm</category>
         <category>2017杭电多校赛</category>
@@ -295,8 +295,8 @@
         <category>第三场</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>Tree</tag>
+        <tag>dp</tag>
         <tag>lca</tag>
         <tag>RMQ</tag>
       </tags>
@@ -425,8 +425,8 @@
         <category>第二场</category>
       </categories>
       <tags>
-        <tag>data structure</tag>
         <tag>Tree</tag>
+        <tag>data structure</tag>
         <tag>String</tag>
         <tag>SA</tag>
       </tags>
