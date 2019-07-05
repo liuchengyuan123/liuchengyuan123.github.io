@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Kolakoski]]></title>
+    <url>%2F2019%2F07%2F05%2FKolakoski%2F</url>
+    <content type="text"><![CDATA[题目链接题意给出一个规则构造数列。 思路按题意暴力模拟即可。 Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849#include&lt;bits/stdc++.h&gt;using namespace std;#define ll long long#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const int maxn=1e7+10;int arr[maxn];queue&lt;int&gt; q;void init()&#123; int cnt=0; arr[++cnt]=1; q.push(2); int cur=1; int flag=1; while(!q.empty() &amp;&amp; cnt&lt;maxn-2)&#123; int tmp=q.front(); q.pop(); cnt++; arr[cnt]=((arr[cnt-1]-1)^1)+1; q.push(arr[cnt]); if(flag)&#123; q.pop(); flag--; &#125; if(tmp==2)&#123; cnt++; arr[cnt]=arr[cnt-1]; q.push(arr[cnt]); &#125; &#125;&#125;int main()&#123; init(); int t; scanf("%d",&amp;t); while(t--)&#123; int n; scanf("%d",&amp;n); printf("%d\n",arr[n]); &#125;&#125;]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2017杭电多校赛</category>
+        <category>第七场</category>
+      </categories>
+      <tags>
+        <tag>模拟</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Just do it]]></title>
     <url>%2F2019%2F07%2F05%2FJust-do-it%2F</url>
     <content type="text"><![CDATA[题目链接题意对一个求m次前缀异或和，求这个数列。 思路我们找一下规律，发现将这个东西列出来之后，对角线上的数字都是组合数。不同数字产生贡献的位置是这些组合数为奇数的位置。那么我们可以去计算这些组合数是奇数还是偶数，如果为奇数，那么所有数字都会对对应偏移位置产生贡献。怎么计算一个很大的组合数是奇是偶呢？介绍两种方法。可以把它拆成阶乘的形式，分别计算分子分母有多少个2因子，相减一下。也可以考虑模2情况下的卢卡斯定理，变成分解其二进制。两种方法复杂度均为O(log_{2}(n)). Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061#include &lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;template&lt;class T&gt;void read(T&amp; ret)&#123; ret = 0; char c; while ((c = getchar()) &gt; '9' || c &lt; '0'); while (c &gt;= '0' &amp;&amp; c &lt;= '9') &#123; ret = ret * 10 + c - '0'; c = getchar(); &#125;&#125;const ll mod = 1e9 + 7;ll calc(ll n)&#123; ll sum = 0; while (n &gt; 1) &#123; sum += n / 2; n /= 2; &#125; return sum;&#125;const int N = 2e5 + 5;int a[N];int ans[N];int main()&#123; int t; scanf("%d",&amp;t); while(t--)&#123; int n; ll m; read(n); read(m); for(int i=1;i&lt;=n;i++) ans[i]=0; for (int i = 1; i &lt;= n; i++) read(a[i]); for(int i=1;i&lt;=n;i++)&#123; ans[i]^=a[i]; &#125; for(int i=2;i&lt;=n;i++)&#123; ll tmp1=i+m-2; ll tmp2=i-1; ll tmp3=m-1; tmp1=calc(tmp1); tmp2=calc(tmp2); tmp3=calc(tmp3); if(tmp1==tmp2+tmp3)&#123; for(int j=0;j+i&lt;=n;j++)&#123; ans[j+i]^=a[j+1]; &#125; &#125; &#125; for(int i=1;i&lt;=n;i++) printf("%d%c",ans[i],i==n?'\n':' '); &#125; return 0;&#125;]]></content>
@@ -34,6 +48,7 @@
     <content type="text"><![CDATA[题目链接题意计算$a%b$的不同可能结果，已知$a$。 思路数字$a$的余数一定比$b$小，所以可能结果只有$a$大小一半的规模，且必有两个可能结果$0$和$a$，在$1$到$a-1$这$n-1$个数字中，只有$1$到\frac{n-1}{2}可以作为余数。 Code1234567891011121314151617181920212223#include&lt;bits/stdc++.h&gt;using namespace std;#define ll long long#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50int main()&#123; int t; scanf("%d",&amp;t); while(t--)&#123; int n; scanf("%d",&amp;n); printf("%d\n",(n-1)/2+2); &#125;&#125;]]></content>
       <categories>
         <category>acm</category>
+        <category>做题记录</category>
         <category>2017杭电多校赛</category>
         <category>第七场</category>
       </categories>
