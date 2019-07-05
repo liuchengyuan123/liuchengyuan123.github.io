@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Euler theorem]]></title>
+    <url>%2F2019%2F07%2F05%2FEuler-theorem%2F</url>
+    <content type="text"><![CDATA[题目链接题意计算$a%b$的不同可能结果，已知$a$。 思路数字$a$的余数一定比$b$小，所以可能结果只有$a$大小一半的规模，且必有两个可能结果$0$和$a$，在$1$到$a-1$这$n-1$个数字中，只有$1$到\frac_{n-1}{2}可以作为余数。 Code1234567891011121314151617181920212223#include&lt;bits/stdc++.h&gt;using namespace std;#define ll long long#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50int main()&#123; int t; scanf("%d",&amp;t); while(t--)&#123; int n; scanf("%d",&amp;n); printf("%d\n",(n-1)/2+2); &#125;&#125;]]></content>
+      <categories>
+        <category>acm</category>
+        <category>2017杭电多校赛</category>
+        <category>第七场</category>
+      </categories>
+      <tags>
+        <tag>Math</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Build a tree]]></title>
     <url>%2F2019%2F07%2F05%2FBuild-a-tree%2F</url>
     <content type="text"><![CDATA[题目链接题意给一个$k$叉树，已知总结点数，计算所有结点$size$大小的异或和。 思路我们可以把一层中相同大小的结点一起计算。若是一棵满$k$叉树，我们可以得到它的层数其实是很少的。最后一层的每个结点只有三种情况：要么是满$k$的，要么是空的，要么是不满的。我们可以把层数向下扩展，模拟出后面的大小，然后每一层计算相同的个数，异或到答案里面去。 Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879#include&lt;bits/stdc++.h&gt;using namespace std;#define ll long long#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50int main()&#123; int t; scanf("%d",&amp;t); while(t--)&#123; ll n,k; scanf("%lld%lld",&amp;n,&amp;k); if(k==1)&#123; ll tmp=n+1; ll ans=0; ll pos=0; while(pos&lt;63 &amp;&amp; (1LL&lt;&lt;pos)&lt;=tmp)&#123; ll cnt=tmp/(1LL&lt;&lt;(pos+1))*(1LL&lt;&lt;pos); ll num=tmp%(1LL&lt;&lt;(pos+1)); if(num&lt;=(1LL&lt;&lt;pos)) num=0; else num=num-(1LL&lt;&lt;pos); cnt+=num; if(cnt &amp; 1) ans^=(1LL&lt;&lt;pos); pos++; &#125; printf("%lld\n",ans); continue; &#125; ll res=n,tmp=1; ll num=0; while(res&gt;=tmp)&#123; res-=tmp; num++; if(tmp&gt;res/k)&#123; break; &#125; tmp*=k; &#125; ll tmp1=0,tmp2=0,tmp3=0; if(res&gt;0)&#123; tmp1=res/k; tmp2=res%k; tmp3=tmp-tmp1-1; &#125; else&#123; ll tmpx=tmp; ll ans=0; ll tmpk=1; for(int i=1;i&lt;=num;i++)&#123; if(tmpx&amp;1) ans^=tmpk; tmpk=tmpk*k+1; tmpx/=k; &#125; printf("%lld\n",ans); continue; &#125; ll ans=0; if(res&amp;1) ans^=1; ll tmpt1=k+1,tmpt2=tmp2+1,tmpt3=1; for(int i=1;i&lt;=num;i++)&#123; if(tmp1&amp;1) ans^=tmpt1; if(tmp3&amp;1) ans^=tmpt3; ans^=tmpt2; tmpt2+=tmpt1*(tmp1%k)+tmpt3*(tmp3%k)+1; tmpt1=tmpt1*k+1; tmpt3=tmpt3*k+1; tmp1/=k; tmp3/=k; &#125; printf("%lld\n",ans); &#125; return 0;&#125; 对于$k=1$情况的特判貌似还是个结论。12345678if(k==1)&#123; ll x=n%4; if(x==0) printf("%lld\n",n); else if(x==1) printf("1\n"); else if(x==2) printf("%lld\n",n+1); else printf("0\n"); continue; &#125;]]></content>
@@ -195,8 +208,8 @@
         <category>第三场</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>KMP</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -282,8 +295,8 @@
         <category>第三场</category>
       </categories>
       <tags>
-        <tag>Tree</tag>
         <tag>dp</tag>
+        <tag>Tree</tag>
         <tag>lca</tag>
         <tag>RMQ</tag>
       </tags>
@@ -412,8 +425,8 @@
         <category>第二场</category>
       </categories>
       <tags>
-        <tag>Tree</tag>
         <tag>data structure</tag>
+        <tag>Tree</tag>
         <tag>String</tag>
         <tag>SA</tag>
       </tags>
