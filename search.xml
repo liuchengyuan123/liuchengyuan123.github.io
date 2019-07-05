@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Inverse of sum]]></title>
+    <url>%2F2019%2F07%2F05%2FInverse-of-sum%2F</url>
+    <content type="text"><![CDATA[题目链接题意给一个数列$a$,问有多少对$i,j$满足 \frac{1}{a_{i} + a_{j} } \equiv \frac{1}{a_{i} } + \frac{1}{a_{j} } mod p思路\frac{1}{a_{i} + a_{j} } \equiv \frac{1}{a_{i} } + \frac{1}{a_{j} } mod p\frac{1}{a_{i} + a_{j} } \equiv \frac{a_{i} + a_{j} }{a_{i} a_{j}} mod p{(a_{i} + a_{j})}^{2} \equiv a_{i} a_{j} mod p{a_{i} }^{2} + {a_{j} }^{2} + a_{i} a_{j} \equiv 0 mod p(a_{i} - a_{j})({a_{i} }^{2} + {a_{j} }^{2} + a_{i} a_{j}) \equiv 0 mod p{a_{i} }^{3} - {a_{j} }^{3} \equiv 0 mod p这样我们就找到了满足这个条件的$i$与$j$的关系，注意去掉一些a_{i} = a_{j}的情况。 Code1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586#include&lt;bits/stdc++.h&gt;using namespace std;#define ll long long#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50ll mod;ll mult(ll a, ll b)&#123; ll ans = 0; while (b) &#123; if (b &amp; 1) ans = (ans + a) % mod; a = (a + a) % mod; b &gt;&gt;= 1; &#125; return ans;&#125;ll Pow(ll a, ll b)&#123; ll ans = 1; while (b) &#123; if (b &amp; 1) ans = mult(ans, a); a = mult(a, a); b &gt;&gt;= 1; &#125; return ans;&#125;template&lt;class T&gt;void read(T&amp; ret)&#123; ret = 0; char c; while ((c = getchar()) &gt; '9' || c &lt; '0'); while (c &gt;= '0' &amp;&amp; c &lt;= '9') &#123; ret = ret * 10 + c - '0'; c = getchar(); &#125;&#125;const int maxn=1e5+100;ll a[maxn];map &lt;ll,int&gt; mp1,mp2;int main()&#123; int T; read(T); while (T--) &#123; int n; read(n); read(mod); for(int i=1;i&lt;=n;i++)&#123; read(a[i]); &#125; mp1.clear(); mp2.clear(); ll ans=0; for(int i=1;i&lt;=n;i++)&#123; if(a[i]==0) continue; ll tmp=mult(mult(a[i],a[i]),a[i]); ans+=mp2[tmp]; if(mp1[a[i]]!=0)&#123; ll tmp2=mult(a[i],a[i])*3%mod; if(tmp2!=0)&#123; ans-=mp1[a[i]]; &#125; &#125; mp1[a[i]]++; mp2[tmp]++; &#125; printf("%lld\n",ans); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2017杭电多校赛</category>
+        <category>第七场</category>
+      </categories>
+      <tags>
+        <tag>Math</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Euler theorem]]></title>
     <url>%2F2019%2F07%2F05%2FEuler-theorem%2F</url>
     <content type="text"><![CDATA[题目链接题意计算$a%b$的不同可能结果，已知$a$。 思路数字$a$的余数一定比$b$小，所以可能结果只有$a$大小一半的规模，且必有两个可能结果$0$和$a$，在$1$到$a-1$这$n-1$个数字中，只有$1$到\frac{n-1}{2}可以作为余数。 Code1234567891011121314151617181920212223#include&lt;bits/stdc++.h&gt;using namespace std;#define ll long long#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50int main()&#123; int t; scanf("%d",&amp;t); while(t--)&#123; int n; scanf("%d",&amp;n); printf("%d\n",(n-1)/2+2); &#125;&#125;]]></content>
