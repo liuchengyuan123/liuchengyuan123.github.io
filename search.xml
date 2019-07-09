@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Two String]]></title>
+    <url>%2F2019%2F07%2F09%2FTwo-String%2F</url>
+    <content type="text"><![CDATA[题目链接题意判断两个字符串是否匹配，匹配规则按照正则表达式的’.’和’*’来。 思路第一开始暴力匹配真的是傻。 dp$dp[i][j]$表示第一个字符串到位置$i$，第二个字符串到位置$j$能否匹配。只有三种情况的转。三种情况考虑仔细，具体看代码。这题边界有点难处理。 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#include&lt;bits/stdc++.h&gt;using namespace std;#define ll long long#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const int N = 2505;int dp[N][N];char s[N], t[N];int main()&#123; int T; scanf("%d", &amp;T); while (T--) &#123; scanf("%s%s", s+1, t+1); int lens = strlen(s+1), lent = strlen(t+1); memset(dp, 0, sizeof(dp)); dp[0][0] = 1; if(t[2]=='*')&#123; dp[0][2]=1; &#125; for (int i = 0; i &lt;= lens; i++) &#123; for (int j = 1; j &lt;=lent; j++) &#123; if(t[j] == '.') dp[i][j]=dp[i-1][j-1]; else if(t[j] == '*') &#123; dp[i][j]=max(dp[i][j-1],dp[i][j-2]); if(s[i]==s[i-1] &amp;&amp; dp[i-1][j]==1) dp[i][j]=1; &#125; else if(t[j]==s[i]) dp[i][j]=dp[i-1][j-1]; &#125; &#125; printf("%s\n", dp[lens][lent]? "yes":"no"); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2017杭电多校赛</category>
+        <category>第九场</category>
+      </categories>
+      <tags>
+        <tag>dp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Numbers]]></title>
     <url>%2F2019%2F07%2F09%2FNumbers%2F</url>
     <content type="text"><![CDATA[题目链接题意有一个数列$a$，从中任意挑出两个相加，可以形成一个新的数列$b$。现在把两个数列混在一起，问哪些是属于数列$a$的。 思路贪心因为所有数字都是正数，所以最小的一个数字一定是数列$a$的。我们可以把所有备用的已知的和记录一下，然后获得的数字如果是我们已经记录下来的要出现的，那么就把那个数字除掉。否则就是$a$数列的，其实每一次就是看新的数字是不是在我们已知的$b$数列范围里。 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445#include&lt;bits/stdc++.h&gt;using namespace std;#define ll long long#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const int N = 505;int a[N], to[125500];priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt; &gt; pq;int main()&#123; int n; while (scanf("%d", &amp;n) != EOF) &#123; while (!pq.empty()) pq.pop(); int cur = 0; for (int i = 1; i &lt;= n; i++) &#123; scanf("%d", &amp;to[i]); if (!pq.empty() &amp;&amp; to[i] == pq.top()) &#123; pq.pop(); continue; &#125; for (int j = 1; j &lt;= cur; j++) pq.push(to[i] + a[j]); a[++cur] = to[i]; //dbg(cur, a[cur]); &#125; printf("%d\n", cur); for (int i = 1; i &lt;= cur; i++) printf("%d%c", a[i], i == cur? '\n':' '); &#125; return 0;&#125;]]></content>
