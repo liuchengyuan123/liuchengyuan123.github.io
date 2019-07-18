@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Equivalent Prefixes]]></title>
+    <url>%2F2019%2F07%2F18%2FEquivalent-Prefixes%2F</url>
+    <content type="text"><![CDATA[题目链接题意定义一个序列的$RMQ(u,l,r)$表示u_{l}到u_{r}的最小值的下标。称两个长度为$m$的序列$equivvalent$当$l \leq i \leq r,RMQ(u,l,r) = RMQ(v, l, r).$现在要求找到最大的$p$满足$u{1}..u{p}$与$v{1}..v{p}$是$equivalent$的。 思路贪心从第一个位置开始往后选，只要这个位置的起作用的范围两个数列是一样的就可以。 单调栈处理每个位置的作用范围，可以用单调栈搞定。这题算是单调晗的应用吧。 Code1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374#include&lt;bits/stdc++.h&gt;using namespace std;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endifconst int N = 1e5 + 5;int a[N], b[N];int l[2][N], r[2][N];int pos[N], nxt[N], las[N];int n;stack&lt;int&gt; lcy;void get(int arr[], int a[], int st, int ed, int bd, int dir)&#123; while (!lcy.empty()) lcy.pop(); for (int i = st; i != ed; i += dir) &#123; while (!lcy.empty() &amp;&amp; a[i] &lt; a[lcy.top()]) lcy.pop(); if (lcy.empty()) arr[i] = bd; else arr[i] = lcy.top() + dir; lcy.push(i); &#125;&#125;int main()&#123; while (scanf("%d", &amp;n) != EOF) &#123; for (int i = 1; i &lt;= n; i++) scanf("%d", &amp;a[i]); get(l[0], a, 1, n + 1, 1, 1); get(r[0], a, n, 0, n, -1); for (int i = 1; i &lt;= n; i++) scanf("%d", &amp;b[i]); get(r[1], b, n, 0, n, -1); get(l[1], b, 1, n + 1, 1, 1); int t = 1, war = n; for (int i = 2; i &lt;= war; i++) &#123; /* if (a[i] &lt; a[m1]) m1 = i; if (b[i] &lt; b[m2]) m2 = i; if (m1 == m2) t = i; */ if (l[0][i] == l[1][i]) &#123; if (min(r[0][i], i) == min(r[1][i], i)) &#123; t = i; if (r[0][i] != r[1][i]) war = min(war, min(r[0][i], r[1][i])); &#125; &#125; else break; //dbg(i, l[0][i], l[1][i], r[0][i], r[1][i], t, war); &#125; printf("%d\n", t); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2019多校赛</category>
+        <category>牛客</category>
+      </categories>
+      <tags>
+        <tag>greedy</tag>
+        <tag>单调栈</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Two Paths]]></title>
     <url>%2F2019%2F07%2F12%2FTwo-Paths%2F</url>
     <content type="text"><![CDATA[题目链接Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364#include &lt;bits/stdc++.h&gt;#define ka1 getchar()#define iis std::ios::sync_with_stdio(false)using namespace std;typedef long long LL;const int N = 100005;const int INF = 0x3f3f3f3f;const LL mod = 10000;const double eps = 1e-8;struct lp&#123; int to; LL w; lp(int a,LL b)&#123;to=a;w=b;&#125; bool operator &lt;(const lp &amp;a)const &#123; if(w!=a.w) return w&gt;a.w; return to&lt;a.to; &#125;&#125;;vector&lt;lp&gt;mp[N];LL dis1[N],dis2[N];int n,m;void init()&#123; for(int i=0;i&lt;=n;++i)mp[i].clear();&#125;void dij(int s)&#123; memset(dis1,0x3f,sizeof(dis1)); memset(dis2,0x3f,sizeof(dis2)); dis1[s]=0; priority_queue&lt;lp&gt;Q; Q.push(lp(s,0)); while(!Q.empty() )&#123; lp x=Q.top();Q.pop(); int u=x.to; if(dis2[u]&lt;x.w)continue; for(int i=0;i&lt;mp[u].size();++i)&#123; lp y=mp[u][i]; if(dis2[y.to]&gt;(x.w+y.w))&#123; dis2[y.to]=x.w+y.w; Q.push(lp(y.to,dis2[y.to])); &#125; if(dis2[y.to]&lt;dis1[y.to])&#123; swap(dis2[y.to],dis1[y.to]); &#125; &#125; &#125; printf("%lld\n",dis2[n]);&#125;int main()&#123; int t; scanf("%d",&amp;t); while(t--)&#123; int a,b,c; scanf("%d%d",&amp;n,&amp;m); init(); for(int i=0;i&lt;m;++i)&#123; scanf("%d%d%d",&amp;a,&amp;b,&amp;c); mp[a].push_back(lp(b,c)); mp[b].push_back(lp(a,c)); &#125; dij(1); &#125; return 0;&#125;]]></content>
@@ -477,8 +492,8 @@
         <category>第三场</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>Tree</tag>
+        <tag>dp</tag>
         <tag>lca</tag>
         <tag>RMQ</tag>
       </tags>
@@ -607,8 +622,8 @@
         <category>第二场</category>
       </categories>
       <tags>
-        <tag>data structure</tag>
         <tag>Tree</tag>
+        <tag>data structure</tag>
         <tag>String</tag>
         <tag>SA</tag>
       </tags>
