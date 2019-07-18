@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Math,">
+  <meta name="keywords" content="dp,">
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="题目链接题意已知 \int_{0}^{ \infty} \frac{1}{1+{x}^{2}} = \frac{ \pi}{2}.计算 \frac{1}{ \pi} \int_{0}^{ \infty} \frac{1}{ \prod_{i} ({a_{i} }^{2} + {x}^{2} )}.思路这我哪想得出来。。。\frac{1}{ \prod_{i} ({a_{i} }^{2} + {x}">
-<meta name="keywords" content="Math">
+<meta name="description" content="题目链接题意一个长度为$2(n+m)$字符串只由$’A’,’B’$构成，且可以将它分成$n+m$个子序列，其中$n$个为$AB$，$m$个为$BA$。问这样的字符串有多少个。 思路dp$dp[i][j]$表示到第$i$个字符，选了$j$个$A$，我们判断一下是否合法状态，转移就行了。 Code12345678910111213141516171819202122232425262728293031">
+<meta name="keywords" content="dp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Integration">
-<meta property="og:url" content="http://yoursite.com/2019/07/18/Integration/index.html">
+<meta property="og:title" content="ABBA">
+<meta property="og:url" content="http://yoursite.com/2019/07/18/ABBA/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目链接题意已知 \int_{0}^{ \infty} \frac{1}{1+{x}^{2}} = \frac{ \pi}{2}.计算 \frac{1}{ \pi} \int_{0}^{ \infty} \frac{1}{ \prod_{i} ({a_{i} }^{2} + {x}^{2} )}.思路这我哪想得出来。。。\frac{1}{ \prod_{i} ({a_{i} }^{2} + {x}">
+<meta property="og:description" content="题目链接题意一个长度为$2(n+m)$字符串只由$’A’,’B’$构成，且可以将它分成$n+m$个子序列，其中$n$个为$AB$，$m$个为$BA$。问这样的字符串有多少个。 思路dp$dp[i][j]$表示到第$i$个字符，选了$j$个$A$，我们判断一下是否合法状态，转移就行了。 Code12345678910111213141516171819202122232425262728293031">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-18T12:56:38.634Z">
+<meta property="og:updated_time" content="2019-07-18T13:28:43.904Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Integration">
-<meta name="twitter:description" content="题目链接题意已知 \int_{0}^{ \infty} \frac{1}{1+{x}^{2}} = \frac{ \pi}{2}.计算 \frac{1}{ \pi} \int_{0}^{ \infty} \frac{1}{ \prod_{i} ({a_{i} }^{2} + {x}^{2} )}.思路这我哪想得出来。。。\frac{1}{ \prod_{i} ({a_{i} }^{2} + {x}">
+<meta name="twitter:title" content="ABBA">
+<meta name="twitter:description" content="题目链接题意一个长度为$2(n+m)$字符串只由$’A’,’B’$构成，且可以将它分成$n+m$个子序列，其中$n$个为$AB$，$m$个为$BA$。问这样的字符串有多少个。 思路dp$dp[i][j]$表示到第$i$个字符，选了$j$个$A$，我们判断一下是否合法状态，转移就行了。 Code12345678910111213141516171819202122232425262728293031">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/18/Integration/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/18/ABBA/">
 
 
 
 
 
-  <title>Integration | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>ABBA | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -292,7 +292,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/18/Integration/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/18/ABBA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -309,7 +309,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Integration</h1>
+          <h1 class="post-title" itemprop="name headline">ABBA</h1>
         
 
         <div class="post-meta">
@@ -321,7 +321,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-18T20:09:24+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-18T21:23:21+08:00">
                 2019-07-18
               </time>
             
@@ -414,10 +414,9 @@
       
 
       
-        <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://ac.nowcoder.com/acm/contest/881/B" target="_blank" rel="noopener">题目链接</a></h2><h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>已知</p>
-<script type="math/tex; mode=display">\int_{0}^{ \infty} \frac{1}{1+{x}^{2}} = \frac{ \pi}{2}.</script><p>计算</p>
-<script type="math/tex; mode=display">\frac{1}{ \pi} \int_{0}^{ \infty} \frac{1}{ \prod_{i} ({a_{i} }^{2} + {x}^{2} )}.</script><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="这我哪想得出来。。。"><a href="#这我哪想得出来。。。" class="headerlink" title="这我哪想得出来。。。"></a>这我哪想得出来。。。</h3><script type="math/tex; mode=display">\frac{1}{ \prod_{i} ({a_{i} }^{2} + {x}^{2})} = \sum_{i} \frac{c_{i} }{({a_{i} }^{2}+{x}^{2} )}.</script><script type="math/tex; mode=display">1 = \sum_{i} \frac{c_{i} \prod_{j} ({a_{j} }^{2} + {x}^{2} )}{({a_{i} }^{2} + {x}^{2})}.</script><script type="math/tex; mode=display">1 = c_{i} \prod_{i \neq j} ({a_{j} }^{2} + {x}^{2}) + \sum_{j \neq i} \frac{c_{j} \prod_{k \neq j} ({a_{k} }^{2} + {x}^{2})}{ {a_{j}}^{2} + {x}^{2} }.</script><script type="math/tex; mode=display">x = a_{i} i.</script><p>$i$为单位虚根.</p>
-<script type="math/tex; mode=display">1 = c_{i} \prod_{j \neq i} ({a_{j} }^{2} - {a_{i} }^{2}) + 0.</script><script type="math/tex; mode=display">c_{i} = \frac{1}{ \prod_{j \neq i} ({a_{j} }^{2} - {a_{i} }^{2})}.</script><h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> dbg(x...) do&#123;cout <span class="meta-string">&lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">err</span><span class="params">()</span></span>&#123;<span class="built_in">cout</span> &lt;&lt; <span class="string">"\033[39;0m"</span> &lt;&lt; <span class="built_in">endl</span>;&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>...&gt; <span class="class"><span class="keyword">class</span> <span class="title">T</span>, <span class="title">typename</span> <span class="title">t</span>, <span class="title">typename</span>... <span class="title">A</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">err</span>(<span class="title">T</span>&lt;t&gt; <span class="title">a</span>, <span class="title">A</span>... <span class="title">x</span>)&#123;</span><span class="keyword">for</span> (<span class="keyword">auto</span> v: a) <span class="built_in">cout</span> &lt;&lt; v &lt;&lt; <span class="string">' '</span>; err(x...);&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... A&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">err</span><span class="params">(T a, A... x)</span></span>&#123;<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="string">' '</span>; err(x...);&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> dbg(...)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 1ll &lt;&lt; 50</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ll mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="function">ll <span class="title">Pow</span><span class="params">(ll a, ll b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ll ans = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (b)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (b &amp; <span class="number">1</span>)</span><br><span class="line">			ans = ans * a % mod;</span><br><span class="line">		a = a * a % mod;</span><br><span class="line">		b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e3</span> + <span class="number">5</span>;</span><br><span class="line">ll a[N], c[N];</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">read</span>(<span class="title">T</span>&amp; <span class="title">ret</span>)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	ret = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">char</span> c;</span><br><span class="line">	<span class="keyword">while</span> ((c = getchar()) &gt; <span class="string">'9'</span> || c &lt; <span class="string">'0'</span>);</span><br><span class="line">	<span class="keyword">while</span> (c &gt;= <span class="string">'0'</span> &amp;&amp; c &lt;= <span class="string">'9'</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		ret = ret * <span class="number">10</span> + c - <span class="string">'0'</span>;</span><br><span class="line">		c = getchar();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	ll inv2 = (mod + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">			read(a[i]);</span><br><span class="line">		ll ans = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			ll t = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (i == j)</span><br><span class="line">					<span class="keyword">continue</span>;</span><br><span class="line">				ll x = a[j] * a[j] % mod - a[i] * a[i] % mod;</span><br><span class="line">				x = (x + <span class="number">2</span> * mod) % mod;</span><br><span class="line">				t = t * Pow(x, mod - <span class="number">2</span>) % mod;</span><br><span class="line">			&#125;</span><br><span class="line">			ans = (ans + t * Pow(a[i], mod - <span class="number">2</span>) % mod) % mod;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans * inv2 % mod);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://ac.nowcoder.com/acm/contest/881/E" target="_blank" rel="noopener">题目链接</a></h2><h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>一个长度为$2(n+m)$字符串只由$’A’,’B’$构成，且可以将它分成$n+m$个子序列，其中$n$个为$AB$，$m$个为$BA$。问这样的字符串有多少个。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="dp"><a href="#dp" class="headerlink" title="dp"></a>dp</h3><p>$dp[i][j]$表示到第$i$个字符，选了$j$个$A$，我们判断一下是否合法状态，转移就行了。</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">2e3</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> ll mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line">ll dp[N * <span class="number">2</span>][N];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j, <span class="keyword">int</span> n, <span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> j &gt;= <span class="number">0</span> &amp;&amp; j &lt;= i &amp;&amp; j - (i - j) &lt;= n &amp;&amp; (i - j) - j &lt;= m;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n, m;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m) == <span class="number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">2</span> * (n + m); i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= n + m; j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (check(i - <span class="number">1</span>, j - <span class="number">1</span>, n, m))</span><br><span class="line">					dp[i][j] = (dp[i - <span class="number">1</span>][j - <span class="number">1</span>] + dp[i][j]) % mod;</span><br><span class="line">				<span class="keyword">if</span> (check(i - <span class="number">1</span>, j, n, m))</span><br><span class="line">					dp[i][j] = (dp[i - <span class="number">1</span>][j] + dp[i][j]) % mod;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, dp[<span class="number">2</span> * (n + m)][n + m]);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">2</span> * (n + m); i++)</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= n + m; j++)</span><br><span class="line">				dp[i][j] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -435,7 +434,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Math/" rel="tag"># Math</a>
+            <a href="/tags/dp/" rel="tag"># dp</a>
           
         </div>
       
@@ -448,8 +447,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/18/Random-Point-in-Triangle/" rel="next" title="Random Point in Triangle">
-                <i class="fa fa-chevron-left"></i> Random Point in Triangle
+              <a href="/2019/07/18/Integration/" rel="next" title="Integration">
+                <i class="fa fa-chevron-left"></i> Integration
               </a>
             
           </div>
@@ -457,10 +456,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/18/ABBA/" rel="prev" title="ABBA">
-                ABBA <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -636,7 +631,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目链接"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#这我哪想得出来。。。"><span class="nav-number">3.1.</span> <span class="nav-text">这我哪想得出来。。。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">3.2.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目链接"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dp"><span class="nav-number">3.1.</span> <span class="nav-text">dp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">3.2.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></div>
             
 
           </div>

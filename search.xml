@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ABBA]]></title>
+    <url>%2F2019%2F07%2F18%2FABBA%2F</url>
+    <content type="text"><![CDATA[题目链接题意一个长度为$2(n+m)$字符串只由$’A’,’B’$构成，且可以将它分成$n+m$个子序列，其中$n$个为$AB$，$m$个为$BA$。问这样的字符串有多少个。 思路dp$dp[i][j]$表示到第$i$个字符，选了$j$个$A$，我们判断一下是否合法状态，转移就行了。 Code12345678910111213141516171819202122232425262728293031323334#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const int N = 2e3 + 5;const ll mod = 1e9 + 7;ll dp[N * 2][N];bool check(int i, int j, int n, int m)&#123; return j &gt;= 0 &amp;&amp; j &lt;= i &amp;&amp; j - (i - j) &lt;= n &amp;&amp; (i - j) - j &lt;= m;&#125;int main()&#123; int n, m; while (scanf("%d%d", &amp;n, &amp;m) == 2) &#123; dp[0][0] = 1; for (int i = 1; i &lt;= 2 * (n + m); i++) &#123; for (int j = 0; j &lt;= n + m; j++) &#123; if (check(i - 1, j - 1, n, m)) dp[i][j] = (dp[i - 1][j - 1] + dp[i][j]) % mod; if (check(i - 1, j, n, m)) dp[i][j] = (dp[i - 1][j] + dp[i][j]) % mod; &#125; &#125; printf("%lld\n", dp[2 * (n + m)][n + m]); for (int i = 1; i &lt;= 2 * (n + m); i++) for (int j = 0; j &lt;= n + m; j++) dp[i][j] = 0; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2019多校赛</category>
+        <category>牛客</category>
+      </categories>
+      <tags>
+        <tag>dp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Integration]]></title>
     <url>%2F2019%2F07%2F18%2FIntegration%2F</url>
     <content type="text"><![CDATA[题目链接题意已知 \int_{0}^{ \infty} \frac{1}{1+{x}^{2}} = \frac{ \pi}{2}.计算 \frac{1}{ \pi} \int_{0}^{ \infty} \frac{1}{ \prod_{i} ({a_{i} }^{2} + {x}^{2} )}.思路这我哪想得出来。。。\frac{1}{ \prod_{i} ({a_{i} }^{2} + {x}^{2})} = \sum_{i} \frac{c_{i} }{({a_{i} }^{2}+{x}^{2} )}.1 = \sum_{i} \frac{c_{i} \prod_{j} ({a_{j} }^{2} + {x}^{2} )}{({a_{i} }^{2} + {x}^{2})}.1 = c_{i} \prod_{i \neq j} ({a_{j} }^{2} + {x}^{2}) + \sum_{j \neq i} \frac{c_{j} \prod_{k \neq j} ({a_{k} }^{2} + {x}^{2})}{ {a_{j}}^{2} + {x}^{2} }.x = a_{i} i.$i$为单位虚根. 1 = c_{i} \prod_{j \neq i} ({a_{j} }^{2} - {a_{i} }^{2}) + 0.c_{i} = \frac{1}{ \prod_{j \neq i} ({a_{j} }^{2} - {a_{i} }^{2})}.Code1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const ll mod = 1e9 + 7;ll Pow(ll a, ll b)&#123; ll ans = 1; while (b) &#123; if (b &amp; 1) ans = ans * a % mod; a = a * a % mod; b &gt;&gt;= 1; &#125; return ans;&#125;const int N = 1e3 + 5;ll a[N], c[N];template&lt;class T&gt;void read(T&amp; ret)&#123; ret = 0; char c; while ((c = getchar()) &gt; '9' || c &lt; '0'); while (c &gt;= '0' &amp;&amp; c &lt;= '9') &#123; ret = ret * 10 + c - '0'; c = getchar(); &#125;&#125;int main()&#123; int n; ll inv2 = (mod + 1) / 2; while (~scanf("%d", &amp;n)) &#123; for (int i = 1; i &lt;= n; i++) read(a[i]); ll ans = 0; for (int i = 1; i &lt;= n; i++) &#123; ll t = 1; for (int j = 1; j &lt;= n; j++) &#123; if (i == j) continue; ll x = a[j] * a[j] % mod - a[i] * a[i] % mod; x = (x + 2 * mod) % mod; t = t * Pow(x, mod - 2) % mod; &#125; ans = (ans + t * Pow(a[i], mod - 2) % mod) % mod; &#125; printf("%lld\n", ans * inv2 % mod); &#125; return 0;&#125;]]></content>
@@ -448,8 +462,8 @@
         <category>第三场</category>
       </categories>
       <tags>
-        <tag>KMP</tag>
         <tag>dp</tag>
+        <tag>KMP</tag>
       </tags>
   </entry>
   <entry>
@@ -665,8 +679,8 @@
         <category>第二场</category>
       </categories>
       <tags>
-        <tag>data structure</tag>
         <tag>Tree</tag>
+        <tag>data structure</tag>
         <tag>String</tag>
         <tag>SA</tag>
       </tags>
