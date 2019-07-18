@@ -521,8 +521,8 @@
         <category>第三场</category>
       </categories>
       <tags>
-        <tag>Tree</tag>
         <tag>dp</tag>
+        <tag>Tree</tag>
         <tag>lca</tag>
         <tag>RMQ</tag>
       </tags>
@@ -651,8 +651,8 @@
         <category>第二场</category>
       </categories>
       <tags>
-        <tag>Tree</tag>
         <tag>data structure</tag>
+        <tag>Tree</tag>
         <tag>String</tag>
         <tag>SA</tag>
       </tags>
