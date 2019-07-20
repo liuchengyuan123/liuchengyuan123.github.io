@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Second Large Rectangle]]></title>
+    <url>%2F2019%2F07%2F20%2FSecond-Large-Rectangle%2F</url>
+    <content type="text"><![CDATA[题目链接题意在一个01矩阵中找出第二大的满足全部由1构成的子矩阵。 思路首先预处理出每个位置向上最大连续1的高度，然后对每一行单调栈处理处这一行中，以每个高度为最高的矩形面积是多少。遍历所有矩形，找出最大的两个和答案去比较，并且更新。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293#include&lt;bits/stdc++.h&gt;using namespace std;const int N = 1e3 + 5;int g[N][N];char s[N];int mxh[N][N];int lm[N], rm[N];stack&lt;int&gt; st;struct node&#123; int v, l, r; node(int v, int l, int r): v(v), l(l), r(r) &#123;&#125; bool operator &lt; (const node&amp; x) const &#123; return v &gt; x.v; &#125; bool operator == (const node&amp; x) const &#123; return v == x.v &amp;&amp; l == x.l &amp;&amp; r == x.r; &#125;&#125;;vector&lt;node&gt; fjw;int ans1, ans2;void use(int v)&#123; if (v &gt;= ans1) &#123; ans2 = ans1; ans1 = v; &#125; else if (v &gt;= ans2) &#123; ans2 = v; &#125;&#125;int main()&#123; int n, m; scanf("%d%d", &amp;n, &amp;m); ans1 = 0, ans2 = 0; for (int i = 1; i &lt;= n; i++) &#123; scanf("%s", s + 1); for (int j = 1; j &lt;= m; j++) g[i][j] = s[j] - '0'; while (!st.empty()) st.pop(); for (int j = 1; j &lt;= m; j++) &#123; mxh[i][j] = g[i][j]? mxh[i - 1][j] + 1: 0; while (!st.empty() &amp;&amp; mxh[i][j] &lt;= mxh[i][st.top()]) st.pop(); if (st.empty()) lm[j] = 1; else lm[j] = st.top() + 1; st.push(j); &#125; while (!st.empty()) st.pop(); for (int j = m; j &gt;= 1; j--) &#123; while (!st.empty() &amp;&amp; mxh[i][j] &lt;= mxh[i][st.top()]) st.pop(); if (st.empty()) rm[j] = m; else rm[j] = st.top() - 1; st.push(j); &#125; fjw.clear(); for (int j = 1; j &lt;= m; j++) &#123;// printf("%d %d %d %d %d\n", i, j, lm[j], rm[j], mxh[i][j]); fjw.push_back(node((rm[j] - lm[j] + 1) * mxh[i][j], lm[j], rm[j])); &#125; sort(fjw.begin(), fjw.end()); fjw.erase(unique(fjw.begin(), fjw.end()), fjw.end()); int cnt = 0; for (auto &amp;x : fjw) &#123; cnt++;// printf("set %d %d %d %d\n", i, x.v, x.l, x.r); use(x.v); use(x.v - (x.r - x.l + 1)); use(x.v - x.v / (x.r - x.l + 1)); if (cnt &gt;= 2) break; &#125; &#125; printf("%d\n", ans2); return 0;&#125;]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2019多校赛</category>
+        <category>牛客</category>
+      </categories>
+      <tags>
+        <tag>greedy</tag>
+        <tag>单调栈</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[FMT与FWT]]></title>
     <url>%2F2019%2F07%2F20%2FFMT%E4%B8%8EFWT%2F</url>
     <content type="text"><![CDATA[首先感谢几篇良心博客的博主，教程写得真的很好。真正理解快速沃尔什变换/快速莫比乌斯变换(FWT|FMT) (已完结)FMT 与 子集(逆)卷积FWT快速沃尔什变换学习笔记 集合卷积我们时常要解决一些与集合有关的卷积问题，像快速傅里叶变换那样，对下标有一些要求和限制。FWT和FMT可以成为我们解决这类问题的有力武器。 FMT我个人认为，FMT比FWT从原理角度上更好理解。接下来介绍一下快速莫比乌斯变换。 原理首先我们要证明FMT可以像FFT那样乘来乘去并保证正确性。 证明对于长度为{2}^{n}的序列，我们定义集合并卷积， h_{S} = \sum_{L \subseteq S} \sum_{R \subseteq S} [L \cup R = S]f_{L} * g_{R}.定义它的莫比乌斯变换为 \widehat{h_{S} } = \sum_{L \subseteq S} h_{L}.对集合并卷积的式子两边做FMT， \widehat{h_{S} } = \sum_{T \subseteq S} \sum_{L \subseteq T} \sum_{R \subseteq T} [L \cup R = T] f_{L} * g_{R}.\widehat{h_{S} } = \sum_{L \subseteq S} \sum_{R \subseteq S} [L \cup R \subseteq S] f_{L} * g_{R}.\widehat{h_{S} } = \widehat{f_{S} } * \widehat{g_{S} }.至此我们就证明了其具有线性变换的性质。 正变换直接暴力进行计算，其复杂度是O({n}^{3})的，这个复杂度很容易证明（虽然写烂了的话就变成O({4}^{n})）。一种优美的方法是分层进行递归处理，我们处理某一位$i$，假设一个集合$S$是不包含$i$的，那么S \cup (1 < i)]]></content>
@@ -667,8 +682,8 @@
         <category>2017杭电多校赛</category>
       </categories>
       <tags>
-        <tag>data structure</tag>
         <tag>Tree</tag>
+        <tag>data structure</tag>
         <tag>String</tag>
         <tag>SA</tag>
       </tags>
