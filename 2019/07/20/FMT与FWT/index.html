@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="FWT,">
 
 
 
@@ -86,13 +86,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/KMP/index.html">
+<meta name="description" content="首先感谢几篇良心博客的博主，教程写得真的很好。真正理解快速沃尔什变换/快速莫比乌斯变换(FWT|FMT) (已完结)FMT 与 子集(逆)卷积FWT快速沃尔什变换学习笔记 集合卷积我们时常要解决一些与集合有关的卷积问题，像快速傅里叶变换那样，对下标有一些要求和限制。FWT和FMT可以成为我们解决这类问题的有力武器。 FMT我个人认为，FMT比FWT从原理角度上更好理解。接下来介绍一下快速莫比乌斯变">
+<meta name="keywords" content="FWT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FMT与FWT">
+<meta property="og:url" content="http://yoursite.com/2019/07/20/FMT与FWT/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="首先感谢几篇良心博客的博主，教程写得真的很好。真正理解快速沃尔什变换/快速莫比乌斯变换(FWT|FMT) (已完结)FMT 与 子集(逆)卷积FWT快速沃尔什变换学习笔记 集合卷积我们时常要解决一些与集合有关的卷积问题，像快速傅里叶变换那样，对下标有一些要求和限制。FWT和FMT可以成为我们解决这类问题的有力武器。 FMT我个人认为，FMT比FWT从原理角度上更好理解。接下来介绍一下快速莫比乌斯变">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-20T02:36:15.141Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="FMT与FWT">
+<meta name="twitter:description" content="首先感谢几篇良心博客的博主，教程写得真的很好。真正理解快速沃尔什变换/快速莫比乌斯变换(FWT|FMT) (已完结)FMT 与 子集(逆)卷积FWT快速沃尔什变换学习笔记 集合卷积我们时常要解决一些与集合有关的卷积问题，像快速傅里叶变换那样，对下标有一些要求和限制。FWT和FMT可以成为我们解决这类问题的有力武器。 FMT我个人认为，FMT比FWT从原理角度上更好理解。接下来介绍一下快速莫比乌斯变">
 
 
 
@@ -122,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/KMP/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/20/FMT与FWT/">
 
 
 
 
 
-  <title>Tag: KMP | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>FMT与FWT | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -147,7 +152,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -273,52 +278,188 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>KMP<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/20/FMT与FWT/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/menhera.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/06/26/Classic-Quotation/" itemprop="url">
-              
-                <span itemprop="name">Classic Quotation</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">FMT与FWT</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-26T20:06:41+08:00" content="2019-06-26">
-          06-26
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-20T10:00:58+08:00">
+                2019-07-20
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/acm/" itemprop="url" rel="index">
+                    <span itemprop="name">acm</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/acm/Math/" itemprop="url" rel="index">
+                    <span itemprop="name">Math</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>首先感谢几篇良心博客的博主，教程写得真的很好。<br><a href="http://blog.leanote.com/post/rockdu/TX20" target="_blank" rel="noopener">真正理解快速沃尔什变换/快速莫比乌斯变换(FWT|FMT) (已完结)</a><br><a href="https://www.cnblogs.com/zjp-shadow/p/10263392.html" target="_blank" rel="noopener">FMT 与 子集(逆)卷积</a><br><a href="https://www.cnblogs.com/cjyyb/p/9065615.html" target="_blank" rel="noopener">FWT快速沃尔什变换学习笔记</a></p>
+<h1 id="集合卷积"><a href="#集合卷积" class="headerlink" title="集合卷积"></a>集合卷积</h1><p>我们时常要解决一些与集合有关的卷积问题，像快速傅里叶变换那样，对下标有一些要求和限制。<br>FWT和FMT可以成为我们解决这类问题的有力武器。</p>
+<h1 id="FMT"><a href="#FMT" class="headerlink" title="FMT"></a>FMT</h1><p>我个人认为，FMT比FWT从原理角度上更好理解。接下来介绍一下快速莫比乌斯变换。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>首先我们要证明FMT可以像FFT那样乘来乘去并保证正确性。</p>
+<h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><p>对于长度为<script type="math/tex">{2}^{n}</script>的序列，我们定义集合并卷积，</p>
+<script type="math/tex; mode=display">h_{S} = \sum_{L \subseteq S} \sum_{R \subseteq S} [L \cup R = S]f_{L} * g_{R}.</script><p>定义它的莫比乌斯变换为</p>
+<script type="math/tex; mode=display">\widehat{h_{S} } = \sum_{L \subseteq S} h_{L}.</script><p>对集合并卷积的式子两边做FMT，</p>
+<script type="math/tex; mode=display">\widehat{h_{S} } = \sum_{T \subseteq S} \sum_{L \subseteq T} \sum_{R \subseteq T} [L \cup R = T] f_{L} * g_{R}.</script><script type="math/tex; mode=display">\widehat{h_{S} } = \sum_{L \subseteq S} \sum_{R \subseteq S} [L \cup R \subseteq S] f_{L} * g_{R}.</script><script type="math/tex; mode=display">\widehat{h_{S} } = \widehat{f_{S} } * \widehat{g_{S} }.</script><p>至此我们就证明了其具有线性变换的性质。</p>
+<h3 id="正变换"><a href="#正变换" class="headerlink" title="正变换"></a>正变换</h3><p>直接暴力进行计算，其复杂度是<script type="math/tex">O({n}^{3})</script>的，</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FWT/" rel="tag"># FWT</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/19/Euclidean-Distance/" rel="next" title="Euclidean Distance">
+                <i class="fa fa-chevron-left"></i> Euclidean Distance
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -326,6 +467,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -346,8 +491,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -451,6 +605,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#集合卷积"><span class="nav-number">1.</span> <span class="nav-text">集合卷积</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FMT"><span class="nav-number">2.</span> <span class="nav-text">FMT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">2.1.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#证明"><span class="nav-number">2.1.1.</span> <span class="nav-text">证明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正变换"><span class="nav-number">2.1.2.</span> <span class="nav-text">正变换</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -613,6 +783,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
