@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[GCD of Sequence]]></title>
+    <url>%2F2019%2F07%2F21%2FGCD-of-Sequence%2F</url>
+    <content type="text"><![CDATA[题目链接题意给一个序列，让你计算有多少序列$b$满足:1.每个位置1 \leq b_{i} \leq m。2.gcd(b_{1}, b_{2}...b_{n})=d。3.和原来数列恰好有$k$个位置数字不同。 思路思路不难想，计算出$F(d)$，然后去暴力计算每一个$f(d)$。 F(d) = C_{k - n + c}^{c} { (\frac{m}{d} - 1)}^{k - n + c} { (\frac{m}{d}) }^{n - p}.f(n) = \sum_{n | d} \mu(\frac{d}{n} ) F(d).其中$c$为数字$d$的倍数出现的次数。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const int N = 3e5 + 5;int a[N];int prime[N];int tot, vis[N];int miu[N];ll F[N];void pre(int n)&#123; miu[1] = 1; tot = 0; for (int i = 2; i &lt;= n; i++) &#123; if (!vis[i]) &#123; prime[++tot] = i; miu[i] = -1; &#125; for (int j = 1; j &lt;= tot &amp;&amp; i * prime[j] &lt;= n; j++) &#123; vis[i * prime[j]] = 1; if (i % prime[j] == 0) &#123; miu[i * prime[j]] = 0; break; &#125; miu[i * prime[j]] = -miu[i]; &#125; &#125;&#125;int cnt[N];const ll mod = 1e9 + 7;ll Pow(ll a, ll b)&#123; ll ans = 1; while (b) &#123; if (b &amp; 1) ans = ans * a % mod; a = a * a % mod; b &gt;&gt;= 1; &#125; return ans;&#125;ll fac[N];ll C(int n, int m)&#123; return fac[n] * Pow(fac[n - m] * fac[m] % mod, mod - 2) % mod;&#125;int main()&#123; fac[0] = 1; for (int i = 1; i &lt;= 300000; i++) fac[i] = fac[i - 1] * 1ll * i % mod; pre(300000); int n, m, k; while (~scanf("%d%d%d", &amp;n, &amp;m, &amp;k)) &#123; memset(cnt, 0, sizeof(cnt)); for (int i = 1; i &lt;= n; i++) &#123; scanf("%d", &amp;a[i]); cnt[a[i]]++; &#125; for (int i = 1; i &lt;= m; i++) &#123; ll c = 0; for (ll d = i; d &lt;= m; d += i) &#123; c += cnt[d]; &#125; if (n - c &gt; k) F[i] = 0; else F[i] = C(c, k - n + c) * Pow(m / i - 1ll, k - n + c) % mod * Pow(m / i, n - c) % mod; //dbg(i, F[i], k, n, c); &#125; for (int i = 1; i &lt;= m; i++) &#123; ll ans = 0; for (ll d = i; d &lt;= m; d += i) ans = (ans + miu[d / i] * F[d] % mod + mod) % mod; printf("%lld%c", ans, i == m? '\n': ' '); &#125; &#125; return 0;&#125; 这里提供另一种思路计算某个数字的倍数的出现次数的方法，用莫比乌斯函数容斥一下。但让我百思不得其解的是这种方法竟然比上面要慢。如果有人可以帮我证明这两种方法的优劣性，欢迎联系我。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const int N = 3e5 + 5;int a[N];int prime[N];int tot, vis[N];int miu[N];ll F[N];void pre(int n)&#123; miu[1] = 1; tot = 0; for (int i = 2; i &lt;= n; i++) &#123; if (!vis[i]) &#123; prime[++tot] = i; miu[i] = -1; &#125; for (int j = 1; j &lt;= tot &amp;&amp; i * prime[j] &lt;= n; j++) &#123; vis[i * prime[j]] = 1; if (i % prime[j] == 0) &#123; miu[i * prime[j]] = 0; break; &#125; miu[i * prime[j]] = -miu[i]; &#125; &#125;&#125;int cnt[N];const ll mod = 1e9 + 7;ll Pow(ll a, ll b)&#123; ll ans = 1; while (b) &#123; if (b &amp; 1) ans = ans * a % mod; a = a * a % mod; b &gt;&gt;= 1; &#125; return ans;&#125;ll fac[N];ll dfs(int p, int m)&#123; if (vis[p]) return cnt[p]; for (int i = 2; p * i &lt;= m; i++) if (miu[i]) cnt[p] = (cnt[p] - miu[i] * dfs(p * i, m) % mod + mod) % mod; vis[p] = 1; //dbg(p, cnt[p]); return cnt[p];&#125;ll C(int n, int m)&#123; return fac[n] * Pow(fac[n - m] * fac[m] % mod, mod - 2) % mod;&#125;int main()&#123; fac[0] = 1; for (int i = 1; i &lt;= 300000; i++) fac[i] = fac[i - 1] * 1ll * i % mod; pre(300000); int n, m, k; while (~scanf("%d%d%d", &amp;n, &amp;m, &amp;k)) &#123; memset(cnt, 0, sizeof(cnt)); for (int i = 1; i &lt;= n; i++) &#123; scanf("%d", &amp;a[i]); cnt[a[i]]++; &#125; for (int i = 1; i &lt;= m; i++) vis[i] = 0; dfs(1, m); for (int i = 1; i &lt;= m; i++) &#123; /* ll c = 0; for (ll d = i; d &lt;= m; d += i) &#123; c += cnt[d]; &#125; */ ll c = cnt[i]; if (n - c &gt; k) F[i] = 0; else F[i] = C(c, k - n + c) * Pow(m / i - 1ll, k - n + c) % mod * Pow(m / i, n - c) % mod; //dbg(i, F[i], k, n, c); &#125; for (int i = 1; i &lt;= m; i++) &#123; ll ans = 0; for (ll d = i; d &lt;= m; d += i) ans = (ans + miu[d / i] * F[d] % mod + mod) % mod; printf("%lld%c", ans, i == m? '\n': ' '); &#125; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>HDU</category>
+      </categories>
+      <tags>
+        <tag>Math</tag>
+        <tag>Mobius inversion</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Eddy Walker]]></title>
     <url>%2F2019%2F07%2F21%2FEddy-Walker%2F</url>
     <content type="text"><![CDATA[题目链接题意有一个大小为$n$的环，现在从位置$0$开始走，或前或后，直到走到所有点都经过一遍停下来，问停在M_{i}的概率。 思路我们可以手玩几个小的$n,m$。当$n$为2： p=1.当$n$为3： p_{1} = \frac{1}{2}.当$n$为4： p_{1} = \frac{1}{2} p_{2} + \frac{1}{2} p_{2}.p_{1} + p_{2} = 1.p_{1} = p_{2} = \frac{1}{3}.当$n$为5： p_{2} = \frac{1}{2} p_{1} + \frac{1}{2} p_{2}.p_{1} + p_{2} = \frac{1}{2}.…所以当m不为$0$，概率是\frac{1}{n - 1}。1234567891011121314151617181920212223242526272829#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const int mod=1e9+7;inline ll powmod(ll a,ll b)&#123; ll ans=1; while(b)&#123;if(b&amp;1ll) ans=ans*a%mod;b&gt;&gt;=1;a=a*a%mod;&#125; return ans;&#125;int main()&#123; #ifdef local freopen("a.txt","r",stdin); #endif // local int t,n,m; ll ans=1; scanf("%d",&amp;t); while(t--) &#123; scanf("%d%d",&amp;n,&amp;m); if(!m)&#123; if(n&gt;1) ans=0; &#125; else ans=ans*powmod(n-1,mod-2)%mod; printf("%lld\n",ans); &#125; return 0;&#125;]]></content>
@@ -504,8 +518,8 @@
         <category>2017杭电多校赛</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>KMP</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -585,8 +599,8 @@
         <category>2017杭电多校赛</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>Tree</tag>
+        <tag>dp</tag>
         <tag>lca</tag>
         <tag>RMQ</tag>
       </tags>
