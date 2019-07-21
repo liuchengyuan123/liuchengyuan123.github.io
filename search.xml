@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Partition problem]]></title>
+    <url>%2F2019%2F07%2F21%2FPartition-problem%2F</url>
+    <content type="text"><![CDATA[题目链接题意将2n个人分成两组，使每组n个人，最大化每组对另外一组所有人的竞争力的和。 思路dfs，在dfs时顺便在O(n)的时间内计算影响。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const int maxn=30;ll graph[maxn][maxn];int cnt[maxn][2];int n,msk;ll ans;int w[30];inline void dfs(int num,int stat,int len,ll res,int p)&#123; if(p)&#123; for(int i=0;i&lt;num-1;i++)&#123; if(stat&amp;(1&lt;&lt;i)) res-=graph[i][num-1]; else res+=graph[i][num-1]; &#125; for(int i=num;i&lt;2*n;i++)&#123; res+=graph[i][num-1]; &#125; &#125; if(len==n)&#123; ans=max(ans,res); return ; &#125; if(num&gt;=2*n) return ; if(2*n-num&lt;n-len) return ; dfs(num+1,stat|w[num],len+1,res,1); dfs(num+1,stat,len,res,0);&#125;template&lt;class T&gt;void read(T&amp; ret)&#123; ret = 0; char c; while ((c = getchar()) &gt; '9' || c &lt; '0'); while (c &gt;= '0' &amp;&amp; c &lt;= '9') &#123; ret = ret * 10 + c - '0'; c = getchar(); &#125;&#125;template&lt;class T&gt;void write(T x)&#123; if (x == 0) &#123; putchar('0'); return; &#125; if (x &gt;= 10) write(x / 10); putchar('0' + x % 10);&#125;int main()&#123; read(n); for(int i=0;i&lt;2*n;i++)&#123; for(int j=0;j&lt;2*n;j++) read(graph[i][j]); &#125; for (int i = 0; i &lt;= 2 * n; i++) w[i] = 1 &lt;&lt; i; ans=0; dfs(0,0,0,0,0); write(ans); putchar('\n'); return 0;&#125;]]></content>
+      <categories>
+        <category>acm - 做题记录 - 2019多校赛 - 牛客</category>
+      </categories>
+      <tags>
+        <tag>dfs</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Second Large Rectangle]]></title>
     <url>%2F2019%2F07%2F20%2FSecond-Large-Rectangle%2F</url>
     <content type="text"><![CDATA[题目链接题意在一个01矩阵中找出第二大的满足全部由1构成的子矩阵。 思路首先预处理出每个位置向上最大连续1的高度，然后对每一行单调栈处理处这一行中，以每个高度为最高的矩形面积是多少。遍历所有矩形，找出最大的两个和答案去比较，并且更新。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293#include&lt;bits/stdc++.h&gt;using namespace std;const int N = 1e3 + 5;int g[N][N];char s[N];int mxh[N][N];int lm[N], rm[N];stack&lt;int&gt; st;struct node&#123; int v, l, r; node(int v, int l, int r): v(v), l(l), r(r) &#123;&#125; bool operator &lt; (const node&amp; x) const &#123; return v &gt; x.v; &#125; bool operator == (const node&amp; x) const &#123; return v == x.v &amp;&amp; l == x.l &amp;&amp; r == x.r; &#125;&#125;;vector&lt;node&gt; fjw;int ans1, ans2;void use(int v)&#123; if (v &gt;= ans1) &#123; ans2 = ans1; ans1 = v; &#125; else if (v &gt;= ans2) &#123; ans2 = v; &#125;&#125;int main()&#123; int n, m; scanf("%d%d", &amp;n, &amp;m); ans1 = 0, ans2 = 0; for (int i = 1; i &lt;= n; i++) &#123; scanf("%s", s + 1); for (int j = 1; j &lt;= m; j++) g[i][j] = s[j] - '0'; while (!st.empty()) st.pop(); for (int j = 1; j &lt;= m; j++) &#123; mxh[i][j] = g[i][j]? mxh[i - 1][j] + 1: 0; while (!st.empty() &amp;&amp; mxh[i][j] &lt;= mxh[i][st.top()]) st.pop(); if (st.empty()) lm[j] = 1; else lm[j] = st.top() + 1; st.push(j); &#125; while (!st.empty()) st.pop(); for (int j = m; j &gt;= 1; j--) &#123; while (!st.empty() &amp;&amp; mxh[i][j] &lt;= mxh[i][st.top()]) st.pop(); if (st.empty()) rm[j] = m; else rm[j] = st.top() - 1; st.push(j); &#125; fjw.clear(); for (int j = 1; j &lt;= m; j++) &#123;// printf("%d %d %d %d %d\n", i, j, lm[j], rm[j], mxh[i][j]); fjw.push_back(node((rm[j] - lm[j] + 1) * mxh[i][j], lm[j], rm[j])); &#125; sort(fjw.begin(), fjw.end()); fjw.erase(unique(fjw.begin(), fjw.end()), fjw.end()); int cnt = 0; for (auto &amp;x : fjw) &#123; cnt++;// printf("set %d %d %d %d\n", i, x.v, x.l, x.r); use(x.v); use(x.v - (x.r - x.l + 1)); use(x.v - x.v / (x.r - x.l + 1)); if (cnt &gt;= 2) break; &#125; &#125; printf("%d\n", ans2); return 0;&#125;]]></content>
@@ -682,8 +693,8 @@
         <category>2017杭电多校赛</category>
       </categories>
       <tags>
-        <tag>data structure</tag>
         <tag>Tree</tag>
+        <tag>data structure</tag>
         <tag>String</tag>
         <tag>SA</tag>
       </tags>
