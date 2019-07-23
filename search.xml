@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Vacation]]></title>
+    <url>%2F2019%2F07%2F23%2FVacation%2F</url>
+    <content type="text"><![CDATA[题目链接题意有$n$辆车在你前面开，你们都要过红绿灯（可以认为始终保持绿灯），每辆车都有最大速度v_{i}，可以认为每个司机技术很好，可以保持和前一辆车零距离。现在问你你这两车要开到红绿灯处需要多久的时间。 思路二分时间口胡：二分时间然后去check是否这$n+1$辆车不会发生碰撞，而且最后一辆车可以在这个时间内到达终点。 贪心最后的情况一定有一辆车堵着后面所有的车。我们去找这一辆车，它的时间只是和他自己有关，再把后面的车长考虑进去。所有的车取最大就可以了。123456789101112131415161718192021222324252627282930313233343536373839#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const int N = 1e5 + 5;ll l[N], s[N], v[N];int main()&#123; int n; while (~scanf("%d", &amp;n)) &#123; for (int i = 0; i &lt;= n; i++) scanf("%lld", &amp;l[i]); for (int i = 0; i &lt;= n; i++) scanf("%lld", &amp;s[i]); for (int i = 0; i &lt;= n; i++) scanf("%lld", &amp;v[i]); double ans = 1.0 * s[0] / (double)v[0]; ll sum = 0; for (int i = 1; i &lt;= n; i++) &#123; sum += l[i]; ans = max(ans, 1.0 * (s[i] + sum) / (double)v[i]); //dbg(i, ans, sum); &#125; printf("%.6f\n", ans); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2019多校赛</category>
+        <category>HDU</category>
+      </categories>
+      <tags>
+        <tag>greedy</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Function]]></title>
     <url>%2F2019%2F07%2F23%2FFunction-1%2F</url>
     <content type="text"><![CDATA[题目链接题意计算 \sum_{i = 1}^{n} gcd( \left \lfloor \sqrt[3]{i} \right \rfloor, i).对$998244353$取模。$1 \leq n \leq {10}^{21}.$ 思路ans = \sum_{i = {r}^{3} }^{n} gcd(i, \left \lfloor \sqrt[3]{n} \right \rfloor ) + \sum_{a=1}^{r-1} \sum_{i={a}^{3} }^{ {(a+1)}^{3}-1}gcd(i, {a}^{3}).\sum_{i=1}^{n}gcd(i, a) = \sum_{d=1}^{n} d \sum_{i=1}^{n}[gcd(i, a) = d].= \sum_{d|a} d \sum_{i=1}^{ \frac{n}{d} } [gcd(i, \frac{a}{d}) = 1]= \sum_{d|a} d \sum_{i=1}^{ \frac{n}{d} } \mu(i) \left \lfloor \frac{n}{di} \right \rfloor= \sum_{d|a} d \sum_{T|a, d|T} \mu( \frac{T}{d} ) \left \lfloor \frac{n}{T} \right \rfloor= \sum_{T|a} \left \lfloor \frac{n}{T} \right \rfloor \sum_{d|T} d \mu( \frac{T}{d})= \sum_{T|a} \left \lfloor \frac{n}{T} \right \rfloor \varphi(T).\sum_{a=1}^{x} \sum_{i={a}^{3} }^{ {(a+1)}^{3} - 1} gcd(i,{a}^{3})= \sum_{a=1}^{x} \sum_{T|a} \varphi(T) ( \left \lfloor \frac{ {(a+1)}^{3}-1}{T} \right \rfloor - \left \lfloor \frac{ {a}^{3} - 1}{T} \right \rfloor)= \sum_{T=1}^{x} \varphi(T) \sum_{i=1}^{ \left \lfloor \frac{x}{T} \right \rfloor} \left \lfloor \frac{ {(iT+1)}^{3}-1}{T} \right \rfloor - \left \lfloor \frac{ {(iT)}^{3}-1}{T} \right \rfloor= \sum_{T=1}^{x} \varphi(T) \sum_{i=1}^{ \left \lfloor \frac{x}{T} \right \rfloor} 3T{i}^{2}+3i+1.复杂度O( \sqrt[3]{n})。]]></content>
@@ -549,8 +563,8 @@
         <category>2017杭电多校赛</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>KMP</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -630,8 +644,8 @@
         <category>2017杭电多校赛</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>Tree</tag>
+        <tag>dp</tag>
         <tag>lca</tag>
         <tag>RMQ</tag>
       </tags>
@@ -752,8 +766,8 @@
         <category>2017杭电多校赛</category>
       </categories>
       <tags>
-        <tag>Tree</tag>
         <tag>data structure</tag>
+        <tag>Tree</tag>
         <tag>String</tag>
         <tag>SA</tag>
       </tags>
