@@ -518,8 +518,8 @@
         <category>2017杭电多校赛</category>
       </categories>
       <tags>
-        <tag>KMP</tag>
         <tag>dp</tag>
+        <tag>KMP</tag>
       </tags>
   </entry>
   <entry>
@@ -599,8 +599,8 @@
         <category>2017杭电多校赛</category>
       </categories>
       <tags>
-        <tag>Tree</tag>
         <tag>dp</tag>
+        <tag>Tree</tag>
         <tag>lca</tag>
         <tag>RMQ</tag>
       </tags>
