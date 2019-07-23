@@ -61,7 +61,10 @@
     <url>%2F2019%2F07%2F21%2FPartition-problem%2F</url>
     <content type="text"><![CDATA[题目链接题意将2n个人分成两组，使每组n个人，最大化每组对另外一组所有人的竞争力的和。 思路dfs，在dfs时顺便在O(n)的时间内计算影响。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const int maxn=30;ll graph[maxn][maxn];int cnt[maxn][2];int n,msk;ll ans;int w[30];inline void dfs(int num,int stat,int len,ll res,int p)&#123; if(p)&#123; for(int i=0;i&lt;num-1;i++)&#123; if(stat&amp;(1&lt;&lt;i)) res-=graph[i][num-1]; else res+=graph[i][num-1]; &#125; for(int i=num;i&lt;2*n;i++)&#123; res+=graph[i][num-1]; &#125; &#125; if(len==n)&#123; ans=max(ans,res); return ; &#125; if(num&gt;=2*n) return ; if(2*n-num&lt;n-len) return ; dfs(num+1,stat|w[num],len+1,res,1); dfs(num+1,stat,len,res,0);&#125;template&lt;class T&gt;void read(T&amp; ret)&#123; ret = 0; char c; while ((c = getchar()) &gt; '9' || c &lt; '0'); while (c &gt;= '0' &amp;&amp; c &lt;= '9') &#123; ret = ret * 10 + c - '0'; c = getchar(); &#125;&#125;template&lt;class T&gt;void write(T x)&#123; if (x == 0) &#123; putchar('0'); return; &#125; if (x &gt;= 10) write(x / 10); putchar('0' + x % 10);&#125;int main()&#123; read(n); for(int i=0;i&lt;2*n;i++)&#123; for(int j=0;j&lt;2*n;j++) read(graph[i][j]); &#125; for (int i = 0; i &lt;= 2 * n; i++) w[i] = 1 &lt;&lt; i; ans=0; dfs(0,0,0,0,0); write(ans); putchar('\n'); return 0;&#125;]]></content>
       <categories>
-        <category>acm - 做题记录 - 2019多校赛 - 牛客</category>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2019多校赛</category>
+        <category>牛客</category>
       </categories>
       <tags>
         <tag>dfs</tag>
