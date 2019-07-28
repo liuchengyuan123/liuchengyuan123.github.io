@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[number]]></title>
+    <url>%2F2019%2F07%2F28%2Fnumber%2F</url>
+    <content type="text"><![CDATA[题目链接题意问这个字符串中有多少个子串表示的是300的倍数。 思路记录位置到末尾的后缀和对3的余数。所有那些余数和这个数字相等的且后面有2个零的都是可行的位置。记录这样的位置数量。1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const int N = 1e5 + 5;char s[N];int sum[3];int main()&#123; scanf("%s", s); int len = strlen(s); ll ans = 0; ll cnt = 0; for (int i = len - 1; i &gt;= 0; i--) &#123; if (s[i] == '0') &#123; cnt++; if (cnt == 1) ans++; else if (cnt &gt;= 2) ans += 2; &#125; else &#123; //ans += cnt * (cnt + 1) / 2; cnt = 0; &#125; &#125;// ans += cnt * (cnt + 1) / 2;// dbg(ans); int lianxu = 0; int pre = 0; sum[0] = 0; sum[1] = 0; sum[2] = 0;// ans = 0; for (int i = len - 1; i &gt;= 0; i--) &#123; pre = pre + s[i] - '0'; pre = pre % 3;// dbg(i, pre); ans += sum[pre]; if (i + 1 &lt; len &amp;&amp; s[i] == '0' &amp;&amp; s[i + 1] == '0') sum[pre]++; &#125; printf("%lld\n", ans); return 0;&#125;]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2019多校赛</category>
+        <category>牛客</category>
+      </categories>
+      <tags>
+        <tag>模拟</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[free]]></title>
+    <url>%2F2019%2F07%2F28%2Ffree%2F</url>
+    <content type="text"><![CDATA[题目链接Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263#include&lt;bits/stdc++.h&gt;const int INF=1e9+7;using namespace std;#define pii pair&lt;int, pair&lt;int, int&gt; &gt;const int N = 10000 + 2;const int M = 50000 + 2;int tot, K, s, t, n, m;int head[N], d[N][11];struct Edge&#123; int to, w, nex;&#125; edge[M * 2];priority_queue&lt;pii, vector&lt;pii&gt;, greater&lt;pii&gt; &gt; q;void add(int u, int v, int w)&#123; edge[++tot] = (Edge)&#123;v, w, head[u]&#125;; head[u] = tot; edge[++tot] = (Edge)&#123;u, w, head[v]&#125;; head[v] = tot;&#125;void dij()&#123; while (!q.empty()) q.pop(); memset(d, INF, sizeof(d)); q.push(make_pair(0, make_pair(s, 0))); d[s][0] = 0; while (!q.empty()) &#123; int x = q.top().second.first, k = q.top().second.second; q.pop(); for (int i = head[x]; i; i = edge[i].nex) &#123; int y = edge[i].to, l = edge[i].w; if (d[x][k] + l &lt; d[y][k]) &#123; d[y][k] = d[x][k] + l; q.push(make_pair(d[y][k], make_pair(y, k))); &#125; if (k + 1 &lt;= K &amp;&amp; d[x][k] &lt; d[y][k + 1]) &#123; d[y][k + 1] = d[x][k]; q.push(make_pair(d[y][k + 1], make_pair(y, k + 1))); &#125; &#125; &#125;&#125;int main()&#123; tot=0; scanf("%d%d%d%d%d", &amp;n, &amp;m, &amp;s, &amp;t, &amp;K); while (m--) &#123; int u, v, w; scanf("%d%d%d", &amp;u, &amp;v, &amp;w); add(u, v, w); &#125; dij(); int ans = INF; for (int i = 0; i &lt;= K; i++) ans = min(d[t][i],ans); printf("%d\n", ans);&#125;]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2019多校赛</category>
+        <category>牛客</category>
+      </categories>
+      <tags>
+        <tag>Graph</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[string]]></title>
+    <url>%2F2019%2F07%2F28%2Fstring%2F</url>
+    <content type="text"><![CDATA[题目链接题意定义两个字符串$a, b$等价$a=b$或$a \neq rev(b)$。现有字符串$s$，问从其中所有字串选出一个集合，集合中所有串都不相交。询问集合最大大小。 思路贪心的想，集合最大，就是$a$的本质不同的串和$rev(a)$的本质不同的串，的和的一半，因为每一个串在$a$中对应于一个$rev(a)$中的串，但在某些情况下这两个串是一样的。没错，就是当选择的这个子串是回文串。我们建立新串$s=a+ ‘$’ +rev(a)$，计算其中本质不同串的个数，减去那些含有’$’的串，这个结果记为$p$。$a$中的回文串数量为$q$，那么答案就是\frac{p+q}{2}。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const int N = 4e5 + 5; int t1[N], t2[N], c[N]; bool cmp(int *r, int a, int b, int l)&#123; return r[a] == r[b] &amp;&amp; r[a + l] == r[b + l];&#125; void da(int str[], int sa[], int rank[], int height[], int n, int m)&#123; n++; int *x = t1, *y = t2, p; for (int i = 0; i &lt; m; i++) c[i] = 0; for (int i = 0; i &lt; n; i++) c[x[i] = str[i]]++; for (int i = 1; i &lt; m; i++) c[i] += c[i - 1]; for (int i = n - 1; i &gt;= 0; i--) sa[--c[x[i]]] = i; for (int j = 1; j &lt;= n; j &lt;&lt;= 1) &#123; p = 0; for (int i = n - j; i &lt; n; i++) &#123; y[p++] = i; &#125; for (int i = 0; i &lt; n; i++) if (sa[i] &gt;= j) y[p++] = sa[i] - j; for (int i = 0; i &lt; m; i++) c[i] = 0; for (int i = 0; i &lt; n; i++) c[x[y[i]]]++; for (int i = 1; i &lt; m; i++) c[i] += c[i - 1]; for (int i = n - 1; i &gt;= 0; i--) sa[--c[x[y[i]]]] = y[i]; swap(x, y); p = 1; x[sa[0]] = 0; for (int i = 1; i &lt; n; i++) x[sa[i]] = cmp(y, sa[i - 1], sa[i], j) ? p - 1 : p++; if (p &gt;= n) break; m = p; &#125; int k = 0; n--; for (int i = 0; i &lt;= n; i++) rank[sa[i]] = i; for (int i = 0; i &lt; n; i++) &#123; if (k) k--; int j = sa[rank[i] - 1]; while (str[i + k] == str[j + k]) k++; height[rank[i]] = k; &#125;&#125;int Rank[N], height[N], sa[N];int r[N];const int maxn = 2e5 + 5;char a[maxn], b[maxn]; struct Palindrome_Tree&#123; int n, sz, last; int ch[maxn][27], fail[maxn], len[maxn], s[maxn]; ll cnt[maxn]; int new_node(int x) &#123; for (int i = 0; i &lt; 26; i++) ch[sz][i] = 0; cnt[sz] = 0; len[sz] = x; return sz++; &#125; void init() &#123; sz = 0; new_node(0), new_node(-1); last = 0; n = 0; s[0] = -1, fail[0] = 1; fail[1] = 0, s[1] = 0; &#125; int get_fail(int u) &#123; while (s[n - len[u] - 1] != s[n]) u = fail[u]; return u; &#125; void add(int c) &#123; c -= 'a'; s[++n] = c; int u = get_fail(last); if (!ch[u][c]) &#123; int np = new_node(len[u] + 2); fail[np] = ch[get_fail(fail[u])][c]; ch[u][c] = np; &#125; last = ch[u][c]; // cnt[last]++; &#125; void counnt() &#123; for (int i = sz - 1; i &gt; 1; i--) cnt[fail[i]] += cnt[i]; &#125; void dfs(int u) &#123; for (int i = 0; i &lt; 26; i++) if (ch[u][i]) &#123; printf("%d %d\n", u, i); dfs(ch[u][i]); &#125; &#125;&#125;;Palindrome_Tree pt;int main()&#123; scanf("%s", a);// scanf("%s", b); int len = 0, lena = strlen(a), lenb = lena; for (int i = 0; i &lt; lena; i++) b[i] = a[lena - 1 - i]; b[lena] = 0; for (int i = 0; i &lt; lena; i++) r[len++] = a[i]; r[len++] = 'z' + 1; for (int i = 0; i &lt; lenb; i++) r[len++] = b[i]; r[len] = 0; da(r, sa, Rank, height, len, 128); ll p = (len + 1) * 1ll * len / 2; //dbg(0, sa[0], height[0], p, len); //dbg(1, sa[1], height[1]); for (int i = 2; i &lt;= len; i++) &#123; p -= height[i]; //dbg(i, sa[i], height[i], p); &#125; p -= (lena + 1ll) * (lenb + 1ll); //dbg(p, len); pt.init(); for (int i = 0; i &lt; lena; i++) pt.add(a[i]); //pt.counnt(); //ll q = pt.cnt[0] + pt.cnt[1]; printf("%lld\n", (p + pt.sz - 2) / 2); return 0;&#125;]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2019多校赛</category>
+        <category>牛客</category>
+      </categories>
+      <tags>
+        <tag>后缀数组</tag>
+        <tag>回文树</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[triples I]]></title>
     <url>%2F2019%2F07%2F27%2Ftriples-I%2F</url>
     <content type="text"><![CDATA[题目链接题意给一个$n$，然后要求构造最少的数字，使得他们都是3的倍数，且或起来为$n$。 思路1234567891011121314151617181920212223242526272829303132333435363738394041#include&lt;bits/stdc++.h&gt;using namespace std;int fjw[64];typedef long long ll;vector&lt;int&gt; x[3];int main()&#123; for (int p = 0; p &lt;= 62; p++) fjw[p] = (1ll &lt;&lt; p) % 3; int T; scanf("%d", &amp;T); while (T--) &#123; ll n; scanf("%lld", &amp;n); x[1].clear(); x[2].clear(); for (int p = 0; p &lt;= 62; p++) if ((n &gt;&gt; p) &amp; 1) x[fjw[p]].push_back(p); if (n % 3 == 0) &#123; printf("1 %lld\n", n); continue; &#125; if (x[n % 3].size() &gt;= 2) &#123; printf("2 %lld %lld\n", n - (1ll &lt;&lt; x[n % 3][0]), n - (1ll &lt;&lt; x[n % 3][1])); &#125; else if (x[n % 3].size() == 1) &#123; printf("2 %lld %lld\n", n - (1ll &lt;&lt; x[n % 3][0]), (1ll &lt;&lt; x[n % 3][0]) + (1ll &lt;&lt; x[(3 - n % 3) % 3][1])); &#125; else &#123; printf("2 %lld %lld\n", n - (1ll &lt;&lt; x[(3 - n % 3) % 3][0]) - (1ll &lt;&lt; x[(3 - n % 3) % 3][1]), (1ll &lt;&lt; x[(3 - n % 3) % 3][0]) + (1ll &lt;&lt; x[(3 - n % 3) % 3][1]) + (1ll &lt;&lt; x[(3 - n % 3) % 3][2])); &#125; &#125; return 0;&#125;]]></content>
@@ -823,8 +866,8 @@
         <category>2017杭电多校赛</category>
       </categories>
       <tags>
-        <tag>data structure</tag>
         <tag>Tree</tag>
+        <tag>data structure</tag>
         <tag>String</tag>
         <tag>SA</tag>
       </tags>
