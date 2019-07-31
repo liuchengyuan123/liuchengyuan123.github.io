@@ -18,7 +18,7 @@
   <entry>
     <title><![CDATA[Fansblog]]></title>
     <url>%2F2019%2F07%2F31%2FFansblog%2F</url>
-    <content type="text"><![CDATA[题目链接题意给一个素数$P$，要你找它前一个素数$Q$，计算$Q! % P$。 思路首先考虑找前一个素数。在这个范围里，素数分布的距离不是很远，我们可以筛去$P$及它前面一个区间的合数，来找素数。由威尔逊定理，我们还可以得到(n-1)! % n = 1。 Q! % P = \frac{(P-1)!}{(P-1)(P-2)...(Q+1)} % P= inv((P-1)(P-2)...(Q+1) % P)123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const int N = 1e7 + 5;int prime[N];int tot;bool vis[N];__int128 power_mod(__int128 a, ll b, __int128 mod)&#123; __int128 ans = 1; while (b) &#123; if (b &amp; 1) ans = ans * a % mod; a = a * a % mod; b &gt;&gt;= 1; &#125; return ans;&#125;void pre(int n)&#123; for (int i = 2; i &lt;= n; i++) &#123; if (!vis[i]) &#123; prime[++tot] = i; &#125; for (int j = 1; j &lt;= tot &amp;&amp; i * prime[j] &lt;= n; j++) &#123; vis[i * prime[j]] = 1; if (i % prime[j] == 0) break; &#125; &#125;&#125;int main()&#123; pre(10000000); int T; scanf("%d", &amp;T); while (T--) &#123; ll n; scanf("%lld", &amp;n); int siz = 3000000; ll st = n - siz; for (int i = 0; i &lt;= siz; i++) &#123; vis[i] = 0; &#125; for (int j = 1; j &lt;= tot; j++) &#123; for (ll k = (st / prime[j] + 1) * prime[j]; k &lt;= n; k += prime[j]) vis[k - st] = 1; &#125; ll p; for (int i = n - st - 1; i &gt;= 0; i--) if (!vis[i]) &#123; p = 1ll * i + st; break; &#125; __int128 now=1; long long ans=0; // dbg(p); for(__int128 i=p+1;i&lt;n;i++) now=now*i%n; ans=power_mod(now,n-2ll,n)%n*(n-1ll)%n; printf("%lld\n",ans); &#125; return 0;&#125;]]></content>
+    <content type="text"><![CDATA[题目链接题意给一个素数$P$，要你找它前一个素数$Q$，计算$Q! % P$。 思路首先考虑找前一个素数。在这个范围里，素数分布的距离不是很远，我们可以筛去$P$及它前面一个区间的合数，来找素数。由威尔逊定理，我们还可以得到(n-1)! mod n = 1。 Q! mod P = \frac{(P-1)!}{(P-1)(P-2)...(Q+1)} mod P= inv((P-1)(P-2)...(Q+1) mod P)123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const int N = 1e7 + 5;int prime[N];int tot;bool vis[N];__int128 power_mod(__int128 a, ll b, __int128 mod)&#123; __int128 ans = 1; while (b) &#123; if (b &amp; 1) ans = ans * a % mod; a = a * a % mod; b &gt;&gt;= 1; &#125; return ans;&#125;void pre(int n)&#123; for (int i = 2; i &lt;= n; i++) &#123; if (!vis[i]) &#123; prime[++tot] = i; &#125; for (int j = 1; j &lt;= tot &amp;&amp; i * prime[j] &lt;= n; j++) &#123; vis[i * prime[j]] = 1; if (i % prime[j] == 0) break; &#125; &#125;&#125;int main()&#123; pre(10000000); int T; scanf("%d", &amp;T); while (T--) &#123; ll n; scanf("%lld", &amp;n); int siz = 3000000; ll st = n - siz; for (int i = 0; i &lt;= siz; i++) &#123; vis[i] = 0; &#125; for (int j = 1; j &lt;= tot; j++) &#123; for (ll k = (st / prime[j] + 1) * prime[j]; k &lt;= n; k += prime[j]) vis[k - st] = 1; &#125; ll p; for (int i = n - st - 1; i &gt;= 0; i--) if (!vis[i]) &#123; p = 1ll * i + st; break; &#125; __int128 now=1; long long ans=0; // dbg(p); for(__int128 i=p+1;i&lt;n;i++) now=now*i%n; ans=power_mod(now,n-2ll,n)%n*(n-1ll)%n; printf("%lld\n",ans); &#125; return 0;&#125;]]></content>
       <categories>
         <category>acm</category>
         <category>做题记录</category>
@@ -113,8 +113,8 @@
         <category>牛客</category>
       </categories>
       <tags>
-        <tag>单调栈</tag>
         <tag>datastructure</tag>
+        <tag>单调栈</tag>
       </tags>
   </entry>
   <entry>
@@ -911,8 +911,8 @@
         <category>2017杭电多校赛</category>
       </categories>
       <tags>
-        <tag>Tree</tag>
         <tag>data structure</tag>
+        <tag>Tree</tag>
         <tag>String</tag>
         <tag>SA</tag>
       </tags>
