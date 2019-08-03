@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[subsequence 1]]></title>
+    <url>%2F2019%2F08%2F03%2Fsubsequence-1%2F</url>
+    <content type="text"><![CDATA[题目链接题意有两个字符串$S,T$，询问有多少个$S$的子序列比$T$串大。 思路$S$的长度比$T$大的一定大，所以可以先找出这样的子序列数量。若长度相等，那么一定从某一个位置开始$S$比$T$大。$dp[i][j]$表示$S$串以$i$开头有多少个子序列比$T$串以$j$开头的子串大。转移方程见代码。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const int N = 3005;ll dp[N][N];const ll mod = 998244353;ll C[N][N], sum[N][N];char s[N], t[N];int main()&#123; C[0][0] = 1; for (int i = 1; i &lt;= 3000; i++) &#123; C[i][0] = 1; for (int j = 1; j &lt;= i; j++) C[i][j] = (C[i - 1][j - 1] + C[i - 1][j]) % mod; &#125; sum[0][0] = 1; for (int i = 1; i &lt;= 3000; i++) &#123; sum[i][0] = 1; for (int j = 1; j &lt;= i; j++) sum[i][j] = (sum[i][j - 1] + C[i][j]) % mod; &#125; int T; scanf("%d", &amp;T); while (T--) &#123; int n, m; scanf("%d%d", &amp;n, &amp;m); scanf("%s%s", s, t); for (int i = 0; i &lt;= n + 2; i++) for (int j = 0; j &lt;= m + 2; j++) dp[i][j] = 0; for (int i = n - 1; i &gt;= 0; i--) &#123; for (int j = m - 1; j &gt;= 0; j--) &#123; if (s[i] == t[j]) &#123; dp[i][j] = dp[i + 1][j + 1]; &#125; else if (s[i] &lt; t[j]) &#123; dp[i][j] = 0; &#125; else &#123; dp[i][j] = C[n - i - 1][m - j - 1]; &#125; dp[i][j] = (dp[i + 1][j] + dp[i][j]) % mod; &#125; &#125; ll ans = 0; for(int i=0;i &lt; n - m;i++) &#123; if(s[i] != '0') &#123; ans = (ans + mod + sum[n-i-1][n-i-1] - sum[n-i-1][m-1]) % mod; // cout&lt;&lt;ans&lt;&lt;' '&lt;&lt;i&lt;&lt;endl; &#125; else continue; &#125; printf("%lld\n", (ans + dp[0][0]) % mod); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2019多校赛</category>
+        <category>牛客</category>
+      </categories>
+      <tags>
+        <tag>dp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[generator-2.md]]></title>
+    <url>%2F2019%2F08%2F03%2Fgenerator-2%2F</url>
+    <content type="text"><![CDATA[题目链接题意给一个一阶递推式，计算在$modp$意义下第几个数字等于$v$，一共有$Q$次询问。 思路首先由给的递推式计算出一个特征方程。然后就变成了一个离散对数的问题。 {a}^{n} \equiv V mod p.{a}^{i \times m-j} \equiv V mod p.{a}^{i \times m} \equiv V \times {a}^{j} mod p.预处理出小步，然后枚举大步。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll; const ll maxn = 1e6;ll mod;struct HASH &#123; static const int mod = 12000005; int hs[mod], head[mod], nxt[mod], id[mod], top; void init()&#123; memset(head, -1, sizeof(head)); top = 1; &#125;; void insert(ll x, int y) &#123; int k = x % mod; hs[top] = x, id[top] = y, nxt[top] = head[k], head[k] = top++; &#125; int find(int x) &#123; int k = x % mod; for (int i = head[k]; i != -1; i = nxt[i]) if (hs[i] == x) return id[i]; return -1; &#125;&#125;mp;ll bin(ll x, ll n, ll MOD)&#123; ll ret = MOD != 1; for (x %= MOD; n; n &gt;&gt;= 1, x = x * x % MOD) if (n &amp; 1) ret = ret * x % MOD; return ret;&#125;inline ll get_inv(ll x, ll p) &#123; return bin(x, p - 2, p); &#125; ll m, ma;ll Init(ll a, ll p)&#123; mp.init(); ll v = 1; for(int i=1;i&lt;=m;i++) &#123; v = v * a % p; mp.insert(v,i); &#125; return v;&#125; ll BSGS(ll a, ll b, ll p, ll init_d)&#123; a %= p; if (!a &amp;&amp; !b) return 1; if (!a) return -1; ll v = init_d; ll vv = init_d; ll inv_b = get_inv(b, p); for(ll i=1;i&lt;=ma;i++) &#123; auto it = mp.find(vv * inv_b % p); if (it != -1) return i * m - it; vv = vv * v % p; &#125; return -1;&#125; int main()&#123; ios::sync_with_stdio(false); ll T; cin&gt;&gt;T; while (T--) &#123; ll n, x0, a, b, p; ll Q; cin&gt;&gt;n&gt;&gt;x0&gt;&gt;a&gt;&gt;b&gt;&gt;p&gt;&gt;Q; if (a == 0) &#123; while (Q--) &#123; ll v; cin&gt;&gt;v; if (v == x0) &#123; cout&lt;&lt;0&lt;&lt;endl; &#125; else if (v == b) &#123; cout&lt;&lt;1&lt;&lt;endl; &#125; else &#123; cout&lt;&lt;-1&lt;&lt;endl; &#125; &#125; &#125; else if (a == 1) &#123; ll invb = get_inv(b, p); while (Q--) &#123; ll v; cin&gt;&gt;v; ll ans = (((v - x0 + p) % p) * invb) % p; if (ans &gt;= n) &#123; cout&lt;&lt;-1&lt;&lt;endl; &#125; else &#123; cout&lt;&lt;ans&lt;&lt;endl; &#125; &#125; &#125; else &#123; ll bais = b * get_inv(a - 1, p) % p; ll y0 = (x0 + bais) % p; ll inv_y0 = get_inv(y0, p); m = min(maxn, n); ma = p / maxn + 3; ll init_d = Init(a, p); while (Q--) &#123; ll v; cin&gt;&gt;v; v = (v + bais) % p; v = (v * inv_y0) % p; ll res = BSGS(a, v, p, init_d); if (res &gt;= n) res = -1; cout&lt;&lt;res&lt;&lt;endl; &#125; &#125; &#125;&#125;]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2019多校赛</category>
+        <category>牛客</category>
+      </categories>
+      <tags>
+        <tag>BSGS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[generator 1]]></title>
+    <url>%2F2019%2F08%2F03%2Fgenerator-1%2F</url>
+    <content type="text"><![CDATA[题目链接题意计算一个递推式的第n项，n是一个大数。 思路很容易想到矩阵快速幂，但是为了避免一个把这个大数分解成二进制的过程，我们使用十进制的快速幂。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;ll mod;struct matrix&#123; ll a[2][2]; void init() &#123; a[0][0] = 0; a[1][0] = 0; a[1][1] = 0; a[0][1] = 0; &#125; inline ll* operator [] (int i) &#123; return a[i]; &#125;&#125;; inline matrix mult(matrix a, matrix b)&#123; matrix ans; ans.init(); for (int i = 0; i &lt; 2; i++) for (int j = 0; j &lt; 2; j++) for (int k = 0; k &lt; 2; k++) ans[i][j] = (ans[i][j] + a[i][k] * b[k][j] % mod) % mod; return ans;&#125;char s[1000005]; inline matrix Pow_q(matrix a, ll b)&#123; matrix ans; ans.init(); ans[0][0] = 1; ans[1][1] = 1; while (b) &#123; if (b &amp; 1) ans = mult(ans, a); a = mult(a, a); b &gt;&gt;= 1; &#125; return ans;&#125;/* matrix Pow(matrix a)&#123; int len = strlen(s); matrix ans; ans.init(); ans[0][0] = 1; ans[1][1] = 1; for (int i = len - 1; i &gt;= 0; i--) &#123; if (s[i] != '0') &#123; //dbg(s[i] - '0'); ans = mult(ans, Pow_q(a, s[i] - '0')); &#125; a = Pow_q(a, 10); &#125; //dbg(ans[0][0], ans[0][1], ans[1][0], ans[1][1]); return ans;&#125; */matrix base[15];int main()&#123; ll x0, x1, a, b; scanf("%lld%lld%lld%lld", &amp;x0, &amp;x1, &amp;a, &amp;b); ll n; scanf("%s%lld", s, &amp;mod); int len = strlen(s); if (len == 1 &amp;&amp; s[0] == '0') &#123; printf("%lld\n", x0); return 0; &#125; if (len == 1 &amp;&amp; s[0] == '1') &#123; printf("%lld\n", x1); return 0; &#125; s[len - 1]--; int i; for (i = len - 1; i &gt;= 0; i--) if (s[i] &lt; '0') s[i] = '9', s[i - 1]--; else break; if (s[0] == '0') &#123; for (int i = 0; i &lt; len - 1; i++) s[i] = s[i + 1]; s[len - 1] = 0; &#125; //puts(s); matrix lcy; lcy[0][0] = a; lcy[0][1] = b; lcy[1][0] = 1ll; lcy[1][1] = 0; len = strlen(s); matrix ans; ans.init(); ans[0][0] = 1; ans[1][1] = 1; base[0].init(); base[0][0][0] = 1; base[0][1][1] = 1; for (int i = 1; i &lt;= 9; i++) base[i] = mult(base[i - 1], lcy); for (int i = 0; i &lt; len; i++) &#123; ans = Pow_q(ans, 10); if (s[i] != '0') &#123; //dbg(s[i] - '0'); ans = mult(ans, base[s[i] - '0']); &#125; &#125; ll ret = x1 * ans[0][0] % mod + x0 * ans[0][1] % mod; ret %= mod; printf("%lld\n", ret); return 0;&#125;]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2019多校赛</category>
+        <category>牛客</category>
+      </categories>
+      <tags>
+        <tag>快速幂</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Find the answer]]></title>
     <url>%2F2019%2F07%2F31%2FFind-the-answer%2F</url>
     <content type="text"><![CDATA[题目链接题意对于一个序列的前缀，你可以删除它前面的某些数字，是的这个前缀和小于等于$m$，询问最少删除几个。 思路二分删除$k$个，在一棵权值线段树上维护数字个数，求出前$k$大的数字和，如果满足当前除去这些数字后的和小于等于$m$，那么就可行。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138#include&lt;bits/stdc++.h&gt;using namespace std;const int N = 2e5 + 5;typedef long long ll;#define lson rt &lt;&lt; 1#define rson rt &lt;&lt; 1 | 1#define Lson L, mid, lson#define Rson mid + 1, R, rsonint cnt[N &lt;&lt; 2];ll sum[N &lt;&lt; 2];void push_up(int rt)&#123; cnt[rt] = cnt[lson] + cnt[rson]; sum[rt] = sum[lson] + sum[rson];&#125;void build(int L, int R, int rt)&#123; if (L == R) &#123; cnt[rt] = 0; sum[rt] = 0; return; &#125; int mid = (L + R) &gt;&gt; 1; build(Lson); build(Rson); push_up(rt);&#125;vector&lt;int&gt; des;void update(int v, int L, int R, int rt)&#123; if (L == R) &#123; cnt[rt]++; sum[rt] += des[v - 1]; return; &#125; int mid = (L + R) &gt;&gt; 1; if (v &lt;= mid) update(v, Lson); else update(v, Rson); push_up(rt);&#125;ll query(int k, int L, int R, int rt)&#123; //printf("k %d, L %d R %d cnt %d sum %lld\n", k, L, R, cnt[rt], sum[rt]); if (L == R) &#123; ll t = k * 1ll * des[L - 1]; //printf("t %lld %d\n", t, des[L - 1]); return t; &#125; if (sum[rt] == 0) return 0; if (k == cnt[rt]) return sum[rt]; int mid = (L + R) &gt;&gt; 1; if (k &lt;= cnt[rson]) return query(k, Rson); ll ans = query(cnt[rson], Rson) + query(k - cnt[rson], Lson); //printf("l %d, r %d, ans %lld\n", L, R, ans); return ans;&#125;int a[N];template&lt;class T&gt;void read(T&amp; ret)&#123; ret = 0; char c; while ((c = getchar()) &lt; '0' || c &gt; '9'); while (c &gt;= '0' &amp;&amp; c &lt;= '9') &#123; ret = ret * 10 + c - '0'; c = getchar(); &#125;&#125;int get_id(int v)&#123; return lower_bound(des.begin(), des.end(), v) - des.begin() + 1;&#125;int main()&#123; int T; read(T); while (T--) &#123; int n; ll m; read(n); read(m); des.clear(); for (int i = 1; i &lt;= n; i++) &#123; read(a[i]); des.push_back(a[i]); &#125; sort(des.begin(), des.end()); des.erase(unique(des.begin(), des.end()), des.end()); build(1, des.size(), 1); ll pre = 0; for (int i = 1; i &lt;= n; i++) &#123; if (i &gt; 1) &#123; int l = 0, r = i - 1; while (l &lt; r) &#123; int mid = (l + r) &gt;&gt; 1; //printf("mid %d, query %d\n", mid, query(mid, 1, des.size(), 1)); ll ret = query(mid, 1, des.size(), 1); if (pre - ret + a[i] &lt;= m) &#123; r = mid; &#125; else &#123; l = mid + 1; &#125; &#125; printf("%d ", l); &#125; else &#123; printf("0 "); &#125; update(get_id(a[i]), 1, des.size(), 1); pre += a[i]; &#125; putchar('\n'); &#125; return 0;&#125;]]></content>
@@ -11,8 +53,8 @@
         <category>HDU</category>
       </categories>
       <tags>
-        <tag>二分</tag>
         <tag>datastructure</tag>
+        <tag>二分</tag>
       </tags>
   </entry>
   <entry>
@@ -41,8 +83,8 @@
       </categories>
       <tags>
         <tag>dp</tag>
-        <tag>二分</tag>
         <tag>datastructure</tag>
+        <tag>二分</tag>
       </tags>
   </entry>
   <entry>
