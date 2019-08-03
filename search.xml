@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[xor]]></title>
+    <url>%2F2019%2F08%2F03%2Fxor%2F</url>
+    <content type="text"><![CDATA[题目链接题意每次询问是否一个区间里的集合是否都能表示某一个元素。 思路每一个点都是一个线性基。题目的询问其实就是询问，是否这个区间的线性空间交能表示这个数字。线性空间求交模板题。注意查询的时候不需要真的全都交起来，可以直接在线段树上看可不可行，代替把整个区间内的交求出来多一个log。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50typedef unsigned int ui;const int N = 5e4 + 5;#define lson rt &lt;&lt; 1#define rson rt &lt;&lt; 1 | 1#define Lson L, mid, lson#define Rson mid + 1, R, rsonui base[N &lt;&lt; 4][33]; bool insert(int c, ui x)&#123; for (int i = 31; i &gt;= 0; i--) if ((x &gt;&gt; i) &amp; 1) &#123; //dbg(i, base[c][i], x); if (base[c][i]) &#123; x ^= base[c][i]; if (x == 0) return 1; &#125; else &#123; base[c][i] = x; return 0; &#125; &#125; return x == 0;&#125;int tot[33], tmp[33];void merge(int a, int b, int c)&#123; //puts("Merge!!!!!!"); //dbg(a, b, c); for(int i = 0; i &lt; 32; i++) &#123; //dbg(base[a][i]); tot[i] = base[a][i]; tmp[i] = base[a][i]; base[c][i] = 0; &#125; for(int i = 0; i &lt; 32; i++) if (base[b][i]) &#123; ui cur = base[b][i], add = 0; for (int j = i; j &gt;= 0; j--) if ((cur &gt;&gt; j) &amp; 1) &#123; //dbg(j, tot[j], cur, add, tmp[j]); if (tot[j]) &#123; cur ^= tot[j]; add ^= tmp[j]; //dbg(cur, add); if (!cur) &#123; base[c][i] = add; //dbg(base[c][i]); break; &#125; &#125; else &#123; tot[j] = cur; tmp[j] = add; break; &#125; &#125; &#125;&#125;int siz;void push_up(int rt)&#123; merge(lson, rson, rt);&#125; template&lt;class T&gt;void read(T&amp; ret)&#123; ret = 0; char c; while ((c = getchar()) &lt; '0' || c &gt; '9'); while (c &gt;= '0' &amp;&amp; c &lt;= '9') &#123; ret = ret * 10 + c - '0'; c = getchar(); &#125;&#125; void build(int L, int R, int rt)&#123; //dbg(L, R); if (L == R) &#123; for (int i = 31; i &gt;= 0; i--) base[rt][i] = 0; read(siz); for (int i = 1; i &lt;= siz; i++) &#123; ui x; read(x); insert(rt, x); &#125; /* for (int i = 31; i &gt;= 0; i--) &#123; if (base[rt][i]) dbg(rt, i, base[rt][i]); &#125; */ return; &#125; for (int i = 31; i &gt;= 0; i--) base[rt][i] = 1 &lt;&lt; i; int mid = (L + R) &gt;&gt; 1; build(Lson); build(Rson); push_up(rt);&#125; bool check(int a, ui x)&#123; for (int i = 0; i &lt; 32; i++) &#123; base[0][i] = base[a][i]; &#125; return insert(0, x);&#125; bool query(int l, int r, ui x, int L, int R, int rt)&#123; if (l &lt;= L &amp;&amp; r &gt;= R) &#123; return check(rt, x); &#125; int mid = (L + R) &gt;&gt; 1; bool ans = 1; if (l &lt;= mid) ans = ans &amp;&amp; query(l, r, x, Lson); if (r &gt; mid) ans = ans &amp;&amp; query(l, r, x, Rson); return ans;&#125; int main()&#123; int n, m; scanf("%d%d", &amp;n, &amp;m); build(1, n, 1); for (int q = 1; q &lt;= m; q++) &#123; int l, r; ui x; read(l); read(r); read(x); if (query(l, r, x, 1, n, 1)) puts("YES"); else puts("NO"); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2019多校赛</category>
+        <category>牛客</category>
+      </categories>
+      <tags>
+        <tag>线性基</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[subsequence 1]]></title>
     <url>%2F2019%2F08%2F03%2Fsubsequence-1%2F</url>
     <content type="text"><![CDATA[题目链接题意有两个字符串$S,T$，询问有多少个$S$的子序列比$T$串大。 思路$S$的长度比$T$大的一定大，所以可以先找出这样的子序列数量。若长度相等，那么一定从某一个位置开始$S$比$T$大。$dp[i][j]$表示$S$串以$i$开头有多少个子序列比$T$串以$j$开头的子串大。转移方程见代码。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const int N = 3005;ll dp[N][N];const ll mod = 998244353;ll C[N][N], sum[N][N];char s[N], t[N];int main()&#123; C[0][0] = 1; for (int i = 1; i &lt;= 3000; i++) &#123; C[i][0] = 1; for (int j = 1; j &lt;= i; j++) C[i][j] = (C[i - 1][j - 1] + C[i - 1][j]) % mod; &#125; sum[0][0] = 1; for (int i = 1; i &lt;= 3000; i++) &#123; sum[i][0] = 1; for (int j = 1; j &lt;= i; j++) sum[i][j] = (sum[i][j - 1] + C[i][j]) % mod; &#125; int T; scanf("%d", &amp;T); while (T--) &#123; int n, m; scanf("%d%d", &amp;n, &amp;m); scanf("%s%s", s, t); for (int i = 0; i &lt;= n + 2; i++) for (int j = 0; j &lt;= m + 2; j++) dp[i][j] = 0; for (int i = n - 1; i &gt;= 0; i--) &#123; for (int j = m - 1; j &gt;= 0; j--) &#123; if (s[i] == t[j]) &#123; dp[i][j] = dp[i + 1][j + 1]; &#125; else if (s[i] &lt; t[j]) &#123; dp[i][j] = 0; &#125; else &#123; dp[i][j] = C[n - i - 1][m - j - 1]; &#125; dp[i][j] = (dp[i + 1][j] + dp[i][j]) % mod; &#125; &#125; ll ans = 0; for(int i=0;i &lt; n - m;i++) &#123; if(s[i] != '0') &#123; ans = (ans + mod + sum[n-i-1][n-i-1] - sum[n-i-1][m-1]) % mod; // cout&lt;&lt;ans&lt;&lt;' '&lt;&lt;i&lt;&lt;endl; &#125; else continue; &#125; printf("%lld\n", (ans + dp[0][0]) % mod); &#125; return 0;&#125;]]></content>
@@ -53,8 +67,8 @@
         <category>HDU</category>
       </categories>
       <tags>
-        <tag>datastructure</tag>
         <tag>二分</tag>
+        <tag>datastructure</tag>
       </tags>
   </entry>
   <entry>
@@ -83,8 +97,8 @@
       </categories>
       <tags>
         <tag>dp</tag>
-        <tag>datastructure</tag>
         <tag>二分</tag>
+        <tag>datastructure</tag>
       </tags>
   </entry>
   <entry>
