@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="题目链接题意要求实现一种数据结构，能够：插入一个二元点对删除还存在的第$r$个点对查询现有数据结构中两个二元点对点积最小 思路首先点积无论最大还是最小一定在凸包上（证明待补?).由于数据随机，凸包上的店的个数期望是$log(n)$个，所以删除一个点的概率是\frac{log(n)}{n}.我们维护这个凸包，如果删除了这上面的元素，我们就暴力重建凸包。还有一个数据结构维护已插入的点，如平衡树。存档凸">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-17T01:51:24.449Z">
+<meta property="og:updated_time" content="2019-08-17T01:53:44.874Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Data Structure Problem">
 <meta name="twitter:description" content="题目链接题意要求实现一种数据结构，能够：插入一个二元点对删除还存在的第$r$个点对查询现有数据结构中两个二元点对点积最小 思路首先点积无论最大还是最小一定在凸包上（证明待补?).由于数据随机，凸包上的店的个数期望是$log(n)$个，所以删除一个点的概率是\frac{log(n)}{n}.我们维护这个凸包，如果删除了这上面的元素，我们就暴力重建凸包。还有一个数据结构维护已插入的点，如平衡树。存档凸">
@@ -1162,7 +1162,7 @@
         onPopupClose();
       }
     });
-  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </script>
 
 
 
@@ -1178,6 +1178,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
