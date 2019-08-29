@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Math,NTT,Inversion,">
+  <meta name="keywords" content="FWT,">
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="题目链接题意有两个人进行$n$局石头剪刀布游戏，设其中一个人赢了$a$局，另一个人赢了$b$局，$n-a-b$局平局。则分数为$gcd(a,b)$。问分数的期望。 思路ans={3}^{n} \sum_{a=0}^{n} \sum_{b=0}^{n-a} C_{n}^{a} C_{n-a}^{b} gcd(a, b).={3}^{n} \sum_{d=1}^{n} \sum_{a=0}^{n} \">
-<meta name="keywords" content="Math,NTT,Inversion">
+<meta name="description" content="题目链接题意有$n$个$m$元组，定义$count(x)$为满足所有a_{i, j} and x的结果有奇数个1的元组的个数。现在计算\otimes_{x=0}^{ {2}^{k}-1} (count(x) \times {3}^{x} mod ({10}^{9}+7)). 思路FWT首先了解一下快速沃尔什变换在异或上的意义。我们现在都知道FWT怎么用。 FWT(A)_{i} = \sum_{j}">
+<meta name="keywords" content="FWT">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Rikka with Rock-paper-scissors">
-<meta property="og:url" content="http://yoursite.com/2019/06/27/Rikka-with-Rock-paper-scissors/index.html">
+<meta property="og:title" content="Parity of Tuples">
+<meta property="og:url" content="http://yoursite.com/2019/08/29/Parity-of-Tuples/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目链接题意有两个人进行$n$局石头剪刀布游戏，设其中一个人赢了$a$局，另一个人赢了$b$局，$n-a-b$局平局。则分数为$gcd(a,b)$。问分数的期望。 思路ans={3}^{n} \sum_{a=0}^{n} \sum_{b=0}^{n-a} C_{n}^{a} C_{n-a}^{b} gcd(a, b).={3}^{n} \sum_{d=1}^{n} \sum_{a=0}^{n} \">
+<meta property="og:description" content="题目链接题意有$n$个$m$元组，定义$count(x)$为满足所有a_{i, j} and x的结果有奇数个1的元组的个数。现在计算\otimes_{x=0}^{ {2}^{k}-1} (count(x) \times {3}^{x} mod ({10}^{9}+7)). 思路FWT首先了解一下快速沃尔什变换在异或上的意义。我们现在都知道FWT怎么用。 FWT(A)_{i} = \sum_{j}">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-18T13:34:15.130Z">
+<meta property="og:updated_time" content="2019-08-29T02:39:49.814Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rikka with Rock-paper-scissors">
-<meta name="twitter:description" content="题目链接题意有两个人进行$n$局石头剪刀布游戏，设其中一个人赢了$a$局，另一个人赢了$b$局，$n-a-b$局平局。则分数为$gcd(a,b)$。问分数的期望。 思路ans={3}^{n} \sum_{a=0}^{n} \sum_{b=0}^{n-a} C_{n}^{a} C_{n-a}^{b} gcd(a, b).={3}^{n} \sum_{d=1}^{n} \sum_{a=0}^{n} \">
+<meta name="twitter:title" content="Parity of Tuples">
+<meta name="twitter:description" content="题目链接题意有$n$个$m$元组，定义$count(x)$为满足所有a_{i, j} and x的结果有奇数个1的元组的个数。现在计算\otimes_{x=0}^{ {2}^{k}-1} (count(x) \times {3}^{x} mod ({10}^{9}+7)). 思路FWT首先了解一下快速沃尔什变换在异或上的意义。我们现在都知道FWT怎么用。 FWT(A)_{i} = \sum_{j}">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/27/Rikka-with-Rock-paper-scissors/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/29/Parity-of-Tuples/">
 
 
 
 
 
-  <title>Rikka with Rock-paper-scissors | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Parity of Tuples | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -292,7 +292,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/27/Rikka-with-Rock-paper-scissors/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/29/Parity-of-Tuples/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -309,7 +309,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Rikka with Rock-paper-scissors</h1>
+          <h1 class="post-title" itemprop="name headline">Parity of Tuples</h1>
         
 
         <div class="post-meta">
@@ -321,8 +321,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-27T19:40:11+08:00">
-                2019-06-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-29T09:04:34+08:00">
+                2019-08-29
               </time>
             
 
@@ -366,8 +366,19 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/acm/做题记录/2017杭电多校赛/" itemprop="url" rel="index">
-                    <span itemprop="name">2017杭电多校赛</span>
+                  <a href="/categories/acm/做题记录/2019多校赛/" itemprop="url" rel="index">
+                    <span itemprop="name">2019多校赛</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/acm/做题记录/2019多校赛/牛客/" itemprop="url" rel="index">
+                    <span itemprop="name">牛客</span>
                   </a>
                 </span>
 
@@ -403,9 +414,18 @@
       
 
       
-        <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6088" target="_blank" rel="noopener">题目链接</a></h2><h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>有两个人进行$n$局石头剪刀布游戏，设其中一个人赢了$a$局，另一个人赢了$b$局，$n-a-b$局平局。则分数为$gcd(a,b)$。<br>问分数的期望。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><script type="math/tex; mode=display">ans={3}^{n} \sum_{a=0}^{n} \sum_{b=0}^{n-a} C_{n}^{a} C_{n-a}^{b} gcd(a, b).</script><script type="math/tex; mode=display">={3}^{n} \sum_{d=1}^{n} \sum_{a=0}^{n} \sum_{b=0}^{n-a} C_{n}^{a} C_{n-a}^{b} d[gcd(a,b)==d].</script><script type="math/tex; mode=display">={3}^{n} \sum_{d=1}^{n} d f(d).</script><script type="math/tex; mode=display">f(d) = \sum_{a=0}^{n} \sum_{b=0}^{n-a} C_{n}^{a} C_{n-a}^{b} [gcd(a,b) == d].</script><script type="math/tex; mode=display">F(d) = \sum_{a=0}^{n} \sum_{b=0}^{n-a} C_{n}^{a} C_{n-a}^{b} [d | gcd(a, b)].</script><script type="math/tex; mode=display">F(d) = \sum_{d | k} f(k).</script><script type="math/tex; mode=display">f(d) = \sum_{d | k} \mu( \frac{k}{d}) F(k).</script><script type="math/tex; mode=display">F(d) = \sum_{a=0}^{n} \sum_{b=0}^{n-a} C_{n}^{a} C_{n-a}^{b} [d | gcd(a,b)] [gcd(a, b) != 0].</script><script type="math/tex; mode=display">= \sum_{a=0}^{ \frac{n}{d} } \sum_{b=0}^{ \frac{n}{d} - a} C_{n}^{ad} C_{n-ad}^{bd} -1.</script><script type="math/tex; mode=display">= \sum_{a=0}^{ \frac{n}{d} } \sum_{b=0}^{ \frac{n}{d} - a} \frac{n!}{(ad)!(bd)!(n-ad-bd)!} -1.</script><script type="math/tex; mode=display">= \sum_{a=0}^{ \frac{n}{d} } \sum_{b=0}^{a} \frac{n!}{(ad - bd)!(bd)!(n-ad)!} - 1.</script><script type="math/tex; mode=display">= n! \sum_{a=0}^{ \frac{n}{d} } \frac{1}{(n - ad)! } \sum_{b=0}^{a} \frac{1}{(bd)!(ad-bd)!} - 1.</script><script type="math/tex; mode=display">= n! \sum_{a=0}^{ \frac{n}{d} } \frac{1}{(n - ad)! } (fac * fac)_{a} - 1.</script><p>可以用FFT优化这个狄利克雷卷积。</p>
-<script type="math/tex; mode=display">ans = {3}^{n} \sum_{d=1}^{n} d f(d).</script><script type="math/tex; mode=display">= {3}^{n} \sum_{d=1}^{n} d \sum_{d | k} \mu( \frac{k}{d} ) F(k).</script><script type="math/tex; mode=display">= {3}^{n} \sum_{k=1}^{n} \sum_{d | k} d \mu( \frac{k}{d} ) F(k).</script><script type="math/tex; mode=display">= {3}^{n} \sum_{k=1}^{n} F(k) \phi(k).</script>
+        <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://ac.nowcoder.com/acm/contest/881/D" target="_blank" rel="noopener">题目链接</a></h2><h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>有$n$个$m$元组，定义$count(x)$为满足所有<script type="math/tex">a_{i, j} and x</script>的结果有奇数个1的元组的个数。现在计算<script type="math/tex">\otimes_{x=0}^{ {2}^{k}-1} (count(x) \times {3}^{x} mod ({10}^{9}+7))</script>.</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="FWT"><a href="#FWT" class="headerlink" title="FWT"></a>FWT</h3><p>首先了解一下快速沃尔什变换在异或上的意义。<br>我们现在都知道FWT怎么用。</p>
+<script type="math/tex; mode=display">FWT(A)_{i} = \sum_{j} f_{i, j} a_{i}.</script><p>其中<script type="math/tex">f_{i, j}</script>是一个线性变换。</p>
+<script type="math/tex; mode=display">FWT(A)_{i} \times FWT(B)_{i} = \sum_{x} f_{i, x} a_{x} \sum_{y} f_{i, y} b_{y}</script><script type="math/tex; mode=display">= \sum_{x} \sum_{y} f_{i, x} f_{i, y} a_{x} b_{y}</script><script type="math/tex; mode=display">= \sum_{t} \sum_{x, y, x \otimes y = t} f_{i, x} f_{i, y} a_{x} b_{y}</script><script type="math/tex; mode=display">= \sum_{t} \sum_{x, y, x \otimes y = t} f_{i, x} f_{i, y} c_{t}</script><script type="math/tex; mode=display">= \sum_{t} f_{i, t} c_{t}.</script><p>所以有我们去构造一个线性变换满足：</p>
+<script type="math/tex; mode=display">f_{i, x} f_{i, y} = f_{i, x \otimes y}.</script><p>我们观察这样一个式子： </p>
+<script type="math/tex; mode=display">{(-1)}^{|i and j|}</script><p>其中$|x|$表示二进制$x$中1的个数奇偶性。<br>这个式子恰好满足我们要的线性变换。</p>
+<script type="math/tex; mode=display">|i and k| \otimes |j and k| = |(j \otimes i) and k|.</script><h3 id="言归正传"><a href="#言归正传" class="headerlink" title="言归正传"></a>言归正传</h3><p>我们继续观察怎样计算$count(x)$。<br>我们可以这样写</p>
+<script type="math/tex; mode=display">count(x) = \frac{ \sum_{i = 1}^{n} \prod_{j = 1}^{m} (1 - {(-1)}^{|a_{i, j} and x|})}{2^m}</script><p>我们去讨论分子部分。</p>
+<script type="math/tex; mode=display">\prod_{j = 1}^{m} (1-{(-1)}^{|a_{i, j} and x|})</script><script type="math/tex; mode=display">= 1 - \sum_{j = 1}^{m} {(-1)}^{|a_{i, j} and x|} + \sum_{j, k, j \neq k}^{m}...</script><p>对于$-1$来说，我们发现</p>
+<script type="math/tex; mode=display">{(-1)}^{i+j} = {(-1)}^{i \otimes j}.</script><p>所以上式可以被我们变成FWT：</p>
+<script type="math/tex; mode=display">count(x) = \frac{ \sum_{i=1}^{n} \sum_{j=0}^{2^m-1} {(-1)}^{popcount(j)} FWT(f_{i})_{x}}{2^m}.</script><h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> dbg(x...) do&#123;cout <span class="meta-string">&lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">err</span><span class="params">()</span></span>&#123;<span class="built_in">cout</span> &lt;&lt; <span class="string">"\033[39;0m"</span> &lt;&lt; <span class="built_in">endl</span>;&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>...&gt; <span class="class"><span class="keyword">class</span> <span class="title">T</span>, <span class="title">typename</span> <span class="title">t</span>, <span class="title">typename</span>... <span class="title">A</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">err</span>(<span class="title">T</span>&lt;t&gt; <span class="title">a</span>, <span class="title">A</span>... <span class="title">x</span>)&#123;</span><span class="keyword">for</span> (<span class="keyword">auto</span> v: a) <span class="built_in">cout</span> &lt;&lt; v &lt;&lt; <span class="string">' '</span>; err(x...);&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... A&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">err</span><span class="params">(T a, A... x)</span></span>&#123;<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="string">' '</span>; err(x...);&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> dbg(...)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 1ll &lt;&lt; 50</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">20</span>;</span><br><span class="line">ll f[(<span class="number">1</span> &lt;&lt; <span class="number">20</span>) + <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> ll mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">15</span>];</span><br><span class="line"><span class="keyword">int</span> n, m, k;</span><br><span class="line"><span class="function">ll <span class="title">Pow</span><span class="params">(ll a, ll b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span>)</span><br><span class="line">            ans = ans * a % mod;</span><br><span class="line">        a = a * a % mod;</span><br><span class="line">        b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> now, <span class="keyword">int</span> q)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (p &gt; m)</span><br><span class="line">    &#123;</span><br><span class="line">        f[now] += q;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(p + <span class="number">1</span>, now ^ a[p], -q);</span><br><span class="line">    dfs(p + <span class="number">1</span>, now, q);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">void fwt(ll a[],int m)&#123;</span></span><br><span class="line"><span class="comment">    int n = __builtin_ctz(m);</span></span><br><span class="line"><span class="comment">    for(int i=0;i&lt;n;i++) &#123;</span></span><br><span class="line"><span class="comment">        for(int j=0;j&lt;m;j++) &#123;</span></span><br><span class="line"><span class="comment">            if(j&amp;(1&lt;&lt;i)) &#123;</span></span><br><span class="line"><span class="comment">                int l = a[j^(1&lt;&lt;i)];</span></span><br><span class="line"><span class="comment">                int r = a[j];</span></span><br><span class="line"><span class="comment">                a[j^(1&lt;&lt;i)] = (l+r)%mod;</span></span><br><span class="line"><span class="comment">                a[j] = (l-r+mod)%mod;</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT_xor</span><span class="params">(ll *a, <span class="keyword">int</span> n, <span class="keyword">int</span> opt)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i &lt;&lt;= <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> p = i &lt;&lt; <span class="number">1</span>, j = <span class="number">0</span>; j &lt; n; j += p)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; i; ++k)</span><br><span class="line">            &#123;</span><br><span class="line">                ll X = a[j + k], Y = a[i + j + k];</span><br><span class="line">                a[j + k] = X + Y;</span><br><span class="line">                a[i + j + k] = X - Y;</span><br><span class="line">                <span class="keyword">if</span> (opt == <span class="number">-1</span>)</span><br><span class="line">                    a[j + k] = <span class="number">1l</span>l * a[j + k] / <span class="number">2</span>, a[i + j + k] = <span class="number">1l</span>l * a[i + j + k] / <span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;n, &amp;m, &amp;k)!= EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt;= (<span class="number">1</span> &lt;&lt; k) - <span class="number">1</span>; i++)</span><br><span class="line">            f[i] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[j]);</span><br><span class="line">            dfs(<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        FWT_xor(f, <span class="number">1</span> &lt;&lt; k, <span class="number">1</span>);</span><br><span class="line">        ll ans = <span class="number">0</span>, base = <span class="number">1</span>, inv = Pow(<span class="number">1</span> &lt;&lt; m, mod - <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (<span class="number">1</span> &lt;&lt; k); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            ans = ans ^ (inv * base % mod * f[i] % mod);</span><br><span class="line">            base = base * <span class="number">3l</span>l % mod;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -422,11 +442,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Math/" rel="tag"># Math</a>
-          
-            <a href="/tags/NTT/" rel="tag"># NTT</a>
-          
-            <a href="/tags/Inversion/" rel="tag"># Inversion</a>
+            <a href="/tags/FWT/" rel="tag"># FWT</a>
           
         </div>
       
@@ -439,8 +455,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/27/shell脚本实现对拍/" rel="next" title="shell脚本实现对拍">
-                <i class="fa fa-chevron-left"></i> shell脚本实现对拍
+              <a href="/2019/08/22/Rikka-with-Mista/" rel="next" title="Rikka with Mista">
+                <i class="fa fa-chevron-left"></i> Rikka with Mista
               </a>
             
           </div>
@@ -448,10 +464,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/27/Rikka-with-Sequence/" rel="prev" title="Rikka with Sequence">
-                Rikka with Sequence <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -627,7 +639,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目链接"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目链接"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FWT"><span class="nav-number">3.1.</span> <span class="nav-text">FWT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#言归正传"><span class="nav-number">3.2.</span> <span class="nav-text">言归正传</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">3.3.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></div>
             
 
           </div>

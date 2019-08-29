@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Parity of Tuples]]></title>
+    <url>%2F2019%2F08%2F29%2FParity-of-Tuples%2F</url>
+    <content type="text"><![CDATA[题目链接题意有$n$个$m$元组，定义$count(x)$为满足所有a_{i, j} and x的结果有奇数个1的元组的个数。现在计算\otimes_{x=0}^{ {2}^{k}-1} (count(x) \times {3}^{x} mod ({10}^{9}+7)). 思路FWT首先了解一下快速沃尔什变换在异或上的意义。我们现在都知道FWT怎么用。 FWT(A)_{i} = \sum_{j} f_{i, j} a_{i}.其中f_{i, j}是一个线性变换。 FWT(A)_{i} \times FWT(B)_{i} = \sum_{x} f_{i, x} a_{x} \sum_{y} f_{i, y} b_{y}= \sum_{x} \sum_{y} f_{i, x} f_{i, y} a_{x} b_{y}= \sum_{t} \sum_{x, y, x \otimes y = t} f_{i, x} f_{i, y} a_{x} b_{y}= \sum_{t} \sum_{x, y, x \otimes y = t} f_{i, x} f_{i, y} c_{t}= \sum_{t} f_{i, t} c_{t}.所以有我们去构造一个线性变换满足： f_{i, x} f_{i, y} = f_{i, x \otimes y}.我们观察这样一个式子： {(-1)}^{|i and j|}其中$|x|$表示二进制$x$中1的个数奇偶性。这个式子恰好满足我们要的线性变换。 |i and k| \otimes |j and k| = |(j \otimes i) and k|.言归正传我们继续观察怎样计算$count(x)$。我们可以这样写 count(x) = \frac{ \sum_{i = 1}^{n} \prod_{j = 1}^{m} (1 - {(-1)}^{|a_{i, j} and x|})}{2^m}我们去讨论分子部分。 \prod_{j = 1}^{m} (1-{(-1)}^{|a_{i, j} and x|})= 1 - \sum_{j = 1}^{m} {(-1)}^{|a_{i, j} and x|} + \sum_{j, k, j \neq k}^{m}...对于$-1$来说，我们发现 {(-1)}^{i+j} = {(-1)}^{i \otimes j}.所以上式可以被我们变成FWT： count(x) = \frac{ \sum_{i=1}^{n} \sum_{j=0}^{2^m-1} {(-1)}^{popcount(j)} FWT(f_{i})_{x}}{2^m}.Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;#ifndef ONLINE_JUDGE#define dbg(x...) do&#123;cout &lt;&lt; "\033[33;1m" &lt;&lt; #x &lt;&lt; "-&gt;" ; err(x);&#125; while (0)void err()&#123;cout &lt;&lt; "\033[39;0m" &lt;&lt; endl;&#125;template&lt;template&lt;typename...&gt; class T, typename t, typename... A&gt;void err(T&lt;t&gt; a, A... x)&#123;for (auto v: a) cout &lt;&lt; v &lt;&lt; ' '; err(x...);&#125;template&lt;typename T, typename... A&gt;void err(T a, A... x)&#123;cout &lt;&lt; a &lt;&lt; ' '; err(x...);&#125;#else#define dbg(...)#endif#define inf 1ll &lt;&lt; 50const int N = 20;ll f[(1 &lt;&lt; 20) + 5];const ll mod = 1e9 + 7;int a[15];int n, m, k;ll Pow(ll a, ll b)&#123; ll ans = 1; while (b) &#123; if (b &amp; 1) ans = ans * a % mod; a = a * a % mod; b &gt;&gt;= 1; &#125; return ans;&#125; void dfs(int p, int now, int q)&#123; if (p &gt; m) &#123; f[now] += q; return; &#125; dfs(p + 1, now ^ a[p], -q); dfs(p + 1, now, q);&#125;/*void fwt(ll a[],int m)&#123; int n = __builtin_ctz(m); for(int i=0;i&lt;n;i++) &#123; for(int j=0;j&lt;m;j++) &#123; if(j&amp;(1&lt;&lt;i)) &#123; int l = a[j^(1&lt;&lt;i)]; int r = a[j]; a[j^(1&lt;&lt;i)] = (l+r)%mod; a[j] = (l-r+mod)%mod; &#125; &#125; &#125;&#125;*/void FWT_xor(ll *a, int n, int opt)&#123; for (int i = 1; i &lt; n; i &lt;&lt;= 1) for (int p = i &lt;&lt; 1, j = 0; j &lt; n; j += p) for (int k = 0; k &lt; i; ++k) &#123; ll X = a[j + k], Y = a[i + j + k]; a[j + k] = X + Y; a[i + j + k] = X - Y; if (opt == -1) a[j + k] = 1ll * a[j + k] / 2, a[i + j + k] = 1ll * a[i + j + k] / 2; &#125;&#125; int main()&#123; while (scanf("%d%d%d", &amp;n, &amp;m, &amp;k)!= EOF) &#123; for (int i = 0 ; i &lt;= (1 &lt;&lt; k) - 1; i++) f[i] = 0; for (int i = 1; i &lt;= n; i++) &#123; for (int j = 1; j &lt;= m; j++) scanf("%d", &amp;a[j]); dfs(1, 0, 1); &#125; FWT_xor(f, 1 &lt;&lt; k, 1); ll ans = 0, base = 1, inv = Pow(1 &lt;&lt; m, mod - 2); for (int i = 0; i &lt; (1 &lt;&lt; k); i++) &#123; ans = ans ^ (inv * base % mod * f[i] % mod); base = base * 3ll % mod; &#125; printf("%lld\n", ans); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>acm</category>
+        <category>做题记录</category>
+        <category>2019多校赛</category>
+        <category>牛客</category>
+      </categories>
+      <tags>
+        <tag>FWT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Rikka with Mista]]></title>
     <url>%2F2019%2F08%2F22%2FRikka-with-Mista%2F</url>
     <content type="text"><![CDATA[题目链接题意一个人有$n$张牌，每张牌$i$正面有w_{i}，反面有$0$，没面概率是\frac{1}{2}。现在所有牌随意摆放，朝上面的数字求和为$S$，记录$S$的十进制表示中$4$的个数。问所有摆放方式的和为多少。 思路计算贡献，每一位为$4$的方案数都计算出来，然后双指针扫一下。关键这个基数排序，比我原来做法少一个$\log$，我觉得其思想我好像还没掌握？1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677#include &lt;bits/stdc++.h&gt;using namespace std;#define fi first#define se second#define mp make_pair#define pb push_backconst int N=50;int n,w[N];struct atom&#123; long long l,r;&#125;;vector&lt;atom&gt;x,y,A[10],B[10];void solve(int k1,int lim,long long sum,vector&lt;atom&gt;&amp;x)&#123; if (k1&gt;lim)&#123; x.push_back((atom)&#123;sum,0&#125;); return; &#125; solve(k1+1,lim,sum,x); solve(k1+1,lim,sum+w[k1],x);&#125;long long get0(vector&lt;atom&gt;&amp;A,vector&lt;atom&gt;&amp;B,long long lim)&#123; int now=B.size()-1; long long ans=0; for (int i=0;i&lt;A.size();i++)&#123; while (now&gt;=0&amp;&amp;B[now].r+A[i].r&gt;=lim) now--; ans+=now+1; &#125; return ans;&#125;long long get1(vector&lt;atom&gt;&amp;A,vector&lt;atom&gt;&amp;B,long long lim)&#123; int now=0; long long ans=0; for (int i=A.size();i;i--)&#123; while (now&lt;B.size()&amp;&amp;B[now].r+A[i-1].r&lt;lim) now++; ans+=B.size()-now; &#125; return ans;&#125;void solve()&#123; scanf("%d",&amp;n); for (int i=1;i&lt;=n;i++) scanf("%d",&amp;w[i]); //n=40; //for (int i=1;i&lt;=n;i++) w[i]=rand()%1000000000+1; int mid=n/2; x.clear(); y.clear(); solve(1,mid,0,x); solve(mid+1,n,0,y); long long ans=0; long long base=1; for (int t=1;t&lt;=12;t++)&#123; for (int i=0;i&lt;10;i++) A[i].clear(),B[i].clear(); for (int i=0;i&lt;x.size();i++) A[x[i].l%10].push_back((atom)&#123;x[i].l/10,x[i].r&#125;); for (int i=0;i&lt;y.size();i++) B[y[i].l%10].push_back((atom)&#123;y[i].l/10,y[i].r&#125;); for (int i=0;i&lt;10;i++)&#123; int k1=(14-i)%10,k2=(13-i)%10; ans+=get0(A[i],B[k1],base)+get1(A[i],B[k2],base); &#125; int now=0; for (int i=0;i&lt;10;i++)&#123; long long ex=i*base; for (int j=0;j&lt;A[i].size();j++) x[now++]=(atom)&#123;A[i][j].l,A[i][j].r+ex&#125;; &#125; now=0; for (int i=0;i&lt;10;i++)&#123; long long ex=i*base; for (int j=0;j&lt;B[i].size();j++) y[now++]=(atom)&#123;B[i][j].l,B[i][j].r+ex&#125;; &#125; base*=10; &#125; printf("%lld\n",ans);&#125;int main()&#123; int t; scanf("%d",&amp;t); for (;t;t--) solve(); return 0;&#125;]]></content>
@@ -25,8 +39,8 @@
         <category>HDU</category>
       </categories>
       <tags>
-        <tag>datastructure</tag>
         <tag>平衡树</tag>
+        <tag>datastructure</tag>
       </tags>
   </entry>
   <entry>
@@ -224,8 +238,8 @@
         <category>HDU</category>
       </categories>
       <tags>
-        <tag>datastructure</tag>
         <tag>二分</tag>
+        <tag>datastructure</tag>
       </tags>
   </entry>
   <entry>
@@ -254,8 +268,8 @@
       </categories>
       <tags>
         <tag>dp</tag>
-        <tag>datastructure</tag>
         <tag>二分</tag>
+        <tag>datastructure</tag>
       </tags>
   </entry>
   <entry>
@@ -1124,8 +1138,8 @@
         <category>2017杭电多校赛</category>
       </categories>
       <tags>
-        <tag>data structure</tag>
         <tag>Tree</tag>
+        <tag>data structure</tag>
         <tag>String</tag>
         <tag>SA</tag>
       </tags>
